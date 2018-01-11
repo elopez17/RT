@@ -6,11 +6,13 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/10 22:06:43 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 23:33:05 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+t_rgb	g_shine = {200, 200, 200};
 
 static void	init_rt(t_rt **rt, char *file)
 {

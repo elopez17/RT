@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 22:17:55 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 23:36:20 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		key_hook(int key, t_rt **rt)
 	else if (key == KEYPLUS || key == KEYMIN)
 	{
 		(*rt)->bright += (key == KEYPLUS) ? 0.05 : -0.05;
+		g_shine = colorscalar((t_rgb){150, 150, 150}, (*rt)->bright);
 		scene(*rt);
 		draw(*rt);
 	}

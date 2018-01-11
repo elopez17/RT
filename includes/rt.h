@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 22:13:50 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 23:32:08 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct	s_rgb
 	int		green;
 	int		blue;
 }				t_rgb;
+
+extern t_rgb	g_shine;
 
 typedef struct	s_ray
 {

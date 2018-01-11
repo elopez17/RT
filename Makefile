@@ -22,7 +22,7 @@ ODIR	:= obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
 INC		= includes
 LIB		= libft.a
-EX		= RTv1
+EX		= RT
 
 all: $(LIB) $(EX)
 
@@ -31,10 +31,10 @@ $(EX): $(OBJ)
 	$(CC) $(CFLAGS) -I $(INC) -I ./minilibx -o $(EX) $(OBJ) -L. -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 $(ODIR)/%.o:src/%.c | $(ODIR)
-	$(CC) $(CFLAGS) -I $(INC) -I minilibx -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INC) -I minilibx -o $@ -c $<
 
 $(ODIR):
-	mkdir $(ODIR)
+	@mkdir $(ODIR)
 
 $(LIB):
 	@make -C libft/

@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/08 15:04:08 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:07:29 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 double	pickinter(double inter0, double inter1)
 {
@@ -63,7 +63,7 @@ double	findintersphere(t_ray ray, t_sphere sphere)
 	return (pickinter(root[0], root[1]));
 }
 
-double	*findintersects(t_ray ray, t_rtv1 *rt)
+double	*findintersects(t_ray ray, t_rt *rt)
 {
 	double	*intersects;
 	int		i;

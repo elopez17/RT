@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/08 14:06:10 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:08:01 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 t_rgb	checklight2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {

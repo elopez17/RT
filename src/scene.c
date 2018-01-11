@@ -6,18 +6,18 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/09 10:48:32 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:10:13 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 double			norm_vect(t_vect v)
 {
 	return (sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
 }
 
-static t_rgb	color_at(t_ray *intersection, int index, t_rtv1 *rt)
+static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 {
 	t_obj	*tmp;
 	t_vect	dist;
@@ -70,7 +70,7 @@ static int		winningobject(double *intersects, int nodes)
 	return (index);
 }
 
-static void		setxy(t_rtv1 *rt, t_ray *ray, t_xy *pixel)
+static void		setxy(t_rt *rt, t_ray *ray, t_xy *pixel)
 {
 	t_xy		dir;
 
@@ -81,7 +81,7 @@ static void		setxy(t_rtv1 *rt, t_ray *ray, t_xy *pixel)
 					dir.x - 0.5), vmult(rt->cam.down, dir.y - 0.5))));
 }
 
-void			scene(t_rtv1 *rt)
+void			scene(t_rt *rt)
 {
 	t_xy		pixel;
 	t_ray		ray;

@@ -13,7 +13,6 @@ scene {
 		direction(0, 3, 0);
 		color(0, 0, 190);
 		angle(20);
-		height(4);
 	}
 	sphere {
 		origin(-5, 0, 2);

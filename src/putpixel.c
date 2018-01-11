@@ -6,13 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 18:33:42 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/06 18:51:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:09:21 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
-void	putpixel(t_rtv1 *rt, int x, int y, t_rgb color)
+void	putpixel(t_rt *rt, int x, int y, t_rgb color)
 {
 	int i;
 

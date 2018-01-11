@@ -6,11 +6,11 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2017/01/08 13:37:50 by oabdalha         ###   ########.fr       */
+/*   Updated: 2018/01/10 20:10:23 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 t_vect	normalize(t_vect v)
 {

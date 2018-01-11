@@ -13,6 +13,5 @@ scene {
 		direction(0, 1, 0);
 		color(230, 200, 50);
 		radius(1);
-		height(2);
 	}
 }

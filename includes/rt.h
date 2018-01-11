@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/09 12:44:54 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:05:53 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#ifndef RT_H
+# define RT_H
 # include <ft_printf.h>
 # include <get_next_line.h>
 # include <fcntl.h>
@@ -100,7 +100,6 @@ typedef struct	s_cone
 {
 	t_vect	pos;
 	t_vect	dir;
-	double	h;
 	double	a;
 	t_rgb	clr;
 }				t_cone;
@@ -110,7 +109,6 @@ typedef struct	s_cylinder
 	t_vect	pos;
 	t_vect	dir;
 	double	radius;
-	double	h;
 	t_rgb	clr;
 }				t_cylinder;
 
@@ -138,7 +136,7 @@ typedef struct	s_objects
 	struct s_objects	*next;
 }				t_obj;
 
-typedef struct	s_rtv1
+typedef struct	s_rt
 {
 	void	*mlx;
 	void	*win;
@@ -153,13 +151,13 @@ typedef struct	s_rtv1
 	t_obj	*obj;
 	t_vect	light;
 	int		nodes;
-}				t_rtv1;
+}				t_rt;
 
-void			render(t_rtv1 *rt);
-void			putpixel(t_rtv1 *rt, int x, int y, t_rgb color);
-int				key_hook(int key, t_rtv1 **rt);
-int				close_hook(t_rtv1 **rt);
-int				expose_hook(t_rtv1 **rt);
+void			draw(t_rt *rt);
+void			putpixel(t_rt *rt, int x, int y, t_rgb color);
+int				key_hook(int key, t_rt **rt);
+int				close_hook(t_rt **rt);
+int				expose_hook(t_rt **rt);
 t_vect			normalize(t_vect v);
 t_vect			invert(t_vect v);
 double			vdot(t_vect v1, t_vect v2);
@@ -178,26 +176,26 @@ double			pickinter(double inter0, double inter1);
 t_vect			sphere_norm(t_sphere sphere, t_vect point);
 t_vect			cone_norm(t_cone cone, t_vect point);
 t_vect			cylinder_norm(t_cylinder cylinder, t_vect point);
-void			scene(t_rtv1 *rt);
+void			scene(t_rt *rt);
 double			brightness(t_rgb color);
 t_rgb			colorscalar(t_rgb color, double scalar);
 t_rgb			coloradd(t_rgb clr1, t_rgb clr2);
 t_rgb			colormult(t_rgb clr1, t_rgb clr2);
 t_rgb			coloravg(t_rgb clr1, t_rgb clr2);
-void			rtv1_error(int code);
-void			parsefile(t_rtv1 *rt);
+void			rt_error(int code);
+void			parsefile(t_rt *rt);
 t_vect			getxyz(const char *line);
 t_rgb			getcolor(const char *line);
 t_rgb			checklight(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
 t_rgb			checklight2(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
-void			getcam(t_rtv1 *rt);
-t_union			getsphere(t_rtv1 *rt);
-t_union			getplane(t_rtv1 *rt);
-t_union			getcone(t_rtv1 *rt);
-t_union			getcylinder(t_rtv1 *rt);
-t_obj			getobject(int type, t_union u);
-double			*findintersects(t_ray ray, t_rtv1 *rt);
+void			getcam(t_rt *rt);
+t_union			getsphere(t_rt *rt);
+t_union			getplane(t_rt *rt);
+t_union			getcone(t_rt *rt);
+t_union			getcylinder(t_rt *rt);
+void			getobject(int type, t_union u, t_rt *rt);
+double			*findintersects(t_ray ray, t_rt *rt);
 
 #endif

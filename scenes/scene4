@@ -17,7 +17,6 @@ scene {
 		origin(0, 0, 0);
 		direction(0, 1, 0);
 		angle(15);
-		height(10);
 		color(0, 0, 190);
 	}
 }

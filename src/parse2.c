@@ -6,11 +6,11 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2017/01/08 13:37:50 by oabdalha         ###   ########.fr       */
+/*   Updated: 2018/01/10 20:08:50 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 t_rgb	getcolor(const char *line)
 {
@@ -18,18 +18,18 @@ t_rgb	getcolor(const char *line)
 
 	color = (t_rgb){0, 0, 0};
 	if ((line = ft_strrchr(line, '(')) == NULL)
-		rtv1_error(2);
+		rt_error(2);
 	color.red = ft_atoi(++line);
 	if ((line = ft_strchr(line, ',')) == NULL)
-		rtv1_error(2);
+		rt_error(2);
 	color.green = ft_atoi(++line);
 	if ((line = ft_strchr(line, ',')) == NULL)
-		rtv1_error(2);
+		rt_error(2);
 	color.blue = ft_atoi(++line);
 	return (color);
 }
 
-t_union	getsphere(t_rtv1 *rt)
+t_union	getsphere(t_rt *rt)
 {
 	char	*line;
 	t_union	u;
@@ -48,13 +48,13 @@ t_union	getsphere(t_rtv1 *rt)
 			break ;
 		}
 		else
-			rtv1_error(2);
+			rt_error(2);
 		ft_strdel(&line);
 	}
 	return (u);
 }
 
-t_union	getplane(t_rtv1 *rt)
+t_union	getplane(t_rt *rt)
 {
 	char	*line;
 	t_union	u;
@@ -73,13 +73,13 @@ t_union	getplane(t_rtv1 *rt)
 			break ;
 		}
 		else
-			rtv1_error(2);
+			rt_error(2);
 		ft_strdel(&line);
 	}
 	return (u);
 }
 
-t_union	getcylinder(t_rtv1 *rt)
+t_union	getcylinder(t_rt *rt)
 {
 	char	*line;
 	t_union	u;
@@ -94,21 +94,19 @@ t_union	getcylinder(t_rtv1 *rt)
 			u.cylinder.clr = getcolor(line);
 		else if (ft_strstr(line, "radius"))
 			u.cylinder.radius = ft_atod(ft_strchr(line, '(') + 1);
-		else if (ft_strstr(line, "height"))
-			u.cylinder.h = ft_atod(ft_strchr(line, '(') + 1);
 		else if (ft_strrchr(line, '}'))
 		{
 			ft_strdel(&line);
 			break ;
 		}
 		else
-			rtv1_error(2);
+			rt_error(2);
 		ft_strdel(&line);
 	}
 	return (u);
 }
 
-t_union	getcone(t_rtv1 *rt)
+t_union	getcone(t_rt *rt)
 {
 	char	*line;
 	t_union u;
@@ -123,15 +121,13 @@ t_union	getcone(t_rtv1 *rt)
 			u.cone.clr = getcolor(line);
 		else if (ft_strstr(line, "angle"))
 			u.cone.a = (M_PI / 180) * ft_atod(ft_strchr(line, '(') + 1);
-		else if (ft_strstr(line, "height"))
-			u.cone.h = ft_atod(ft_strchr(line, '(') + 1);
 		else if (ft_strrchr(line, '}'))
 		{
 			ft_strdel(&line);
 			break ;
 		}
 		else
-			rtv1_error(2);
+			rt_error(2);
 		ft_strdel(&line);
 	}
 	return (u);

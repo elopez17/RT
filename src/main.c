@@ -6,15 +6,15 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/09 12:11:29 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:05:37 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
-static void	init_rtv1(t_rtv1 **rt, char *file)
+static void	init_rt(t_rt **rt, char *file)
 {
-	*rt = (t_rtv1*)ft_memalloc(sizeof(t_rtv1));
+	*rt = (t_rt*)ft_memalloc(sizeof(t_rt));
 	(*rt)->mlx = mlx_init();
 	(*rt)->w.width = 800;
 	(*rt)->w.height = 800;
@@ -32,23 +32,22 @@ static void	init_rtv1(t_rtv1 **rt, char *file)
 	(*rt)->cam.look_at = (t_vect){0, 0, 0};
 	(*rt)->light = (t_vect){60, -30, 60};
 	if (((*rt)->fd = open(file, O_RDONLY)) == -1)
-		rtv1_error(1);
+		rt_error(1);
 	parsefile(*rt);
 }
 
 int			main(int argc, char *argv[])
 {
-	t_rtv1		*rt;
+	t_rt		*rt;
 
 	if (argc != 2)
-		rtv1_error(0);
-	init_rtv1(&rt, argv[1]);
+		rt_error(0);
+	init_rt(&rt, argv[1]);
 	scene(rt);
-	render(rt);
+	draw(rt);
 	mlx_hook(rt->win, 2, 0, &key_hook, &rt);
 	mlx_hook(rt->win, 12, 0, &expose_hook, &rt);
 	mlx_hook(rt->win, 17, 0, &close_hook, &rt);
 	mlx_loop(rt->mlx);
-	ft_memdel((void**)&rt);
 	return (0);
 }

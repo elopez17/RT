@@ -6,13 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:35:44 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/06 17:35:47 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:06:27 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
-void	rtv1_error(int code)
+void	rt_error(int code)
 {
 	static char	*msg[] = {
 		"invalid amount of arguements",

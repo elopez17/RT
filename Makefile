@@ -28,7 +28,9 @@ all: $(LIB) $(EX)
 
 $(EX): $(OBJ)
 	@make -C minilibx/
-	$(CC) $(CFLAGS) -I $(INC) -I ./minilibx -o $(EX) $(OBJ) -L. -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
+	@echo "$(RED)  libmlx.a$(GRN) Successfully Created.$(NO_COLOR)"
+	@$(CC) $(CFLAGS) -I $(INC) -I ./minilibx -o $(EX) $(OBJ) -L. -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
+	@echo "$(RED)  ./RT$(GRN) Successfully Created.$(NO_COLOR)"
 
 $(ODIR)/%.o:src/%.c | $(ODIR)
 	@$(CC) $(CFLAGS) -I $(INC) -I minilibx -o $@ -c $<
@@ -44,10 +46,12 @@ clean:
 	@rm -rf obj
 	@make -C libft/ clean
 	@make -C minilibx/ clean
+	@echo "$(B_RED)  Cleaned$(NO_COLOR)"
 
 fclean: clean
 	@rm -f $(EX)
 	@make -C libft/ fclean
+	@echo "$(B_RED)  fclean-ed.$(NO_COLOR)"
 
 re: fclean all
 

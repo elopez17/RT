@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 21:39:08 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 22:08:26 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 		if (shade == 0)
 			final = coloradd(lighting(tmp, intersection, rt->light[i], 0), final);
 	}
-	return (final);
+	return (colorscalar(final, rt->bright));
 }
 
 static int		winningobject(double *intersects, int nodes)

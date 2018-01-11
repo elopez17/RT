@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 21:30:59 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 22:13:50 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ typedef struct	s_rt
 	t_vect	*light;
 	int		nlights;
 	int		nodes;
+	double	bright;
 }				t_rt;
 
 void			draw(t_rt *rt);

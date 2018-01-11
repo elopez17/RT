@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/10 20:40:16 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 22:06:43 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->obj = (t_obj*)NULL;
 	(*rt)->nodes = 0;
 	(*rt)->nlights = 0;
+	(*rt)->bright = 1.0f;
 	(*rt)->cam.pos = (t_vect){0, 0, 0};
 	(*rt)->cam.dir = (t_vect){0, 0, 0};
 	(*rt)->cam.right = (t_vect){0, 0, 0};

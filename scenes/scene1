@@ -4,7 +4,8 @@ scene {
 		direction(0, 0, 0);
 	}
 	light {
-		lights(1);
+		lights(2);
+		origin(60, -50, -60);
 		origin(60, -30, 60);
 	}
 	sphere {

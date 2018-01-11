@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:08:38 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:34:59 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ static int	non_object(t_rt *rt, char **line)
 	else if (ft_strstr(*line, "camera"))
 	{
 		getcam(rt);
+		ft_strdel(line);
+		return (1);
+	}
+	else if (ft_strstr(*line, "light"))
+	{
+		getlight(rt);
 		ft_strdel(line);
 		return (1);
 	}

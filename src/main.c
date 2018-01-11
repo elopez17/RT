@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/10 20:05:37 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 20:40:16 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static void	init_rt(t_rt **rt, char *file)
 													&((*rt)->endian));
 	(*rt)->obj = (t_obj*)NULL;
 	(*rt)->nodes = 0;
+	(*rt)->nlights = 0;
 	(*rt)->cam.pos = (t_vect){0, 0, 0};
 	(*rt)->cam.dir = (t_vect){0, 0, 0};
 	(*rt)->cam.right = (t_vect){0, 0, 0};
 	(*rt)->cam.down = (t_vect){0, 0, 0};
 	(*rt)->cam.look_at = (t_vect){0, 0, 0};
-	(*rt)->light = (t_vect){60, -30, 60};
 	if (((*rt)->fd = open(file, O_RDONLY)) == -1)
 		rt_error(1);
 	parsefile(*rt);

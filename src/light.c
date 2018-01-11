@@ -6,13 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:08:01 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 21:20:41 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_rgb	checklight2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
+t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {
 	t_vect	light_dir;
 	t_vect	obj_norm;
@@ -41,7 +41,7 @@ t_rgb	checklight2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	return (final);
 }
 
-t_rgb	checklight(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
+t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {
 	t_vect	light_dir;
 	t_vect	obj_norm;
@@ -67,5 +67,5 @@ t_rgb	checklight(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 			final = coloradd(final, colorscalar(obj->u.plane.clr, -cos_a));
 		return (final);
 	}
-	return (checklight2(obj, intersect, light, shadow));
+	return (lighting2(obj, intersect, light, shadow));
 }

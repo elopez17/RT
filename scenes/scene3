@@ -3,6 +3,10 @@ scene {
 		origin(10, -3, 4);
 		direction(0, 0, 0);
 	}
+	light {
+		lights(1);
+		origin(60, -30, 60);
+	}
 	cone {
 		origin(0, 0, 0);
 		direction(0, 3, 0);

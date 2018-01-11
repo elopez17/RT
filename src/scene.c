@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:10:13 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 21:39:08 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,37 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	float	dist_mag;
 	double	*intersects;
 	t_ray	shadow;
+	int		i;
+	t_rgb	final;
+	int		shade;
 
 	if (index == -1)
 		return ((t_rgb){0, 0, 0});
-	shadow.origin = intersection->origin;
-	shadow.dir = normalize(vadd(rt->light, invert(intersection->origin)));
 	tmp = rt->obj;
 	while (--index >= 0)
 		tmp = tmp->next;
-	dist = vadd(rt->light, invert(intersection->origin));
-	dist_mag = sqrt((dist.x * dist.x) + (dist.y * dist.y) + (dist.z * dist.z));
-	intersects = findintersects(shadow, rt);
-	while (++index < rt->nodes)
-		if (intersects[index] > 0.00000001 && intersects[index] <= dist_mag)
-		{
-			ft_memdel((void**)&intersects);
-			return (checklight(tmp, intersection, rt->light, 1));
-		}
-	ft_memdel((void**)&intersects);
-	return (checklight(tmp, intersection, rt->light, 0));
+	i = -1;
+	final = (t_rgb){0, 0, 0};
+	while (++i < rt->nlights)
+	{
+		shade = 0;
+		shadow.origin = intersection->origin;
+		shadow.dir = normalize(vadd(rt->light[i], invert(intersection->origin)));
+		dist = vadd(rt->light[i], invert(intersection->origin));
+		dist_mag = sqrt((dist.x * dist.x) + (dist.y * dist.y) + (dist.z * dist.z));
+		intersects = findintersects(shadow, rt);
+		index = -1;
+		while (++index < rt->nodes)
+			if (intersects[index] > 0.00000001 && intersects[index] <= dist_mag)
+			{
+				final = coloradd(lighting(tmp, intersection, rt->light[i], (shade = 1)), final);
+				break ;
+			}
+		ft_memdel((void**)&intersects);
+		if (shade == 0)
+			final = coloradd(lighting(tmp, intersection, rt->light[i], 0), final);
+	}
+	return (final);
 }
 
 static int		winningobject(double *intersects, int nodes)

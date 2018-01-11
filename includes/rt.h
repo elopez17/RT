@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:05:53 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 21:30:59 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,8 @@ typedef struct	s_rt
 	int		fd;
 	t_cam	cam;
 	t_obj	*obj;
-	t_vect	light;
+	t_vect	*light;
+	int		nlights;
 	int		nodes;
 }				t_rt;
 
@@ -186,11 +187,12 @@ void			rt_error(int code);
 void			parsefile(t_rt *rt);
 t_vect			getxyz(const char *line);
 t_rgb			getcolor(const char *line);
-t_rgb			checklight(t_obj *obj, t_ray *intersect, t_vect light,
+t_rgb			lighting(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
-t_rgb			checklight2(t_obj *obj, t_ray *intersect, t_vect light,
+t_rgb			lighting2(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
 void			getcam(t_rt *rt);
+void			getlight(t_rt *rt);
 t_union			getsphere(t_rt *rt);
 t_union			getplane(t_rt *rt);
 t_union			getcone(t_rt *rt);

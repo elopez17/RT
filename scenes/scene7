@@ -1,0 +1,30 @@
+scene {
+	camera {
+		origin(10, -3, 4);
+		direction(0, 0, 0);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(255, 255, 255);
+		distance(0.9);
+	}
+	cone {
+		origin(0, -3, 0);
+		direction(3, 0, -2);
+		color(190, 0, 0);
+		angle(20);
+		height(3);
+	}
+	sphere {
+		origin(-5, 0, 2);
+		color(0, 200, 10);
+		radius(1);
+	}
+	cylinder {
+		origin(2, 0, 1);
+		direction(0, 0, 1);
+		color(138, 43, 226);
+		radius(0.8);
+		height(1);
+	}
+}

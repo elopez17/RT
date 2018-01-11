@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 22:13:32 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 22:17:55 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int		key_hook(int key, t_rt **rt)
 		exit(0);
 	}
 	else if (key == KEYPLUS || key == KEYMIN)
-		(*rt)->bright += (key == KEYPLUS) ? 0.1 : -0.1;
-	scene(*rt);
-	draw(*rt);
+	{
+		(*rt)->bright += (key == KEYPLUS) ? 0.05 : -0.05;
+		scene(*rt);
+		draw(*rt);
+	}
 	return (0);
 }
 

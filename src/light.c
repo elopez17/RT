@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 23:37:28 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/10 23:45:10 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
 			final = coloradd(final, colorscalar(obj->u.cylinder.clr, cos_a));
 	}
-	return (final);
+	return (!shadow && cos_a > 0.975 ? coloradd(final, g_shine) : final);
 }
 
 t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
@@ -56,7 +56,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		final = colorscalar(obj->u.sphere.clr, 0.2);
 		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
 			final = coloradd(final, colorscalar(obj->u.sphere.clr, cos_a));
-		return (coloradd(final, shadow == 0 && cos_a > 0.975 ? g_shine : (t_rgb){0, 0, 0}));
+		return (!shadow && cos_a > 0.975 ? coloradd(final, g_shine) : final);
 	}
 	else if (obj->type == 2)
 	{
@@ -65,7 +65,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		final = colorscalar(obj->u.plane.clr, 0.2);
 		if (shadow == 0 && -cos_a >= 0.0f && -cos_a <= 1.0f)
 			final = coloradd(final, colorscalar(obj->u.plane.clr, -cos_a));
-		return (final);
+		return (!shadow && -cos_a > 0.975 ? coloradd(final, g_shine) : final);
 	}
 	return (lighting2(obj, intersect, light, shadow));
 }

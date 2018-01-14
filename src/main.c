@@ -6,13 +6,11 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/10 23:33:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/13 16:47:17 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
-
-t_rgb	g_shine = {200, 200, 200};
 
 static void	init_rt(t_rt **rt, char *file)
 {
@@ -26,6 +24,7 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->addr = mlx_get_data_addr((*rt)->img, &((*rt)->bpp), &((*rt)->len),
 													&((*rt)->endian));
 	(*rt)->obj = (t_obj*)NULL;
+	(*rt)->current = (*rt)->obj;
 	(*rt)->nodes = 0;
 	(*rt)->nlights = 0;
 	(*rt)->bright = 1.0f;
@@ -49,6 +48,7 @@ int			main(int argc, char *argv[])
 	scene(rt);
 	draw(rt);
 	mlx_hook(rt->win, 2, 0, &key_hook, &rt);
+	mlx_hook(rt->win, 4, 0, &mousepress, &rt);
 	mlx_hook(rt->win, 12, 0, &expose_hook, &rt);
 	mlx_hook(rt->win, 17, 0, &close_hook, &rt);
 	mlx_loop(rt->mlx);

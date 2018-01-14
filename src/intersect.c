@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:07:29 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/12 21:13:55 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	findinterplane(t_ray ray, t_plane plane)
 
 t_vect	sphere_norm(t_sphere sphere, t_vect point)
 {
-	return (normalize(vadd(point, invert(sphere.pos))));
+	return (normalize(vdiff(point, sphere.pos)));
 }
 
 double	findintersphere(t_ray ray, t_sphere sphere)

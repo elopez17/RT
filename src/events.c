@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 23:40:59 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/13 15:26:40 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,35 @@ int		expose_hook(t_rt **rt)
 	return (0);
 }
 
+int		mousepress(int key, int x, int y, t_rt **rt)
+{
+	t_xy	pixel;
+	t_ray	ray;
+	double	*intersects;
+	int		index;
+
+	if (key != 1)
+		return (0);
+	pixel = (t_xy){(double)x, (double)y};
+	setxy(*rt, &ray, &pixel);
+	intersects = findintersects(ray, *rt);
+	(*rt)->current = (*rt)->obj;
+	if ((index = winningobject(intersects, (*rt)->nodes)) != -1)
+	{
+		while (--index >= 0)
+			(*rt)->current = (*rt)->current->next;
+	}
+	ft_memdel((void**)&intersects);
+	return (0);
+}
+
 int		key_hook(int key, t_rt **rt)
 {
 	t_obj *tmp;
 
-	if (key == KEYESC)
+	if (key == KEYPLUS || key == KEYMIN)
+		(*rt)->bright += (key == KEYPLUS) ? 0.03 : -0.03;
+	else if (key == KEYESC)
 	{
 		while ((*rt)->obj != NULL)
 		{
@@ -36,13 +60,10 @@ int		key_hook(int key, t_rt **rt)
 		ft_memdel((void**)rt);
 		exit(0);
 	}
-	else if (key == KEYPLUS || key == KEYMIN)
-	{
-		(*rt)->bright += (key == KEYPLUS) ? 0.03 : -0.03;
-		g_shine = colorscalar((t_rgb){150, 150, 150}, (*rt)->bright);
-		scene(*rt);
-		draw(*rt);
-	}
+	else if ((*rt)->current != NULL)
+		move_obj(key, &(*rt)->current);
+	scene(*rt);
+	draw(*rt);
 	return (0);
 }
 

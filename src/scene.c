@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 22:08:26 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/13 02:06:01 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	return (colorscalar(final, rt->bright));
 }
 
-static int		winningobject(double *intersects, int nodes)
+int				winningobject(double *intersects, int nodes)
 {
 	double	max;
 	int		i;
@@ -82,7 +82,7 @@ static int		winningobject(double *intersects, int nodes)
 	return (index);
 }
 
-static void		setxy(t_rt *rt, t_ray *ray, t_xy *pixel)
+void			setxy(t_rt *rt, t_ray *ray, t_xy *pixel)
 {
 	t_xy		dir;
 

@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:10:34 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/12 20:44:19 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 t_vect	vmult(t_vect v, double scalar)
 {
 	return ((t_vect){v.x * scalar, v.y * scalar, v.z * scalar});
+}
+
+t_vect	vdiv(t_vect v, double denominator)
+{
+	if (denominator == 0)
+		denominator = 1;
+	return ((t_vect){v.x / denominator, v.y / denominator, v.z / denominator});
 }
 
 t_vect	vdiff(t_vect v1, t_vect v2)

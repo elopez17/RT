@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 23:32:08 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/13 17:42:29 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define KEYR 15
 # define KEYG 5
 # define KEYB 11
+# define KEYE 14
+# define KEYF 3
+# define KEYV 9
 
 typedef struct	s_dimensions
 {
@@ -75,8 +78,6 @@ typedef struct	s_rgb
 	int		green;
 	int		blue;
 }				t_rgb;
-
-extern t_rgb	g_shine;
 
 typedef struct	s_ray
 {
@@ -155,11 +156,14 @@ typedef struct	s_rt
 	int		nlights;
 	int		nodes;
 	double	bright;
+	t_obj	*current;
 }				t_rt;
 
 void			draw(t_rt *rt);
 void			putpixel(t_rt *rt, int x, int y, t_rgb color);
 int				key_hook(int key, t_rt **rt);
+int				mousepress(int key, int x, int y, t_rt **rt);
+void			move_obj(int key, t_obj **object);
 int				close_hook(t_rt **rt);
 int				expose_hook(t_rt **rt);
 t_vect			normalize(t_vect v);
@@ -171,7 +175,10 @@ double			vlen(t_vect v);
 t_vect			vcross(t_vect v1, t_vect v2);
 t_vect			vadd(t_vect v1, t_vect v2);
 t_vect			vmult(t_vect v, double scalar);
+t_vect			vdiv(t_vect v, double denominator);
 t_vect			vdiff(t_vect v1, t_vect v2);
+void			setxy(t_rt *rt, t_ray *ray, t_xy *pixel);
+int				winningobject(double *intersects, int nodes);
 double			findinterplane(t_ray ray, t_plane plane);
 double			findintersphere(t_ray ray, t_sphere sphere);
 double			findintercone(t_ray ray, t_cone cone);

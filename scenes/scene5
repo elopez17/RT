@@ -5,11 +5,21 @@ scene {
 	}
 	light {
 		lights(1);
-		origin(60, -30, 60);
+		origin(30, -10, 20);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(100, 0, 0);
+		distance(-16);
+	}
+	plane {
+		origin(0, 0, 1);
+		color(176, 166, 0);
+		distance(-8);
 	}
 	plane {
 		origin(0, 1, 0);
-		color(255, 255, 255);
+		color(105, 243, 255);
 		distance(0.9);
 	}
 	cone {

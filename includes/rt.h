@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/13 17:42:29 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/13 22:38:44 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ typedef struct	s_rt
 {
 	void	*mlx;
 	void	*win;
+	void	*win2;
 	t_dim	w;
 	void	*img;
 	int		bpp;
@@ -157,13 +158,15 @@ typedef struct	s_rt
 	int		nodes;
 	double	bright;
 	t_obj	*current;
+	int		toggle;
 }				t_rt;
 
+void			controls(t_rt *rt);
 void			draw(t_rt *rt);
 void			putpixel(t_rt *rt, int x, int y, t_rgb color);
 int				key_hook(int key, t_rt **rt);
 int				mousepress(int key, int x, int y, t_rt **rt);
-void			move_obj(int key, t_obj **object);
+void			move_obj(int key, t_obj **object, int toggle);
 int				close_hook(t_rt **rt);
 int				expose_hook(t_rt **rt);
 t_vect			normalize(t_vect v);

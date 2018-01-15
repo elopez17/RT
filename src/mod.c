@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/14 00:08:12 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 18:37:27 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,32 @@ static void	mod_plane(int key, t_obj** obj)
 
 static void	mod_cone(int key, t_obj** obj, int toggle)
 {
-	if (toggle)
-		;
 	key == KEYUP ? (*obj)->u.cone.a += 0.035 : 0;
 	key == KEYDOWN ? (*obj)->u.cone.a -= 0.035 : 0;
-	if (key == KEY7)
-		(!toggle) ? --(*obj)->u.cone.pos.x : --(*obj)->u.cone.dir.x;
-	if (key == KEY9)
-		(!toggle) ? ++(*obj)->u.cone.pos.x : ++(*obj)->u.cone.dir.x;
-	else if (key == KEY4)
-		(!toggle) ? --(*obj)->u.cone.pos.y : --(*obj)->u.cone.dir.y;
-	else if (key == KEY6)
-		(!toggle) ? ++(*obj)->u.cone.pos.y : ++(*obj)->u.cone.dir.y;
-	else if (key == KEY1)
-		(!toggle) ? --(*obj)->u.cone.pos.z : --(*obj)->u.cone.dir.z;
-	else if (key == KEY3)
-		(!toggle) ? ++(*obj)->u.cone.pos.z : ++(*obj)->u.cone.dir.z;
+	if (key == KEY7 && toggle && (*obj)->u.cone.dir.x > -0.9)
+		(*obj)->u.cone.dir.x -= 0.1;
+	if (key == KEY9 && toggle && (*obj)->u.cone.dir.x < 0.9)
+		(*obj)->u.cone.dir.x += 0.1;
+	else if (key == KEY4 && toggle && (*obj)->u.cone.dir.y > -0.9)
+		(*obj)->u.cone.dir.y -= 0.1;
+	else if (key == KEY6 && toggle && (*obj)->u.cone.dir.y < 0.9)
+		(*obj)->u.cone.dir.y += 0.1;
+	else if (key == KEY1 && toggle && (*obj)->u.cone.dir.z > -0.9)
+		(*obj)->u.cone.dir.z -= 0.1;
+	else if (key == KEY3 && toggle && (*obj)->u.cone.dir.z < 0.9)
+		(*obj)->u.cone.dir.z += 0.1;
+	if (key == KEY7 && !toggle)
+		--(*obj)->u.cone.pos.x;
+	if (key == KEY9 && !toggle)
+		++(*obj)->u.cone.pos.x;
+	else if (key == KEY4 && !toggle)
+		--(*obj)->u.cone.pos.y;
+	else if (key == KEY6 && !toggle)
+		++(*obj)->u.cone.pos.y;
+	else if (key == KEY1 && !toggle)
+		--(*obj)->u.cone.pos.z;
+	else if (key == KEY3 && !toggle)
+		++(*obj)->u.cone.pos.z;
 	else if (key == KEYR)
 		(*obj)->u.cone.clr.red += 10;
 	else if (key == KEYE)
@@ -96,18 +106,30 @@ static void	mod_cone(int key, t_obj** obj, int toggle)
 
 static void	mod_cylind(int key, t_obj** obj, int toggle)
 {
-	if (key == KEY7)
-		(!toggle) ? --(*obj)->u.cylinder.pos.x : --(*obj)->u.cylinder.dir.x;
-	else if (key == KEY9)
-		(!toggle) ? ++(*obj)->u.cylinder.pos.x : ++(*obj)->u.cylinder.dir.x;
-	else if (key == KEY4)
-		(!toggle) ? --(*obj)->u.cylinder.pos.y : --(*obj)->u.cylinder.dir.y;
-	else if (key == KEY6)
-		(!toggle) ? ++(*obj)->u.cylinder.pos.y : ++(*obj)->u.cylinder.dir.y;
-	else if (key == KEY1)
-		(!toggle) ? --(*obj)->u.cylinder.pos.z : --(*obj)->u.cylinder.dir.z;
-	else if (key == KEY3)
-		(!toggle) ? ++(*obj)->u.cylinder.pos.z : ++(*obj)->u.cylinder.dir.z;
+	if (key == KEY7 && toggle && (*obj)->u.cylinder.dir.x > -0.9)
+		(*obj)->u.cylinder.dir.x -= 0.1;
+	if (key == KEY9 && toggle && (*obj)->u.cylinder.dir.x < 0.9)
+		(*obj)->u.cylinder.dir.x += 0.1;
+	else if (key == KEY4 && toggle && (*obj)->u.cylinder.dir.y > -0.9)
+		(*obj)->u.cylinder.dir.y -= 0.1;
+	else if (key == KEY6 && toggle && (*obj)->u.cylinder.dir.y < 0.9)
+		(*obj)->u.cylinder.dir.y += 0.1;
+	else if (key == KEY1 && toggle && (*obj)->u.cylinder.dir.z > -0.9)
+		(*obj)->u.cylinder.dir.z -= 0.1;
+	else if (key == KEY3 && toggle && (*obj)->u.cylinder.dir.z < 0.9)
+		(*obj)->u.cylinder.dir.z += 0.1;
+	if (key == KEY7 && !toggle)
+		--(*obj)->u.cylinder.pos.x;
+	if (key == KEY9 && !toggle)
+		++(*obj)->u.cylinder.pos.x;
+	else if (key == KEY4 && !toggle)
+		--(*obj)->u.cylinder.pos.y;
+	else if (key == KEY6 && !toggle)
+		++(*obj)->u.cylinder.pos.y;
+	else if (key == KEY1 && !toggle)
+		--(*obj)->u.cylinder.pos.z;
+	else if (key == KEY3 && !toggle)
+		++(*obj)->u.cylinder.pos.z;
 	else if (key == KEYR)
 		(*obj)->u.cylinder.clr.red += 10;
 	else if (key == KEYE)

@@ -80,4 +80,8 @@ void	controls(t_rt *rt)
 "Use '1' / '3' to move sphere/cone/cylinder on Z-axis");
 	mlx_string_put(rt->mlx, rt->win2, 10, 170, 0x0000ff00,
 "Use '2' / '8' to move plane nearer/further from center");
+	mlx_string_put(rt->mlx, rt->win2, 10, 195, 0x00f0f0f0,
+"Use '5' to toggle between rotation/translation");
+	mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
+"using X,Y,Z-axis buttons. Applicable to cone/cylinder");
 }

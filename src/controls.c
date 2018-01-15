@@ -44,18 +44,30 @@ static void	putnumpad(t_rt *rt)
 
 void	putrgb(t_rt *rt)
 {
-	putbutton(rt, 550, 350);
-	putbutton(rt, 610, 350);
-	putbutton(rt, 610, 410);
-	putbutton(rt, 670, 410);
-	putbutton(rt, 710, 470);
-	putbutton(rt, 650, 470);
-	mlx_string_put(rt->mlx, rt->win2, 563, 363, 0x00ff0000, "-E");
-	mlx_string_put(rt->mlx, rt->win2, 623, 363, 0x0000ff00, "+R");
-	mlx_string_put(rt->mlx, rt->win2, 623, 423, 0x00ff0000, "-F");
-	mlx_string_put(rt->mlx, rt->win2, 683, 423, 0x0000ff00, "+G");
-	mlx_string_put(rt->mlx, rt->win2, 723, 483, 0x0000ff00, "+B");
-	mlx_string_put(rt->mlx, rt->win2, 663, 483, 0x00ff0000, "-V");
+	putbutton(rt, 460, 250);
+	putbutton(rt, 520, 250);
+	putbutton(rt, 400, 310);
+	putbutton(rt, 460, 310);
+	putbutton(rt, 520, 310);
+	putbutton(rt, 580, 310);
+	putbutton(rt, 440, 370);
+	putbutton(rt, 500, 370);
+	putbutton(rt, 560, 370);
+	putbutton(rt, 620, 370);
+	putbutton(rt, 680, 370);
+	putbutton(rt, 740, 370);
+	mlx_string_put(rt->mlx, rt->win2, 473, 263, 0x00ff0000, "-E");
+	mlx_string_put(rt->mlx, rt->win2, 533, 263, 0x0000ff00, "+R");
+	mlx_string_put(rt->mlx, rt->win2, 533, 323, 0x00ff0000, "-F");
+	mlx_string_put(rt->mlx, rt->win2, 593, 323, 0x0000ff00, "+G");
+	mlx_string_put(rt->mlx, rt->win2, 413, 323, 0x0000ff00, "+S");
+	mlx_string_put(rt->mlx, rt->win2, 473, 323, 0x0000ff00, "+D");
+	mlx_string_put(rt->mlx, rt->win2, 633, 383, 0x0000ff00, "+B");
+	mlx_string_put(rt->mlx, rt->win2, 573, 383, 0x00ff0000, "-V");
+	mlx_string_put(rt->mlx, rt->win2, 453, 383, 0x00ff0000, "-X");
+	mlx_string_put(rt->mlx, rt->win2, 513, 383, 0x00ff0000, "-C");
+	mlx_string_put(rt->mlx, rt->win2, 753, 383, 0x0000ff00, "+M");
+	mlx_string_put(rt->mlx, rt->win2, 693, 383, 0x00ff0000, "-N");
 	mlx_string_put(rt->mlx, rt->win2, 10, 370, 0x00ff0000,
 "Use 'E' / 'R' to modify intensity of Red");
 	mlx_string_put(rt->mlx, rt->win2, 10, 395, 0x0000ff00,
@@ -84,4 +96,12 @@ void	controls(t_rt *rt)
 "Use '5' to toggle between rotation/translation");
 	mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
 "using X,Y,Z-axis buttons. Applicable to cone/cylinder");
+	mlx_string_put(rt->mlx, rt->win2, 10, 450, 0x00ff00ff,
+"Use 'X' / 'S' to modify specular intensity");
+	mlx_string_put(rt->mlx, rt->win2, 10, 475, 0x00ff00ff,
+"Use 'C' / 'D' to modify diffuse intensity");
+	mlx_string_put(rt->mlx, rt->win2, 10, 500, 0x00ff00ff,
+"Use 'N' / 'M' to modify gloss intensity");
+	mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
+"Use UP/DOWN arrows to modify radius/angle of sphere/cone/cylinder");
 }

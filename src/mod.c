@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/14 18:37:27 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 22:39:38 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	mod_plane(int key, t_obj** obj)
 static void	mod_cone(int key, t_obj** obj, int toggle)
 {
 	key == KEYUP ? (*obj)->u.cone.a += 0.035 : 0;
-	key == KEYDOWN ? (*obj)->u.cone.a -= 0.035 : 0;
+	key == KEYDOWN && (*obj)->u.cone.a > 0.1 ? (*obj)->u.cone.a -= 0.035 : 0;
 	if (key == KEY7 && toggle && (*obj)->u.cone.dir.x > -0.9)
 		(*obj)->u.cone.dir.x -= 0.1;
 	if (key == KEY9 && toggle && (*obj)->u.cone.dir.x < 0.9)
@@ -106,6 +106,8 @@ static void	mod_cone(int key, t_obj** obj, int toggle)
 
 static void	mod_cylind(int key, t_obj** obj, int toggle)
 {
+	key == KEYUP ? (*obj)->u.cylinder.radius += 0.25 : 0;
+	key == KEYDOWN ? (*obj)->u.cylinder.radius -= 0.25 : 0;
 	if (key == KEY7 && toggle && (*obj)->u.cylinder.dir.x > -0.9)
 		(*obj)->u.cylinder.dir.x -= 0.1;
 	if (key == KEY9 && toggle && (*obj)->u.cylinder.dir.x < 0.9)
@@ -147,7 +149,19 @@ static void	mod_cylind(int key, t_obj** obj, int toggle)
 
 void	move_obj(int key, t_obj **object, int toggle)
 {
-	if ((*object)->type == 1)
+	if (key == KEYS && (*object)->spec < 1.0f)
+		(*object)->spec += 0.1;
+	else if (key == KEYD && (*object)->diff < 1.0f)
+		(*object)->diff += 0.1;
+	else if (key == KEYX && (*object)->spec > 0.0f)
+		(*object)->spec -= 0.1;
+	else if (key == KEYC && (*object)->diff > 0.0f)
+		(*object)->diff -= 0.1;
+	else if (key == KEYN && (*object)->m > 1)
+		--(*object)->m;
+	else if (key == KEYM)
+		++(*object)->m;
+	else if ((*object)->type == 1)
 		mod_sphere(key, object);
 	else if ((*object)->type == 2)
 		mod_plane(key, object);

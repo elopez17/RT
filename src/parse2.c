@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:08:50 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 20:17:46 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ t_union	getplane(t_rt *rt)
 			rt_error(2);
 		ft_strdel(&line);
 	}
+	u.plane.reflect = 1;
+	u.plane.refract = 0;
 	return (u);
 }
 

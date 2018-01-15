@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/13 22:38:44 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 21:53:55 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@
 # define KEYE 14
 # define KEYF 3
 # define KEYV 9
+# define KEYS 1
+# define KEYD 2
+# define KEYX 7
+# define KEYC 8
+# define KEYN 45
+# define KEYM 46
 
 typedef struct	s_dimensions
 {
@@ -97,6 +103,8 @@ typedef struct	s_plane
 	t_vect	norm;
 	double	dist;
 	t_rgb	clr;
+	double	reflect;
+	double	refract;
 }				t_plane;
 
 typedef struct	s_cone
@@ -136,6 +144,9 @@ typedef struct	s_objects
 {
 	int					type;
 	t_union				u;
+	double				spec;
+	double				diff;
+	double				m;
 	struct s_objects	*next;
 }				t_obj;
 

@@ -5,8 +5,8 @@ scene {
 	}
 	light {
 		lights(2);
-		origin(60, -50, -60);
-		origin(60, -30, 60);
+		origin(1, -3, -1);
+		origin(0, -4, 0);
 	}
 	sphere {
 		origin(0, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/13 15:16:39 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 21:01:47 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void		getobject(int type, t_union u, t_rt *rt)
 	obj = (t_obj*)malloc(sizeof(t_obj));
 	obj->type = type;
 	obj->u = u;
+	obj->spec = 0.4;
+	obj->diff = 0.6;
+	obj->m = 15;
 	obj->next = rt->obj;
 	rt->obj = obj;
 }

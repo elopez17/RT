@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/14 22:33:00 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/14 23:35:31 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ int		key_hook(int key, t_rt **rt)
 {
 	t_obj *tmp;
 
+	(key == KEY5) ? (*rt)->toggle ^= 1 : 0;
 	if (key == KEYPLUS || key == KEYMIN)
 		(*rt)->bright += (key == KEYPLUS) ? 0.03 : -0.03;
-	else if (key == KEY5)
-		(*rt)->toggle ^= 1;
 	else if (key == KEYESC)
 	{
 		while ((*rt)->obj != NULL)

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/14 21:53:55 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 00:39:30 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ typedef struct	s_vector
 	double		y;
 	double		z;
 }				t_vect;
+
+typedef struct	s_distance
+{
+	t_vect	dist;
+	float	dist_mag;
+}				t_dist;
 
 typedef struct	s_rgb
 {
@@ -211,6 +217,7 @@ void			rt_error(int code);
 void			parsefile(t_rt *rt);
 t_vect			getxyz(const char *line);
 t_rgb			getcolor(const char *line);
+t_rgb			addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light);
 t_rgb			lighting(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
 t_rgb			lighting2(t_obj *obj, t_ray *intersect, t_vect light,

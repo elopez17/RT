@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/13 02:06:01 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 00:32:09 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@ double			norm_vect(t_vect v)
 static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 {
 	t_obj	*tmp;
-	t_vect	dist;
-	float	dist_mag;
-	double	*intersects;
-	t_ray	shadow;
 	int		i;
 	t_rgb	final;
-	int		shade;
 
 	if (index == -1)
 		return ((t_rgb){0, 0, 0});
@@ -36,24 +31,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	i = -1;
 	final = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
-	{
-		shade = 0;
-		shadow.origin = intersection->origin;
-		shadow.dir = normalize(vadd(rt->light[i], invert(intersection->origin)));
-		dist = vadd(rt->light[i], invert(intersection->origin));
-		dist_mag = sqrt((dist.x * dist.x) + (dist.y * dist.y) + (dist.z * dist.z));
-		intersects = findintersects(shadow, rt);
-		index = -1;
-		while (++index < rt->nodes)
-			if (intersects[index] > 0.00000001 && intersects[index] <= dist_mag)
-			{
-				final = coloradd(lighting(tmp, intersection, rt->light[i], (shade = 1)), final);
-				break ;
-			}
-		ft_memdel((void**)&intersects);
-		if (shade == 0)
-			final = coloradd(lighting(tmp, intersection, rt->light[i], 0), final);
-	}
+		final = coloradd(final, addlight(rt, intersection, tmp, rt->light[i]));
 	return (colorscalar(final, rt->bright));
 }
 

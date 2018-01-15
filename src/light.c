@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/14 22:21:09 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 00:49:18 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 			final = colorscalar(obj->u.cylinder.clr, 0.2);
 	}
 	return (final);
-}
+}//2lines
 
 t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {
@@ -74,4 +74,31 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		return (final);
 	}
 	return (lighting2(obj, intersect, light, shadow));
+}//4lines
+
+t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
+{
+	t_ray	shadow;
+	t_rgb	clr;
+	t_dist	d;
+	int		index;
+	double	*intersects;
+
+	clr = (t_rgb){0, 0, 0};
+	shadow.origin = intersect->origin;
+	shadow.dir = normalize(vadd(light, invert(intersect->origin)));
+	d.dist = vadd(light, invert(intersect->origin));
+	d.dist_mag = sqrt((d.dist.x * d.dist.x) + (d.dist.y * d.dist.y) + (d.dist.z * d.dist.z));
+	intersects = findintersects(shadow, rt);
+	index = -1;
+	while (++index < rt->nodes)
+		if (intersects[index] > 0.00000001 && intersects[index] <= d.dist_mag)
+		{
+			clr = lighting(obj, intersect, light, 1);
+			break ;
+		}
+	ft_memdel((void**)&intersects);
+	if (index == rt->nodes)
+		clr = lighting(obj, intersect, light, 0);
+	return (clr);
 }

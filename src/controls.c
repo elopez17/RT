@@ -42,7 +42,7 @@ static void	putnumpad(t_rt *rt)
 	mlx_string_put(rt->mlx, rt->win2, 683, 183, 0x0000ff00, "+3");
 }
 
-void	putrgb(t_rt *rt)
+static void	putkeybrd(t_rt *rt)
 {
 	putbutton(rt, 460, 250);
 	putbutton(rt, 520, 250);
@@ -68,22 +68,10 @@ void	putrgb(t_rt *rt)
 	mlx_string_put(rt->mlx, rt->win2, 513, 383, 0x00ff0000, "-C");
 	mlx_string_put(rt->mlx, rt->win2, 753, 383, 0x0000ff00, "+M");
 	mlx_string_put(rt->mlx, rt->win2, 693, 383, 0x00ff0000, "-N");
-	mlx_string_put(rt->mlx, rt->win2, 10, 370, 0x00ff0000,
-"Use 'E' / 'R' to modify intensity of Red");
-	mlx_string_put(rt->mlx, rt->win2, 10, 395, 0x0000ff00,
-"Use 'F' / 'G' to modify intensity of Green");
-	mlx_string_put(rt->mlx, rt->win2, 10, 420, 0x000f0fff,
-"Use 'V' / 'B' to modify intensity of Blue");
 }
 
-void	controls(t_rt *rt)
+static void	putinfo(t_rt *rt)
 {
-	putnumpad(rt);
-	putrgb(rt);
-	mlx_string_put(rt->mlx, rt->win2, 10, 20, 0x0000ff00,
-"Change Brightness of Light with '-' / '+' signs");
-	mlx_string_put(rt->mlx, rt->win2, 10, 65, 0x00f0f0f0,
-"Click on an Object to Modify, then");
 	mlx_string_put(rt->mlx, rt->win2, 10, 95, 0x0000ff00,
 "Use '7' / '9' to move sphere/cone/cylinder on X-axis");
 	mlx_string_put(rt->mlx, rt->win2, 10, 120, 0x00ffff00,
@@ -96,12 +84,29 @@ void	controls(t_rt *rt)
 "Use '5' to toggle between rotation/translation");
 	mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
 "using X,Y,Z-axis buttons. Applicable to cone/cylinder");
+	mlx_string_put(rt->mlx, rt->win2, 10, 370, 0x00ff0000,
+"Use 'E' / 'R' to modify intensity of Red");
+	mlx_string_put(rt->mlx, rt->win2, 10, 395, 0x0000ff00,
+"Use 'F' / 'G' to modify intensity of Green");
+	mlx_string_put(rt->mlx, rt->win2, 10, 420, 0x000f0fff,
+"Use 'V' / 'B' to modify intensity of Blue");
 	mlx_string_put(rt->mlx, rt->win2, 10, 450, 0x00ff00ff,
 "Use 'X' / 'S' to modify specular intensity");
 	mlx_string_put(rt->mlx, rt->win2, 10, 475, 0x00ff00ff,
 "Use 'C' / 'D' to modify diffuse intensity");
 	mlx_string_put(rt->mlx, rt->win2, 10, 500, 0x00ff00ff,
 "Use 'N' / 'M' to modify gloss intensity");
+}//5
+
+void	controls(t_rt *rt)
+{
+	putnumpad(rt);
+	putkeybrd(rt);
+	putinfo(rt);
 	mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
 "Use UP/DOWN arrows to modify radius/angle of sphere/cone/cylinder");
+	mlx_string_put(rt->mlx, rt->win2, 10, 20, 0x0000ff00,
+"Change Brightness of Light with '-' / '+' signs");
+	mlx_string_put(rt->mlx, rt->win2, 10, 65, 0x00f0f0f0,
+"Click on an Object to Modify, then");
 }

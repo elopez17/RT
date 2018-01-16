@@ -4,7 +4,7 @@ scene {
 		direction(0, 0, 0);
 	}
 	light {
-		lights(2);
+		lights(3);
 		origin(1, -13, -1);
 		origin(10, -14, 0);
 	}

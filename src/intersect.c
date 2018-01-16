@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/12 21:13:55 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 00:43:11 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,49 @@ double	findintersphere(t_ray ray, t_sphere sphere)
 	return (pickinter(root[0], root[1]));
 }
 
+double	findintercube(t_ray ray, t_cube cube)
+{
+	double	tmp;
+    double	tmin = (cube.min.x - ray.origin.x) / ray.dir.x; 
+    double	tmax = (cube.max.x - ray.origin.x) / ray.dir.x; 
+    double	tymin = (cube.min.y - ray.origin.y) / ray.dir.y; 
+    double	tymax = (cube.max.y - ray.origin.y) / ray.dir.y; 
+    double	tzmin = (cube.min.z - ray.origin.z) / ray.dir.z; 
+    double	tzmax = (cube.max.z - ray.origin.z) / ray.dir.z; 
+
+    if (tmin > tmax)
+	{
+		tmp = tmin;
+		tmin = tmax;
+		tmax = tmp;
+	}
+    if (tymin > tymax)
+	{
+		tmp = tymin;
+		tymin = tymax;
+		tymax = tmp;
+	}
+    if ((tmin > tymax) || (tymin > tmax)) 
+        return (-1); 
+    if (tymin > tmin) 
+        tmin = tymin; 
+    if (tymax < tmax) 
+        tmax = tymax; 
+    if (tzmin > tzmax)
+	{
+		tmp = tzmin;
+		tzmin = tzmax;
+		tzmax = tmp;
+	}
+    if ((tmin > tzmax) || (tzmin > tmax)) 
+        return (-1); 
+    if (tzmin > tmin) 
+        tmin = tzmin; 
+    if (tzmax < tmax) 
+        tmax = tzmax; 
+    return (pickinter(tmin, tmax));
+}
+
 double	*findintersects(t_ray ray, t_rt *rt)
 {
 	double	*intersects;
@@ -81,8 +124,10 @@ double	*findintersects(t_ray ray, t_rt *rt)
 			intersects[i] = findinterplane(ray, objects->u.plane);
 		else if (objects->type == 3)
 			intersects[i] = findintercone(ray, objects->u.cone);
-		else
+		else if (objects->type == 4)
 			intersects[i] = findintercylinder(ray, objects->u.cylinder);
+		else if (objects->type == 5)
+			intersects[i] = findintercube(ray, objects->u.cube);
 	}
 	return (intersects);
 }

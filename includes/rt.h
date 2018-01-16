@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/15 22:45:52 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 01:01:51 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,14 @@ typedef struct	s_ray
 	t_vect	dir;
 }				t_ray;
 
+typedef struct	s_cube
+{
+	t_vect	pos;
+	t_vect	min;
+	t_vect	max;
+	t_rgb	clr;
+}				t_cube;
+
 typedef struct	s_sphere
 {
 	t_vect	pos;
@@ -144,6 +152,7 @@ typedef union	u_union
 	t_plane		plane;
 	t_cone		cone;
 	t_cylinder	cylinder;
+	t_cube		cube;
 }				t_union;
 
 typedef struct	s_objects
@@ -224,6 +233,7 @@ t_rgb			lighting2(t_obj *obj, t_ray *intersect, t_vect light,
 		int shadow);
 void			getcam(t_rt *rt);
 void			getlight(t_rt *rt);
+t_union			getcube(t_rt *rt);
 t_union			getsphere(t_rt *rt);
 t_union			getplane(t_rt *rt);
 t_union			getcone(t_rt *rt);

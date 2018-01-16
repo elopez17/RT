@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/14 21:01:47 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 00:13:05 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void		parsefile(t_rt *rt)
 			getobject(3, getcone(rt), rt);
 		else if (ft_strstr(line, "cylinder"))
 			getobject(4, getcylinder(rt), rt);
+		else if (ft_strstr(line, "cube"))
+			getobject(5, getcube(rt), rt);
 		else
 			rt_error(2);
 		ft_strdel(&line);

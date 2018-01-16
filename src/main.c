@@ -45,7 +45,7 @@ int			main(int argc, char *argv[])
 {
 	t_rt		*rt;
 
-	if (argc != 2)
+	if (argc != 2 || !ft_strstr(argv[1], ".rt"))
 		rt_error(0);
 	init_rt(&rt, argv[1]);
 	controls(rt);

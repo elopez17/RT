@@ -16,7 +16,7 @@ PURP	= \x1b[35m
 TURQ	= \x1b[36m
 WHT		= \x1b[37m
 CC		= gcc
-CFLAGS	= -Wall -Wextra -g
+CFLAGS	= -Wall -Wextra -g -w
 SRC		= $(shell ls src | grep -E ".+\.c")
 ODIR	:= obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
@@ -33,7 +33,7 @@ $(EX): $(OBJ)
 	@echo "$(RED)  ./RT$(GRN) Successfully Created.$(NO_COLOR)"
 
 $(ODIR)/%.o:src/%.c | $(ODIR)
-	@$(CC) $(CFLAGS) -I $(INC) -I minilibx -o $@ -c $<
+	@$(CC) -c $(CFLAGS) -I $(INC) -I minilibx -o $@  $<
 
 $(ODIR):
 	@mkdir $(ODIR)

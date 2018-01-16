@@ -104,6 +104,50 @@ static void	mod_cone(int key, t_obj** obj, int toggle)
 	(*obj)->u.cone.dir = normalize((*obj)->u.cone.dir);
 }
 
+static void	mod_cube(int key, t_obj** obj, int toggle)
+{
+	/*
+	if (key == KEY7 && toggle && (*obj)->u.cube.dir.x > -0.9)
+		(*obj)->u.cube.dir.x -= 0.1;
+	if (key == KEY9 && toggle && (*obj)->u.cube.dir.x < 0.9)
+		(*obj)->u.cube.dir.x += 0.1;
+	else if (key == KEY4 && toggle && (*obj)->u.cube.dir.y > -0.9)
+		(*obj)->u.cube.dir.y -= 0.1;
+	else if (key == KEY6 && toggle && (*obj)->u.cube.dir.y < 0.9)
+		(*obj)->u.cube.dir.y += 0.1;
+	else if (key == KEY1 && toggle && (*obj)->u.cube.dir.z > -0.9)
+		(*obj)->u.cube.dir.z -= 0.1;
+	else if (key == KEY3 && toggle && (*obj)->u.cube.dir.z < 0.9)
+		(*obj)->u.cube.dir.z += 0.1;
+	*/
+	if (key == KEY7)
+		--(*obj)->u.cube.pos.x;
+	if (key == KEY9)
+		++(*obj)->u.cube.pos.x;
+	else if (key == KEY4)
+		--(*obj)->u.cube.pos.y;
+	else if (key == KEY6)
+		++(*obj)->u.cube.pos.y;
+	else if (key == KEY1)
+		--(*obj)->u.cube.pos.z;
+	else if (key == KEY3)
+		++(*obj)->u.cube.pos.z;
+	else if (key == KEYR)
+		(*obj)->u.cube.clr.red += 10;
+	else if (key == KEYE)
+		(*obj)->u.cube.clr.red -= 10;
+	else if (key == KEYG)
+		(*obj)->u.cube.clr.green += 10;
+	else if (key == KEYF)
+		(*obj)->u.cube.clr.green -= 10;
+	else if (key == KEYB)
+		(*obj)->u.cube.clr.blue += 10;
+	else if (key == KEYV)
+		(*obj)->u.cube.clr.blue -= 10;
+	(*obj)->u.cube.min = (t_vect){(*obj)->u.cube.pos.x - 1, (*obj)->u.cube.pos.y - 1, (*obj)->u.cube.pos.z - 1};
+	(*obj)->u.cube.max = (t_vect){(*obj)->u.cube.pos.x + 1, (*obj)->u.cube.pos.y + 1, (*obj)->u.cube.pos.z + 1};
+}
+
 static void	mod_cylind(int key, t_obj** obj, int toggle)
 {
 	key == KEYUP ? (*obj)->u.cylinder.radius += 0.25 : 0;
@@ -169,4 +213,5 @@ void	move_obj(int key, t_obj **object, int toggle)
 		mod_cone(key, object, toggle);
 	else if ((*object)->type == 4)
 		mod_cylind(key, object, toggle);
-}
+	else if ((*object)->type == 5)
+		mod_cube(key, object, toggle);}

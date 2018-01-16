@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/15 18:18:36 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 22:31:01 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	getlight(t_rt *rt)
 		}
 		if (i < rt->nlights)
 			rt->light[i++] = getxyz(line);
-		else
-			rt_error(2);
 		ft_strdel(&line);
 	}
+	if (i != rt->nlights)
+		rt_error(2);
 }

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/15 22:24:28 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 22:59:08 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 	intersects = findintersects(shadow, rt);
 	index = -1;
 	while (++index < rt->nodes)
-		if (intersects[index] > 0.00000001 && intersects[index] <= d.dist_mag)
+		if (intersects[index] >= 0.0000000001 && intersects[index] < d.dist_mag + 0.005)
 		{
 			clr = lighting(obj, intersect, light, 1);
 			break ;

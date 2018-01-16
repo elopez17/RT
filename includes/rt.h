@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/15 00:39:30 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/15 22:45:52 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct	s_vector
 typedef struct	s_distance
 {
 	t_vect	dist;
-	float	dist_mag;
+	double	dist_mag;
 }				t_dist;
 
 typedef struct	s_rgb

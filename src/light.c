@@ -34,8 +34,8 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	else if (obj->type == 5)
 	{
 		obj_norm = vcross(obj->u.cube.min, obj->u.cube.max);
-		cos_a = vdot(light_dir, obj_norm);
-		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
+		cos_a = fabs(vdot(light_dir, obj_norm));
+		if (shadow == 0)
 			final = coloradd(colorscalar(obj->u.cube.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj_norm, h), obj->m)));
 		else
 			final = colorscalar(obj->u.cube.clr, 0.2);

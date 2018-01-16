@@ -100,6 +100,7 @@ typedef struct	s_ray
 typedef struct	s_cube
 {
 	t_vect	pos;
+	double  len;
 	t_vect	min;
 	t_vect	max;
 	t_rgb	clr;

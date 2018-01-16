@@ -120,6 +120,8 @@ static void	mod_cube(int key, t_obj** obj, int toggle)
 	else if (key == KEY3 && toggle && (*obj)->u.cube.dir.z < 0.9)
 		(*obj)->u.cube.dir.z += 0.1;
 	*/
+	key == KEYUP ? (*obj)->u.cube.len += 0.5 : 0;
+	key == KEYDOWN ? (*obj)->u.cube.len -= 0.5 : 0;
 	if (key == KEY7)
 		--(*obj)->u.cube.pos.x;
 	if (key == KEY9)
@@ -144,8 +146,8 @@ static void	mod_cube(int key, t_obj** obj, int toggle)
 		(*obj)->u.cube.clr.blue += 10;
 	else if (key == KEYV)
 		(*obj)->u.cube.clr.blue -= 10;
-	(*obj)->u.cube.min = (t_vect){(*obj)->u.cube.pos.x - 1, (*obj)->u.cube.pos.y - 1, (*obj)->u.cube.pos.z - 1};
-	(*obj)->u.cube.max = (t_vect){(*obj)->u.cube.pos.x + 1, (*obj)->u.cube.pos.y + 1, (*obj)->u.cube.pos.z + 1};
+	(*obj)->u.cube.min = vdiff((*obj)->u.cube.pos, (t_vect){(*obj)->u.cube.len, (*obj)->u.cube.len, (*obj)->u.cube.len});
+	(*obj)->u.cube.max = vadd((*obj)->u.cube.pos, (t_vect){(*obj)->u.cube.len, (*obj)->u.cube.len, (*obj)->u.cube.len});
 }
 
 static void	mod_cylind(int key, t_obj** obj, int toggle)

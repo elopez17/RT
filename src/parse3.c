@@ -52,6 +52,8 @@ t_union	getcube(t_rt *rt)
 			u.cube.pos = getxyz(line);
 		else if (ft_strstr(line, "color"))
 			u.cube.clr = getcolor(line);
+		else if (ft_strstr(line, "length"))
+			u.cube.len = ft_atod(ft_strchr(line, '(') + 1);
 		else if (ft_strrchr(line, '}'))
 		{
 			ft_strdel(&line);
@@ -61,7 +63,7 @@ t_union	getcube(t_rt *rt)
 			rt_error(2);
 		ft_strdel(&line);
 	}
-	u.cube.min = (t_vect){u.cube.pos.x - 1, u.cube.pos.y - 1, u.cube.pos.z - 1};
-	u.cube.max = (t_vect){u.cube.pos.x + 1, u.cube.pos.y + 1, u.cube.pos.z + 1};
+	u.cube.min = vdiff(u.cube.pos, (t_vect){u.cube.len, u.cube.len, u.cube.len});
+	u.cube.max = vadd(u.cube.pos, (t_vect){u.cube.len, u.cube.len, u.cube.len});
 	return (u);
 }

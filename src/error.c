@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:35:44 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:06:27 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 17:02:56 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rt_error(int code)
 		"invalid file"
 	};
 
-	ft_printf("%{RD}RTv1: %s%{NC}\nusage: %{rd}./RTv1%{nc} \
+	ft_printf("%{RD}RT: %s%{NC}\nusage: %{rd}./RTv1%{nc} \
 %{TQ}scenes/%{nc}[file]\n", msg[code]);
 	exit(0);
 }

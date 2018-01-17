@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 19:11:42 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 20:51:58 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,10 +183,14 @@ void	move_obj(int key, t_obj **object, int toggle)
 {
 	if (key == KEYS && (*object)->spec < 1.0f)
 		(*object)->spec += 0.1;
-	else if (key == KEYD && (*object)->diff < 1.0f)
-		(*object)->diff += 0.1;
 	else if (key == KEYX && (*object)->spec > 0.0f)
 		(*object)->spec -= 0.1;
+	else if (key == KEYLEFT && (*object)->shine <= 0.8f)
+		(*object)->shine += 0.2;
+	else if (key == KEYRIGHT && (*object)->shine >= 0.2f)
+		(*object)->shine -= 0.2;
+	else if (key == KEYD && (*object)->diff < 1.0f)
+		(*object)->diff += 0.1;
 	else if (key == KEYC && (*object)->diff > 0.0f)
 		(*object)->diff -= 0.1;
 	else if (key == KEYN && (*object)->m > 1)

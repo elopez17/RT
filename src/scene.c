@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 18:09:54 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 22:00:42 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 {
 	t_obj	*tmp;
 	int		i;
-	t_rgb	final;
+	t_rgb	final[2];
+	double	*intersects;
+	t_ray	ray;
 
 	if (index == -1)
 		return ((t_rgb){0, 0, 0});
@@ -29,10 +31,26 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	while (--index >= 0)
 		tmp = tmp->next;
 	i = -1;
-	final = (t_rgb){0, 0, 0};
+	final[0] = (t_rgb){0, 0, 0};
+	final[1] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
-		final = coloradd(final, addlight(rt, intersection, tmp, rt->light[i]));
-	return (colorscalar(final, rt->bright));
+		final[0] = coloradd(final[0], addlight(rt, intersection, tmp, rt->light[i]));
+	if (tmp->shine > 0)
+	{
+		ray.origin = intersection->origin;
+		ray.dir = vadd(intersection->dir,
+		vmult(vmult(tmp->norm, 2), -vdot(tmp->norm, intersection->dir)));
+		intersects = findintersects(ray, rt);
+		if ((index = winningobject(intersects, rt->nodes)) != -1)
+		{
+			intersection->origin = vadd(ray.origin, vmult(ray.dir,
+				intersects[index]));
+			intersection->dir = ray.dir;
+			final[1] = color_at(intersection, index, rt);
+		}
+		ft_memdel((void**)&intersects);
+	}
+	return (colorscalar(coloradd(final[0], final[1]), rt->bright));
 }
 
 int				winningobject(double *intersects, int nodes)

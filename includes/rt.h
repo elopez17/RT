@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 17:17:50 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 21:27:13 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define KEYPLUS 69
 # define KEYUP 126
 # define KEYDOWN 125
+# define KEYLEFT 123
+# define KEYRIGHT 124
 # define KEYESC 53
 # define KEYR 15
 # define KEYG 5
@@ -118,8 +120,6 @@ typedef struct	s_plane
 	t_vect	norm;
 	double	dist;
 	t_rgb	clr;
-	double	reflect;
-	double	refract;
 }				t_plane;
 
 typedef struct	s_cone
@@ -160,6 +160,8 @@ typedef struct	s_objects
 {
 	int					type;
 	t_union				u;
+	t_vect				norm;
+	double				shine;
 	double				spec;
 	double				diff;
 	double				m;

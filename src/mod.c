@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/14 22:39:38 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 19:11:42 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,20 +106,6 @@ static void	mod_cone(int key, t_obj** obj, int toggle)
 
 static void	mod_cube(int key, t_obj** obj, int toggle)
 {
-	/*
-	if (key == KEY7 && toggle && (*obj)->u.cube.dir.x > -0.9)
-		(*obj)->u.cube.dir.x -= 0.1;
-	if (key == KEY9 && toggle && (*obj)->u.cube.dir.x < 0.9)
-		(*obj)->u.cube.dir.x += 0.1;
-	else if (key == KEY4 && toggle && (*obj)->u.cube.dir.y > -0.9)
-		(*obj)->u.cube.dir.y -= 0.1;
-	else if (key == KEY6 && toggle && (*obj)->u.cube.dir.y < 0.9)
-		(*obj)->u.cube.dir.y += 0.1;
-	else if (key == KEY1 && toggle && (*obj)->u.cube.dir.z > -0.9)
-		(*obj)->u.cube.dir.z -= 0.1;
-	else if (key == KEY3 && toggle && (*obj)->u.cube.dir.z < 0.9)
-		(*obj)->u.cube.dir.z += 0.1;
-	*/
 	key == KEYUP ? (*obj)->u.cube.len += 0.5 : 0;
 	key == KEYDOWN ? (*obj)->u.cube.len -= 0.5 : 0;
 	if (key == KEY7)

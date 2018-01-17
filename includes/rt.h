@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 01:01:51 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 17:17:50 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ double			findintersphere(t_ray ray, t_sphere sphere);
 double			findintercone(t_ray ray, t_cone cone);
 double			findintercylinder(t_ray ray, t_cylinder cylinder);
 double			pickinter(double inter0, double inter1);
+t_vect			cube_norm(t_cube cube, t_vect point);
 t_vect			sphere_norm(t_sphere sphere, t_vect point);
 t_vect			cone_norm(t_cone cone, t_vect point);
 t_vect			cylinder_norm(t_cylinder cylinder, t_vect point);

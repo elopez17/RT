@@ -6,11 +6,30 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 01:01:11 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 18:08:16 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+t_vect	cube_norm(t_cube cube, t_vect point)
+{
+	t_vect	normal;
+
+	if(fabs(point.x - cube.min.x) < 0.00000001)
+		normal = (t_vect){-1, 0, 0};
+	else if(fabs(point.x - cube.max.x) < 0.00000001)
+		normal = (t_vect){1, 0, 0};
+	else if(fabs(point.y - cube.min.y) < 0.00000001)
+		normal = (t_vect){0, -1, 0};
+	else if(fabs(point.y - cube.max.y) < 0.00000001)
+		normal = (t_vect){0, 1, 0};
+	else if(fabs(point.z - cube.min.z) < 0.00000001)
+		normal = (t_vect){0, 0, -1};
+	else if(fabs(point.z - cube.max.z) < 0.00000001)
+		normal = (t_vect){0, 0, 1};
+	return (normal);
+}
 
 t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {
@@ -33,7 +52,7 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	}
 	else if (obj->type == 5)
 	{
-		obj_norm = vcross(obj->u.cube.min, obj->u.cube.max);
+		obj_norm = cube_norm(obj->u.cube, intersect->origin);
 		cos_a = fabs(vdot(light_dir, obj_norm));
 		if (shadow == 0)
 			final = coloradd(colorscalar(obj->u.cube.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj_norm, h), obj->m)));
@@ -101,7 +120,7 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 	intersects = findintersects(shadow, rt);
 	index = -1;
 	while (++index < rt->nodes)
-		if (intersects[index] >= 0.0000000001 && intersects[index] < d.dist_mag + 0.005)
+		if (intersects[index] >= 0.0000000001 && intersects[index] < d.dist_mag - 0.005)
 		{
 			clr = lighting(obj, intersect, light, 1);
 			break ;

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 21:30:46 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 04:29:06 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	double	cos_a;
 
 	light_dir = normalize(vdiff(light, intersect->origin));
-	h = vdiv(vadd(light_dir, invert(intersect->dir)), vlen(vadd(light_dir, invert(intersect->dir))));
+	h = vdiv(vdiff(light_dir, intersect->dir), vlen(vdiff(light_dir, intersect->dir)));
 	if (obj->type == 3)
 	{
 		obj->norm = cone_norm(obj->u.cone, intersect->origin);
 		cos_a = vdot(light_dir, obj->norm);
-		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
+		if (shadow == 0)
 			final = coloradd(colorscalar(obj->u.cone.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m)));
 		else
 			final = colorscalar(obj->u.cone.clr, 0.2);
@@ -68,7 +68,7 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 			final = colorscalar(obj->u.cylinder.clr, 0.2);
 	}
 	return (final);
-}//2lines
+}// 10lines
 
 t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 {
@@ -78,7 +78,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	double	cos_a;
 
 	light_dir = normalize(vdiff(light, intersect->origin));
-	h = vdiv(vadd(light_dir, invert(intersect->dir)), vlen(vadd(light_dir, invert(intersect->dir))));
+	h = vdiv(vdiff(light_dir, intersect->dir), vlen(vdiff(light_dir, intersect->dir)));
 	if (obj->type == 1)
 	{
 		obj->norm = sphere_norm(obj->u.sphere, intersect->origin);
@@ -100,7 +100,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		return (final);
 	}
 	return (lighting2(obj, intersect, light, shadow));
-}//4lines
+}// 3lines
 
 t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 {
@@ -112,13 +112,13 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 
 	clr = (t_rgb){0, 0, 0};
 	shadow.origin = intersect->origin;
-	shadow.dir = normalize(vadd(light, invert(intersect->origin)));
-	d.dist = vadd(light, invert(intersect->origin));
+	shadow.dir = normalize(vdiff(light, intersect->origin));
+	d.dist = vdiff(light, intersect->origin);
 	d.dist_mag = sqrt((d.dist.x * d.dist.x) + (d.dist.y * d.dist.y) + (d.dist.z * d.dist.z));
 	intersects = findintersects(shadow, rt);
 	index = -1;
 	while (++index < rt->nodes)
-		if (intersects[index] >= 0.0000000001 && intersects[index] < d.dist_mag - 0.005)
+		if (intersects[index] >= 0.00000001 && intersects[index] < d.dist_mag - 0.005)
 		{
 			clr = lighting(obj, intersect, light, 1);
 			break ;

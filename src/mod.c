@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 22:50:11 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 01:42:58 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	mod_cone(int key, t_obj** obj, int toggle)
 	else if (key == KEYV)
 		(*obj)->u.cone.clr.blue -= 10;
 	(*obj)->u.cone.dir = normalize((*obj)->u.cone.dir);
-}
+}// 14 lines
 
 static void	mod_cube(int key, t_obj** obj, int toggle)
 {
@@ -134,7 +134,7 @@ static void	mod_cube(int key, t_obj** obj, int toggle)
 		(*obj)->u.cube.clr.blue -= 10;
 	(*obj)->u.cube.min = vdiff((*obj)->u.cube.pos, (t_vect){(*obj)->u.cube.len, (*obj)->u.cube.len, (*obj)->u.cube.len});
 	(*obj)->u.cube.max = vadd((*obj)->u.cube.pos, (t_vect){(*obj)->u.cube.len, (*obj)->u.cube.len, (*obj)->u.cube.len});
-}
+}// 3 lines
 
 static void	mod_cylind(int key, t_obj** obj, int toggle)
 {
@@ -177,7 +177,7 @@ static void	mod_cylind(int key, t_obj** obj, int toggle)
 	else if (key == KEYV)
 		(*obj)->u.cylinder.clr.blue -= 10;
 	(*obj)->u.cylinder.dir = normalize((*obj)->u.cylinder.dir);
-}
+}// 14 lines
 
 void	move_obj(int key, t_obj **object, int toggle)
 {
@@ -205,5 +205,5 @@ void	move_obj(int key, t_obj **object, int toggle)
 		mod_cone(key, object, toggle);
 	else if ((*object)->type == 4)
 		mod_cylind(key, object, toggle);
-	else if ((*object)->type == 5)
-		mod_cube(key, object, toggle);}
+	((*object)->type == 5) ? mod_cube(key, object, toggle) : 0;
+}

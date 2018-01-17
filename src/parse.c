@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/16 22:44:38 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 04:17:58 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		getobject(int type, t_union u, t_rt *rt)
 	obj->type = type;
 	obj->u = u;
 	obj->shine = 1;
-	obj->spec = 0.4;
+	obj->spec = 0.2;
 	obj->diff = 0.6;
 	obj->m = 4;
 	obj->next = rt->obj;

@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/14 20:17:46 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 01:40:55 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ static void	putinfo(t_rt *rt)
 "Use 'C' / 'D' to modify diffuse intensity");
 	mlx_string_put(rt->mlx, rt->win2, 10, 500, 0x00ff00ff,
 "Use 'N' / 'M' to modify gloss intensity");
-}//5
+}
 
 void	controls(t_rt *rt)
 {
@@ -117,6 +117,8 @@ void	controls(t_rt *rt)
 	putinfo(rt);
 	mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
 "Use UP/DOWN arrows to modify radius/angle of sphere/cone/cylinder");
+	mlx_string_put(rt->mlx, rt->win2, 10, 550, 0x00ff00ff,
+"Use LEFT/RIGHT arrows to make object nonreflect/reflect");
 	mlx_string_put(rt->mlx, rt->win2, 10, 20, 0x0000ff00,
 "Change Brightness of Light with '-' / '+' signs");
 	mlx_string_put(rt->mlx, rt->win2, 10, 65, 0x00f0f0f0,

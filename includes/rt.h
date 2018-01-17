@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 22:48:11 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 03:34:20 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <math.h>
 # include <mlx.h>
+# include <pthread.h>
+# define THREADS 4
 # define MAX(a, b) (a > b ? a : b)
 # define MIN(a, b) (a < b ? a : b)
 # define PI 3.14159265
@@ -188,8 +190,11 @@ typedef struct	s_rt
 	double	bright;
 	t_obj	*current;
 	int		toggle;
+	int		ystart;
+	int		ymax;
 }				t_rt;
 
+void			multithread(t_rt *rt);
 void			controls(t_rt *rt);
 void			draw(t_rt *rt);
 void			putpixel(t_rt *rt, int x, int y, t_rgb color);
@@ -220,7 +225,7 @@ t_vect			cube_norm(t_cube cube, t_vect point);
 t_vect			sphere_norm(t_sphere sphere, t_vect point);
 t_vect			cone_norm(t_cone cone, t_vect point);
 t_vect			cylinder_norm(t_cylinder cylinder, t_vect point);
-void			scene(t_rt *rt);
+void			*scene(void *rt);
 double			brightness(t_rgb color);
 t_rgb			colorscalar(t_rgb color, double scalar);
 t_rgb			coloradd(t_rgb clr1, t_rgb clr2);

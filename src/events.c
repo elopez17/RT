@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/14 23:35:31 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 04:17:28 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		key_hook(int key, t_rt **rt)
 	}
 	else if ((*rt)->current != NULL)
 		move_obj(key, &(*rt)->current, (*rt)->toggle);
-	scene(*rt);
+	multithread(*rt);
 	draw(*rt);
 	return (0);
 }

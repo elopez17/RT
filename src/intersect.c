@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 17:12:18 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 01:04:11 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ double	findinterplane(t_ray ray, t_plane plane)
 		return (-1);
 	else
 	{
-		b = vdot(plane.norm, vadd(ray.origin,
-					invert(vmult(plane.norm, plane.dist))));
+		b = vdot(plane.norm, vdiff(ray.origin,
+					vmult(plane.norm, plane.dist)));
 		return (-b / a);
 	}
 }

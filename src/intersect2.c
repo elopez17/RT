@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:06:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 00:43:47 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 01:15:07 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,29 @@ t_vect		cone_norm(t_cone cone, t_vect point)
 {
 	t_vect	normal;
 
-	normal = vadd(point, invert(cone.pos));
-	normal = vadd(normal, invert(vmult(cone.dir, vdot(cone.dir,
-						normal))));
+	normal = vdiff(point, cone.pos);
+	normal = vdiff(normal, vmult(cone.dir, vdot(cone.dir,
+						normal)));
 	return (normalize(normal));
 }
 
 double		findintercone(t_ray ray, t_cone cone)
 {
 	t_quad	q;
+	double	cos_a;
+	double	sin_a;
 
-	q.a = pow(cos(cone.a), 2) * vsqr(vdiff(ray.dir, vmult(cone.dir,
-vdot(ray.dir, cone.dir)))) - pow(sin(cone.a), 2) * vdot(ray.dir,
+	cos_a = cos(cone.a);
+	sin_a = sin(cone.a);
+	q.a = pow(cos_a, 2) * vsqr(vdiff(ray.dir, vmult(cone.dir,
+vdot(ray.dir, cone.dir)))) - pow(sin_a, 2) * vdot(ray.dir,
 cone.dir) * vdot(ray.dir, cone.dir);
-	q.b = 2 * pow(cos(cone.a), 2) * vdot(vdiff(ray.dir, vmult(cone.dir, vdot(
+	q.b = 2 * pow(cos_a, 2) * vdot(vdiff(ray.dir, vmult(cone.dir, vdot(
 ray.dir, cone.dir))), vdiff(vdiff(ray.origin, cone.pos), vmult(cone.dir, vdot(
-vdiff(ray.origin, cone.pos), cone.dir)))) - 2 * pow(sin(cone.a), 2) * vdot(
+vdiff(ray.origin, cone.pos), cone.dir)))) - 2 * pow(sin_a, 2) * vdot(
 ray.dir, cone.dir) * vdot(vdiff(ray.origin, cone.pos), cone.dir);
-	q.c = pow(cos(cone.a), 2) * vsqr(vdiff(vdiff(ray.origin, cone.pos), vmult(
-cone.dir, vdot(vdiff(ray.origin, cone.pos), cone.dir)))) - pow(sin(cone.a), 2) *
+	q.c = pow(cos_a, 2) * vsqr(vdiff(vdiff(ray.origin, cone.pos), vmult(
+cone.dir, vdot(vdiff(ray.origin, cone.pos), cone.dir)))) - pow(sin_a, 2) *
 vdot(vdiff(ray.origin, cone.pos), cone.dir) * vdot(vdiff(ray.origin, cone.pos),
 		cone.dir);
 	if ((q.d = q.b * q.b - 4 * q.a * q.c) < 0)

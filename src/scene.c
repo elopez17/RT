@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/16 22:00:42 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/16 22:48:00 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double			norm_vect(t_vect v)
 	return (sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
 }
 
-static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
+static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 {
 	t_obj	*tmp;
 	int		i;
@@ -25,7 +25,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	double	*intersects;
 	t_ray	ray;
 
-	if (index == -1)
+	if (index == -1 || depth == 2)
 		return ((t_rgb){0, 0, 0});
 	tmp = rt->obj;
 	while (--index >= 0)
@@ -35,7 +35,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 	final[1] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
 		final[0] = coloradd(final[0], addlight(rt, intersection, tmp, rt->light[i]));
-	if (tmp->shine > 0)
+	if (tmp->shine == 1)
 	{
 		ray.origin = intersection->origin;
 		ray.dir = vadd(intersection->dir,
@@ -46,7 +46,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt)
 			intersection->origin = vadd(ray.origin, vmult(ray.dir,
 				intersects[index]));
 			intersection->dir = ray.dir;
-			final[1] = color_at(intersection, index, rt);
+			final[1] = color_at(intersection, index, rt, depth + 1);
 		}
 		ft_memdel((void**)&intersects);
 	}
@@ -111,7 +111,7 @@ void			scene(t_rt *rt)
 							intersects[index]));
 				intersection.dir = ray.dir;
 			}
-			putpixel(rt, pixel.x, pixel.y, color_at(&intersection, index, rt));
+			putpixel(rt, pixel.x, pixel.y, color_at(&intersection, index, rt, 0));
 			ft_memdel((void**)&intersects);
 		}
 	}

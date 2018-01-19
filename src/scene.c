@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/18 18:21:23 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/18 19:36:38 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 
 	if (index == -1 || depth == 2)
 		return ((t_rgb){0, 0, 0});
+	pthread_mutex_lock(&lock);
 	tmp = rt->obj;
 	while (--index >= 0)
 		tmp = tmp->next;
@@ -37,8 +38,10 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 	final[1] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
 		final[0] = coloradd(final[0], addlight(rt, intersection, tmp, rt->light[i]));
+	pthread_mutex_unlock(&lock);
 	if (!tmp->shine)
 		return (colorscalar(final[0], rt->bright));
+//	pthread_mutex_lock(&lock);
 	ray.origin = intersection->origin;
 	ray.dir = vadd(intersection->dir,
 	vmult(vmult(tmp->norm, 2), -vdot(tmp->norm, intersection->dir)));
@@ -51,6 +54,7 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 		final[1] = color_at(intersection, index, rt, depth + 1);
 	}
 	ft_memdel((void**)&intersects);
+//	pthread_mutex_unlock(&lock);
 	return (colorscalar(coloravg(final[0], final[1]), rt->bright));
 }// 6lines
 
@@ -114,9 +118,9 @@ void			*scene(void *rt)
 							intersects[index]));
 				intersection.dir = ray.dir;
 			}
-			pthread_mutex_lock(&lock);
+			//pthread_mutex_lock(&lock);
 			putpixel(p_rt, pixel.x, pixel.y, color_at(&intersection, index, p_rt, 0));
-			pthread_mutex_unlock(&lock);
+			//pthread_mutex_unlock(&lock);
 			ft_memdel((void**)&intersects);
 		}
 	}

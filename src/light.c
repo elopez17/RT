@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 04:29:06 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/17 13:59:12 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_rgb	lighting2(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	{
 		obj->norm = cone_norm(obj->u.cone, intersect->origin);
 		cos_a = vdot(light_dir, obj->norm);
-		if (shadow == 0)
+		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
 			final = coloradd(colorscalar(obj->u.cone.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m)));
 		else
 			final = colorscalar(obj->u.cone.clr, 0.2);

@@ -6,11 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 03:47:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/18 18:21:23 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+pthread_mutex_t lock;
 
 double			norm_vect(t_vect v)
 {
@@ -112,9 +114,12 @@ void			*scene(void *rt)
 							intersects[index]));
 				intersection.dir = ray.dir;
 			}
+			pthread_mutex_lock(&lock);
 			putpixel(p_rt, pixel.x, pixel.y, color_at(&intersection, index, p_rt, 0));
+			pthread_mutex_unlock(&lock);
 			ft_memdel((void**)&intersects);
 		}
 	}
+	pthread_exit(0);
 	return (rt);
 }

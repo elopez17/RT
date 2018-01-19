@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 03:34:20 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/18 17:42:52 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@
 # define KEYC 8
 # define KEYN 45
 # define KEYM 46
+
+extern pthread_mutex_t lock;
 
 typedef struct	s_dimensions
 {

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/18 17:42:52 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 01:18:22 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,34 +205,33 @@ int				mousepress(int key, int x, int y, t_rt **rt);
 void			move_obj(int key, t_obj **object, int toggle);
 int				close_hook(t_rt **rt);
 int				expose_hook(t_rt **rt);
-t_vect			normalize(t_vect v);
-t_vect			invert(t_vect v);
-double			vdot(t_vect v1, t_vect v2);
-double			norm_vect(t_vect v);
-double			vsqr(t_vect v);
-double			vlen(t_vect v);
-t_vect			vcross(t_vect v1, t_vect v2);
-t_vect			vadd(t_vect v1, t_vect v2);
-t_vect			vmult(t_vect v, double scalar);
-t_vect			vdiv(t_vect v, double denominator);
-t_vect			vdiff(t_vect v1, t_vect v2);
+extern inline t_vect			normalize(t_vect v);
+extern inline t_vect			invert(t_vect v);
+extern inline double			vdot(t_vect v1, t_vect v2);
+extern inline double			norm_vect(t_vect v);
+extern inline double			vsqr(t_vect v);
+extern inline double			vlen(t_vect v);
+extern inline t_vect			vcross(t_vect v1, t_vect v2);
+extern inline t_vect			vadd(t_vect v1, t_vect v2);
+extern inline t_vect			vmult(t_vect v, double scalar);
+extern inline t_vect			vdiv(t_vect v, double denominator);
+extern inline t_vect			vdiff(t_vect v1, t_vect v2);
 void			setxy(t_rt *rt, t_ray *ray, t_xy *pixel);
 int				winningobject(double *intersects, int nodes);
 double			findinterplane(t_ray ray, t_plane plane);
 double			findintersphere(t_ray ray, t_sphere sphere);
 double			findintercone(t_ray ray, t_cone cone);
 double			findintercylinder(t_ray ray, t_cylinder cylinder);
-double			pickinter(double inter0, double inter1);
-t_vect			cube_norm(t_cube cube, t_vect point);
-t_vect			sphere_norm(t_sphere sphere, t_vect point);
-t_vect			cone_norm(t_cone cone, t_vect point);
-t_vect			cylinder_norm(t_cylinder cylinder, t_vect point);
+extern inline double			pickinter(double inter0, double inter1);
+extern inline t_vect			cube_norm(t_cube cube, t_vect point);
+extern inline t_vect			sphere_norm(t_sphere sphere, t_vect point);
+extern inline t_vect			cone_norm(t_cone cone, t_vect point);
+extern inline t_vect			cylinder_norm(t_cylinder cylinder, t_vect point);
 void			*scene(void *rt);
-double			brightness(t_rgb color);
-t_rgb			colorscalar(t_rgb color, double scalar);
-t_rgb			coloradd(t_rgb clr1, t_rgb clr2);
-t_rgb			colormult(t_rgb clr1, t_rgb clr2);
-t_rgb			coloravg(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb			colorscalar(t_rgb color, double scalar);
+extern inline t_rgb	coloradd(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb			colormult(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb			coloravg(t_rgb clr1, t_rgb clr2);
 void			rt_error(int code);
 void			parsefile(t_rt *rt);
 t_vect			getxyz(const char *line);

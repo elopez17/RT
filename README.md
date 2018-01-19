@@ -1,5 +1,5 @@
 <h1 align="center">Raytracer Project for RT @42</h1> 
-#### Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a>
+<h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a></h4>
 
 
 ## What is is Raytracing

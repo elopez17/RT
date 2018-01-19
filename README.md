@@ -1,5 +1,5 @@
 # Raytracer Project for RT @42
-#### Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/elopez17" rel="blank">Obsaa Abdalhalim</a>
+#### Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" rel="blank">Obsaa Abdalhalim</a>
 
 
 ### Program Requirements && Running Executable
@@ -23,11 +23,13 @@ There definitely languages better than C to run a raytracer algorithm eficiently
 
 #### Features Outlined
 Feautres are outlined in the first window upon execution of the any of the valid scenes. These features let you control the following:
-* Rotation
-* Reflective Property of each object
-* Brightness
-* Moving objects on the x, y, z plane.
-* RGB values (Red, Green, Blue) seperately.
+* Translation/Rotation (Moving objects on the x, y, z plane) :: (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
+* Zooming to Center [8 (INCREASE) || 2 (DECREASE)]
+* Reflective Property of each object [Left (OFF) || Right (ON)]
+* Size of Objects [Up Key (INCREASE) || Down Key (DECREASE)]
+* Brightness [+ (INCREASE) || - (DECREASE)]
+* Number of Light Sources and Location(Access through the [.eg] `vim scenes/scene8.rt`)
+* RGB values (Red [-E / R+], Green[-F / G+], Blue[-V / B+]) seperately.
 * Specular Intensity [<a href="https://en.wikipedia.org/wiki/Specular_reflection" rel="blank">Link</a>]
 * Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" rel="blank">Link</a>]
 * Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" rel="blank">Link</a>]

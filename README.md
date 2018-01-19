@@ -79,9 +79,9 @@ Feautres are outlined in the first window upon execution of the any of the valid
 * Brightness [+ (INCREASE) || - (DECREASE)]
 * Number of Light Sources and Location(Access through the [.eg]  `vim scenes/scene8.rt`)
 * RGB values (Red [-E / R+], Green[-F / G+], Blue[-V / B+]) seperately.
-* Specular Intensity [<a href="https://en.wikipedia.org/wiki/Specular_reflection" target="" ="blank">Link</a>]
-* Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" target="" ="blank">Link</a>]
-* Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="" ="blank">Link</a>]
+* Specular Intensity [ <a href="https://en.wikipedia.org/wiki/Specular_reflection" target="">Link</a> ]
+* Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" target="">Link</a>]
+* Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="">Link</a>]
 * Object Present : Cone, Cylinder, Sphere [Required] || Cube [Bonus]
 
 

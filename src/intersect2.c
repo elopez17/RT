@@ -6,13 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:06:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 01:15:07 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 01:23:06 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_vect		cone_norm(t_cone cone, t_vect point)
+inline t_vect	cone_norm(t_cone cone, t_vect point)
 {
 	t_vect	normal;
 
@@ -48,7 +48,7 @@ vdot(vdiff(ray.origin, cone.pos), cone.dir) * vdot(vdiff(ray.origin, cone.pos),
 	return (pickinter(q.rslt[0], q.rslt[1]));
 }
 
-t_vect		cylinder_norm(t_cylinder cylinder, t_vect point)
+inline t_vect	cylinder_norm(t_cylinder cylinder, t_vect point)
 {
 	t_vect	normal;
 

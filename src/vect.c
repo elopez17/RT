@@ -6,13 +6,13 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/10 20:10:23 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 01:19:13 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_vect	normalize(t_vect v)
+inline t_vect	normalize(t_vect v)
 {
 	double	magnitude;
 
@@ -22,23 +22,23 @@ t_vect	normalize(t_vect v)
 	return ((t_vect){v.x / magnitude, v.y / magnitude, v.z / magnitude});
 }
 
-t_vect	invert(t_vect v)
+inline t_vect	invert(t_vect v)
 {
 	return ((t_vect){-v.x, -v.y, -v.z});
 }
 
-double	vdot(t_vect v1, t_vect v2)
+inline double	vdot(t_vect v1, t_vect v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-t_vect	vcross(t_vect v1, t_vect v2)
+inline t_vect	vcross(t_vect v1, t_vect v2)
 {
 	return ((t_vect){v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z,
 			v1.x * v2.y - v1.y * v2.x});
 }
 
-t_vect	vadd(t_vect v1, t_vect v2)
+inline t_vect	vadd(t_vect v1, t_vect v2)
 {
 	return ((t_vect){v1.x + v2.x, v1.y + v2.y, v1.z + v2.z});
 }

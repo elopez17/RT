@@ -6,13 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 01:04:11 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 01:28:50 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-double	pickinter(double inter0, double inter1)
+inline double	pickinter(double inter0, double inter1)
 {
 	if (inter0 >= 0.00000001)
 		return (inter0);
@@ -27,15 +27,11 @@ double	findinterplane(t_ray ray, t_plane plane)
 	a = vdot(ray.dir, plane.norm);
 	if (a == 0)
 		return (-1);
-	else
-	{
-		b = vdot(plane.norm, vdiff(ray.origin,
-					vmult(plane.norm, plane.dist)));
-		return (-b / a);
-	}
+	b = vdot(plane.norm, vdiff(ray.origin, vmult(plane.norm, plane.dist)));
+	return (-b / a);
 }
 
-t_vect	sphere_norm(t_sphere sphere, t_vect point)
+inline t_vect	sphere_norm(t_sphere sphere, t_vect point)
 {
 	return (normalize(vdiff(point, sphere.pos)));
 }

@@ -1,6 +1,6 @@
 # Raytracer Project for RT @42
 
-### Program Requirements && Running Exec
+### Program Requirements && Running Executable
 
 To be able to build and run this program you'll need a macbook, because I didn't make it portable for other systems. As for software Requirements, you'll need in order to compile:
 
@@ -9,7 +9,8 @@ To be able to build and run this program you'll need a macbook, because I didn't
 * GCC
 
 1. Clone the repo.
-2. Access the main folder with makefile.
-3. Run Make
-4. Run ./RT scenes/scene[*number*].rt
+2. Access the main folder with makefile `cd RT`.
+3. Run `make`.
+4. Run `./RT scenes/scene`[*number*]`.rt`
 
+**

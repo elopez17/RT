@@ -1,5 +1,5 @@
 # Raytracer Project for RT @42
-#### Authors <a href="https://github.com/elopez17" rel="blank">Eric Lopez<\a> & <a href="https://github.com/elopez17" rel="blank">Obsaa Andalhalim<\a>
+#### Authors <a href="https://github.com/elopez17" rel="blank">Eric Lopez</a> & <a href="https://github.com/elopez17" rel="blank">Obsaa Andalhalim</a>
 
 ### Program Requirements && Running Executable
 

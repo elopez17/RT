@@ -5,10 +5,11 @@
 ## What is is Raytracing
 This is rendering technique used to generate a image by by tracing the path of light in an image plane and simulating the  effects of it sencounters with virtual objects. This raytracing project uses backward raytracing algorithms as a means of lowering the computational cost normally related at looking at everything a light ray touches in every direction. This method instead shoots rays from the camera view onto the object(s) and measure the distance to the light source.
 
-## Make and Features
 
-### Build Info
+## Make and Features
+#### Build Info
 There definitely languages better than C to run a raytracer algorithm eficiently but part of the assignment is using C and C libraries [most notably C++]. In the confines of our school standards which require we have no function longer than 25 lines [which is the most imminent of the many requirements of the standard we call norm], our major library functions such as printf [inside of the src/libft/ folder]. This raytracer is multithreaded but the benefits of multithreading was not seismic due to using mutexes to let the image render properly. The benefits of multithreading can be seen with raytracers that don't require reflection since algorithms are run once without worrying about how pockets of pixels change due recursive calls made on each thread. Assignment Requirements [<a href="https://cdn.intra.42.fr/pdf/pdf/964/rt.en.pdf" target="blank">Link</a>]
+
 
 #### Program Requirements && Running Executable
 To be able to build and run this program you'll need a macbook, because I didn't make it portable for other systems. As for software Requirements, you'll need in order to compile:
@@ -22,6 +23,7 @@ To be able to build and run this program you'll need a macbook, because I didn't
 2. Access the main folder with makefile with  `cd RT`.
 3. Run  `make`.
 4. Run  `./RT scenes/scene`[*number*]`.rt`
+
 
 #### File Tree
 ```
@@ -69,6 +71,7 @@ RT/
     └── rt.en.pdf
 ```
 
+
 #### Features Outlined
 Feautres are outlined in the first window upon execution of the any of the valid scenes. These features let you control the following:
 * Translation/Rotation (Moving objects on the x, y, z plane)
@@ -81,8 +84,8 @@ Feautres are outlined in the first window upon execution of the any of the valid
 * RGB values (Red [-E / R+], Green[-F / G+], Blue[-V / B+]) seperately.
 * Specular Intensity [ <a href="https://en.wikipedia.org/wiki/Specular_reflection" target="">Link</a> ]
 * Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" target="">Link</a>]
-* Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="">Link</a>]
+* Gloss Intensity [ <a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="">Link</a> ]
 * Object Present : Cone, Cylinder, Sphere [Required] || Cube [Bonus]
 
 
-### Algorithms and Resources
+## Algorithms and Resources

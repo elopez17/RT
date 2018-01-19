@@ -8,7 +8,7 @@ To be able to build and run this program you'll need a macbook, because I didn't
 * No specific versions. [Unless you are using a version llvm that shows error using -Werror at compile time, take off or add those flags out of the makefile as needed.] 
 * GNU make
 * GCC
-* Built using the minilibx library instead of OpenGL.
+* Built using the minilibx library instead of OpenGL graphics library.
 
 1. Clone the repo.
 2. Access the main folder with makefile `cd RT`.
@@ -23,7 +23,8 @@ There definitely languages better than C to run a raytracer algorithm eficiently
 
 #### Features Outlined
 Feautres are outlined in the first window upon execution of the any of the valid scenes. These features let you control the following:
-* Translation/Rotation (Moving objects on the x, y, z plane) :: (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
+* Translation/Rotation (Moving objects on the x, y, z plane)
+	* (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
 * Zooming to Center [8 (INCREASE) || 2 (DECREASE)]
 * Reflective Property of each object [Left (OFF) || Right (ON)]
 * Size of Objects [Up Key (INCREASE) || Down Key (DECREASE)]

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/18 19:36:38 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 00:53:04 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ pthread_mutex_t lock;
 
 double			norm_vect(t_vect v)
 {
-	return (sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
+	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
 }
 
 static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
@@ -27,21 +27,18 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 	double	*intersects;
 	t_ray	ray;
 
-	if (index == -1 || depth == 2)
+	if (index == -1 || depth == 3)
 		return ((t_rgb){0, 0, 0});
-	pthread_mutex_lock(&lock);
 	tmp = rt->obj;
 	while (--index >= 0)
 		tmp = tmp->next;
 	i = -1;
 	final[0] = (t_rgb){0, 0, 0};
-	final[1] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
 		final[0] = coloradd(final[0], addlight(rt, intersection, tmp, rt->light[i]));
-	pthread_mutex_unlock(&lock);
 	if (!tmp->shine)
 		return (colorscalar(final[0], rt->bright));
-//	pthread_mutex_lock(&lock);
+	final[1] = (t_rgb){0, 0, 0};
 	ray.origin = intersection->origin;
 	ray.dir = vadd(intersection->dir,
 	vmult(vmult(tmp->norm, 2), -vdot(tmp->norm, intersection->dir)));
@@ -54,7 +51,6 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 		final[1] = color_at(intersection, index, rt, depth + 1);
 	}
 	ft_memdel((void**)&intersects);
-//	pthread_mutex_unlock(&lock);
 	return (colorscalar(coloravg(final[0], final[1]), rt->bright));
 }// 6lines
 
@@ -105,6 +101,7 @@ void			*scene(void *rt)
 
 	p_rt = (t_rt*)rt;
 	pixel.y = p_rt->ystart - 1;
+	pthread_mutex_lock(&lock);
 	while (++pixel.y < p_rt->ymax)
 	{
 		pixel.x = -1;
@@ -118,12 +115,11 @@ void			*scene(void *rt)
 							intersects[index]));
 				intersection.dir = ray.dir;
 			}
-			//pthread_mutex_lock(&lock);
 			putpixel(p_rt, pixel.x, pixel.y, color_at(&intersection, index, p_rt, 0));
-			//pthread_mutex_unlock(&lock);
 			ft_memdel((void**)&intersects);
 		}
 	}
+	pthread_mutex_unlock(&lock);
 	pthread_exit(0);
 	return (rt);
 }

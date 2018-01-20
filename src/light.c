@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/17 13:59:12 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 03:06:02 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	t_vect	light_dir;
 	t_vect	h;
 	t_rgb	final;
+//	t_rgb	obj_clr;
 	double	cos_a;
 
 	light_dir = normalize(vdiff(light, intersect->origin));
@@ -83,8 +84,9 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	{
 		obj->norm = sphere_norm(obj->u.sphere, intersect->origin);
 		cos_a = vdot(light_dir, obj->norm);
-		if (shadow == 0 && cos_a >= 0.0f && cos_a <= 1.0f)
-			final = coloradd(colorscalar(obj->u.sphere.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m)));
+		if (!shadow && cos_a >= 0.0f && cos_a <= 1.0f)
+			final = coloradd(colorscalar(obj->u.sphere.clr, 0.2 + obj->diff * cos_a),
+				colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m)));
 		else
 			final = colorscalar(obj->u.sphere.clr, 0.2);
 		return (final);
@@ -94,7 +96,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 		obj->norm = obj->u.plane.norm;
 		cos_a = fabs(vdot(light_dir, obj->norm));
 		if (shadow == 0)
-			final = coloradd(colorscalar(obj->u.plane.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, 0 * pow(vdot(obj->norm, h), obj->m)));
+			final = coloradd(colorscalar(obj->u.plane.clr, 0.2 + obj->diff * cos_a), colorscalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m)));
 		else
 			final = colorscalar(obj->u.plane.clr, 0.2);
 		return (final);

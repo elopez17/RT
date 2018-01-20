@@ -29,6 +29,11 @@ scene {
 		color(72, 209, 204);
 		radius(1);
 	}
+	cube {
+		origin(2, -1, 2);
+		color(30, 30, 240);
+		length(1);
+	}
 	cylinder {
 		origin(-3, 0, 2);
 		direction(0, 1, 0);

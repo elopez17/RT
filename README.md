@@ -43,7 +43,7 @@ RT/[GIT REPO]
 │       ├─- error.c
 │       ├── events.c
 │       ├── intersect.c
-│       ├─- intersect2.c
+│       ├── intersect2.c
 │       ├── light.c
 │       ├── main.c
 │       ├─- mod.c
@@ -92,3 +92,7 @@ Feautres are outlined in the first window upon execution of the any of the valid
 
 
 ## Algorithms and Resources
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |

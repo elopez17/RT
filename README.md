@@ -92,8 +92,10 @@ Feautres are outlined in the first window upon execution of the any of the valid
 
 
 ## Algorithms and Resources
-| Main Algorithms         | About Algorith  | Functions Functions | In-files Location |
+| Main Algorithms         | About Algorithm | Functions Functions | In-files Location |
 | :---                    |     :---:       |     :---:           |            ---:   |
+| Ld = kd I max(0, n · l) | <a href="http://www.cs.cornell.edu/courses/cs4620/2010fa/lectures/09shadingBasics.pdf" target="blank">Lambertian shading</a> | git diff            |   git status      |
+| git diff                | git diff        | git diff            |   git status      |
 | r = v + 2((n · v)n − v) | git status      | git status          |   git status      |
 | = 2(n · v)n − v         | git status      | git status          |   git status      |
 | git diff                | git diff        | git diff            |   git status      |

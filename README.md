@@ -27,7 +27,7 @@ To be able to build and run this program you'll need a macbook, because we didn'
 
 #### File Tree
 ```
-RT/
+RT/[GIT REPO]
 ├── sources/
 │   ├── includes/
 │   │   ├─- ft_printf.h

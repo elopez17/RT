@@ -88,12 +88,12 @@ Feautres are outlined in the first window upon execution of the any of the valid
 * Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" target="">Link</a>]
 * Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="">Link</a>]
 * Object Present : Cone, Cylinder, Sphere [Required] || Cube [Bonus]
-* Multithreading using 4 Threads (pthread library) with mutexes to handle recursive calls on single pixel for reflection.
+* Multithreading (pthread library) with mutexes to handle recursive calls on every pixel for reflection.
 
 
 ## Algorithms and Resources
-| Main Algorithms | Related Functions | About Functions |
-| :---            |     :---:      |          ---: |
-| r = v + 2((n · v)n − v) | git status     | git status    |
-| = 2(n · v)n − v   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+| Main Algorithms         | About Algorith  | Functions Functions | In-files Location |
+| :---                    |     :---:       |     :---:           |            ---:   |
+| r = v + 2((n · v)n − v) | git status      | git status          |   git status      |
+| = 2(n · v)n − v         | git status      | git status          |   git status      |
+| git diff                | git diff        | git diff            |   git status      |

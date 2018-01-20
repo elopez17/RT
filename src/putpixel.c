@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 18:33:42 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/18 18:38:03 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 18:32:21 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	putpixel(t_rt *rt, int x, int y, t_rgb color)
 {
 	int i;
 
-	if (x < 0 || x >= rt->w.width || y < 0 || y >= rt->w.height)
-		return ;
 	i = (rt->bpp / 8) * x + rt->len * y;
 	if (color.red < 0)
 		color.red = 0;

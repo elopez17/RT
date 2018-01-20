@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/19 00:53:04 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 17:01:05 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 pthread_mutex_t lock;
 
-double			norm_vect(t_vect v)
+inline double	norm_vect(t_vect v)
 {
 	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
 }
@@ -79,7 +79,7 @@ int				winningobject(double *intersects, int nodes)
 	return (index);
 }
 
-void			setxy(t_rt *rt, t_ray *ray, t_xy *pixel)
+void			set_ray_xy(t_rt *rt, t_ray *ray, t_xy *pixel)
 {
 	t_xy		dir;
 
@@ -107,7 +107,7 @@ void			*scene(void *rt)
 		pixel.x = -1;
 		while (++pixel.x < p_rt->w.width)
 		{
-			setxy(p_rt, &ray, &pixel);
+			set_ray_xy(p_rt, &ray, &pixel);
 			intersects = findintersects(ray, p_rt);
 			if ((index = winningobject(intersects, p_rt->nodes)) != -1)
 			{
@@ -122,4 +122,4 @@ void			*scene(void *rt)
 	pthread_mutex_unlock(&lock);
 	pthread_exit(0);
 	return (rt);
-}
+}// 5lines

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/19 01:18:22 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 17:01:15 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ extern inline t_vect			vadd(t_vect v1, t_vect v2);
 extern inline t_vect			vmult(t_vect v, double scalar);
 extern inline t_vect			vdiv(t_vect v, double denominator);
 extern inline t_vect			vdiff(t_vect v1, t_vect v2);
-void			setxy(t_rt *rt, t_ray *ray, t_xy *pixel);
+void			set_ray_xy(t_rt *rt, t_ray *ray, t_xy *pixel);
 int				winningobject(double *intersects, int nodes);
 double			findinterplane(t_ray ray, t_plane plane);
 double			findintersphere(t_ray ray, t_sphere sphere);

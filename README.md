@@ -37,7 +37,7 @@ RT/[GIT REPO]
 │   ├── minilibx/
 │   ├── libft/
 │   └── src/
-│       ├─- colors.c
+│       ├── colors.c
 │       ├── controls.c
 │       ├── draw.c
 │       ├─- error.c

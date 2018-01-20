@@ -92,7 +92,8 @@ Feautres are outlined in the first window upon execution of the any of the valid
 
 
 ## Algorithms and Resources
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
+| Main Algorithms | Related Functions | About Functions |
+| :---            |     :---:      |          ---: |
+| r = v + 2((n · v)n − v) | git status     | git status    |
+| = 2(n · v)n − v   | git status     | git status    |
 | git diff     | git diff       | git diff      |

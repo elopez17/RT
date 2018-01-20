@@ -30,7 +30,7 @@ To be able to build and run this program you'll need a macbook, because we didn'
 RT/[GIT REPO]
 ├── sources/
 │   ├── includes/
-│   │   ├─- ft_printf.h
+│   │   ├── ft_printf.h
 │   │   ├── get_next_line.h
 │   │   ├── libft.h
 │   │   └── rt.h

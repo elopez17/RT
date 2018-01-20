@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/17 04:17:36 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/19 15:51:53 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->nlights = 0;
 	(*rt)->bright = 1.0f;
 	(*rt)->toggle = 0;
-	(*rt)->cam.pos = (t_vect){0, 0, 0};
-	(*rt)->cam.dir = (t_vect){0, 0, 0};
-	(*rt)->cam.right = (t_vect){0, 0, 0};
-	(*rt)->cam.down = (t_vect){0, 0, 0};
+	(*rt)->cam.pos = (t_vect){0, -3, 5};
 	(*rt)->cam.look_at = (t_vect){0, 0, 0};
 	if (((*rt)->fd = open(file, O_RDONLY)) == -1)
 		rt_error(1);
 	parsefile(*rt);
+	if ((*rt)->obj == NULL || (*rt)->nodes == 0 || (*rt)->nlights == 0)
+		rt_error(2);
 }
 
 int			main(int argc, char *argv[])

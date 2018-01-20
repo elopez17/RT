@@ -69,11 +69,6 @@ RT/
 │   ├── forward_ray_tracing.gif
 │   ├── box.ps
 │   └── rt.en.pdf
-├── info/
-│   ├── backward_ray_tracing.gif
-│   ├── forward_ray_tracing.gif
-│   ├── box.ps
-│   └── rt.en.pdf
 └── Makefile
 
 ```

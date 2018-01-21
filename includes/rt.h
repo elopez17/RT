@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 02:58:15 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 05:21:05 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct	s_objects
 	int					type;
 	t_union				u;
 	t_vect				norm;
+	t_rgb				clr;
 	int					shine;
 	double				spec;
 	double				diff;

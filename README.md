@@ -2,10 +2,10 @@
 <h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a></h4>
 
 <p align="center">
-  <img src="info/1.png" width="250"/>
-  <img src="info/3.png" width="250"/>
-  <img src="info/4.png" width="250"/>
-  <img src="info/5.png" width="250"/>
+  <img src="info/1.png" width="200"/>
+  <img src="info/3.png" width="200"/>
+  <img src="info/4.png" width="200"/>
+  <img src="info/5.png" width="200"/>
 </p>
 
 ## What is is Raytracing

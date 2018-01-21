@@ -1,6 +1,12 @@
 <h1 align="center">Raytracer Project for RT @42</h1> 
 <h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a></h4>
 
+<p align="center">
+  <img src="info/1.png" width="250"/>
+  <img src="info/3.png" width="250"/>
+  <img src="info/4.png" width="250"/>
+  <img src="info/5.png" width="250"/>
+</p>
 
 ## What is is Raytracing
 This is rendering technique used to generate a image by by tracing the path of light in an image plane and simulating the  effects of it encounters with virtual objects. This raytracing project uses <a href="https://github.com/elopez17/RT/blob/master/info/backward_ray_tracing.gif">backward raytracing</a> algorithms as a means of lowering the computational cost normally related <a href="https://github.com/elopez17/RT/blob/master/info/backward_ray_tracing.gif">forward raytracing</a>, which is looking at everything a light ray touches in every direction from the light source. Backward raytracing instead shoots rays from the camera view onto the object(s) and measure the distance to the light source rather than calculating the rays that would never reach the pixels that will never reach the camera view.

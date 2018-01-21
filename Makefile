@@ -17,40 +17,40 @@ TURQ	= \x1b[36m
 WHT		= \x1b[37m
 CC		= gcc
 CFLAGS	= -Wall -Wextra -g -w -lpthread -std=c99
-SRC		= $(shell ls src | grep -E ".+\.c")
-ODIR	:= obj
+SRC		= $(shell ls sources/src | grep -E ".+\.c")
+ODIR	:= sources/obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
-INC		= includes
-LIB		= libft.a
+INC		= sources/includes
+LIB		= sources/libft.a
 EX		= RT
 
 all: $(LIB) $(EX)
 
 $(EX): $(OBJ)
-	@make -C minilibx/
+	@make -C sources/minilibx/
 	@echo "$(RED)  libmlx.a$(GRN) Successfully Created.$(NO_COLOR)"
-	@$(CC) $(CFLAGS) -I $(INC) -I ./minilibx -o $(EX) $(OBJ) -L. -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
+	@$(CC) $(CFLAGS) -I $(INC) -I sources/minilibx -o $(EX) $(OBJ) -L sources -lft -L sources/minilibx -lmlx -framework OpenGL -framework AppKit
 	@echo "$(RED)  ./RT$(GRN) Successfully Created.$(NO_COLOR)"
 
-$(ODIR)/%.o:src/%.c | $(ODIR)
-	@$(CC) -c $(CFLAGS) -I $(INC) -I minilibx -o $@  $<
+$(ODIR)/%.o:sources/src/%.c | $(ODIR)
+	@$(CC) -c $(CFLAGS) -I $(INC) -I sources/minilibx -o $@  $<
 
 $(ODIR):
 	@mkdir $(ODIR)
 
 $(LIB):
-	@make -C libft/
+	@make -C sources/libft/
 
 clean:
-	@rm -f *.o
-	@rm -rf obj
-	@make -C libft/ clean
-	@make -C minilibx/ clean
+	@rm -f sources/*.o
+	@rm -rf sources/obj
+	@make -C sources/libft/ clean
+	@make -C sources/minilibx/ clean
 	@echo "$(B_RED)  Cleaned$(NO_COLOR)"
 
 fclean: clean
 	@rm -f $(EX)
-	@make -C libft/ fclean
+	@make -C sources/libft/ fclean
 	@echo "$(B_RED)  fclean-ed.$(NO_COLOR)"
 
 re: fclean all

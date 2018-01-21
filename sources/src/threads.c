@@ -1,6 +1,6 @@
 #include <rt.h>
 
-pthread_mutex_t	lock;
+pthread_mutex_t	g_lock;
 
 void	multithread(t_rt *rt)
 {
@@ -10,7 +10,7 @@ void	multithread(t_rt *rt)
 	int				rc;
 
 	t = -1;
-	pthread_mutex_init(&lock, NULL);
+	pthread_mutex_init(&g_lock, NULL);
 	while (++t < THREADS)
 	{
 		ft_memcpy((void*)&(rts[t]), (void*)rt, sizeof(t_rt));
@@ -24,5 +24,5 @@ void	multithread(t_rt *rt)
 	while (++t < THREADS)
 		if ((rc = pthread_join(thread[t], NULL)))
 			exit(-1);
-	pthread_mutex_destroy(&lock);
+	pthread_mutex_destroy(&g_lock);
 }

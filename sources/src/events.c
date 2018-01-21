@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/20 02:41:21 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 20:49:38 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@ int		mousepress(int key, int x, int y, t_rt **rt)
 {
 	t_xy	pixel;
 	t_ray	ray;
-	double	*intersects;
+	t_ray	intersect;
 	int		index;
 
 	if (key != 1)
 		return (0);
 	pixel = (t_xy){(double)x, (double)y};
 	set_ray_xy(*rt, &ray, &pixel);
-	intersects = findintersects(ray, *rt);
-	(*rt)->current = (*rt)->obj;
-	if ((index = winningobject(intersects, (*rt)->nodes)) != -1)
+	if ((index = findintersect(&intersect, ray, *rt)) != -1)
 	{
+		(*rt)->current = (*rt)->obj;
 		while (--index >= 0)
 			(*rt)->current = (*rt)->current->next;
 	}
-	ft_memdel((void**)&intersects);
 	return (0);
 }
 

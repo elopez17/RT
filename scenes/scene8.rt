@@ -4,12 +4,13 @@ scene {
 		direction(0, 0, 0);
 	}
 	light {
-		lights(1);
+		lights(2);
 		origin(60, -30, 60);
+		origin(10, -20, 30);
 	}
 	plane {
 		origin(0, 1, 0);
-		color(255, 255, 255);
+		color(180, 180, 170);
 		distance(0.9);
 	}
 	cone {

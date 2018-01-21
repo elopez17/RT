@@ -6,11 +6,12 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/20 01:08:06 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 21:13:52 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define OBJINFO(obj,f1,f2,rgb)({obj->normal=f1;obj->clr=rgb;obj->inter=f2;})
 
 static int g_flag = 0;
 
@@ -21,6 +22,16 @@ void		getobject(int type, t_union u, t_rt *rt)
 	obj = (t_obj*)malloc(sizeof(t_obj));
 	obj->type = type;
 	obj->u = u;
+	if (type == 1)
+		OBJINFO(obj, &sphere_norm, &findintersphere, u.sphere.clr);
+	else if (type == 2)
+		OBJINFO(obj, &plane_norm, &findinterplane, u.plane.clr);
+	else if (type == 3)
+		OBJINFO(obj, &cone_norm, &findintercone, u.cone.clr);
+	else if (type == 4)
+		OBJINFO(obj, &cylinder_norm, &findintercylinder, u.cylinder.clr);
+	else if (type == 5)
+		OBJINFO(obj, &cube_norm, &findintercube, u.cube.clr);
 	obj->shine = (type == 2) ? 0 : 1;
 	obj->spec = 0.3;
 	obj->diff = 0.6;

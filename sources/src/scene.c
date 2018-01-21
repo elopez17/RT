@@ -6,25 +6,19 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 03:00:19 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 21:23:56 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-pthread_mutex_t lock;
-
-inline double	norm_vect(t_vect v)
-{
-	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
-}
+pthread_mutex_t g_lock;
 
 static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 {
 	t_obj	*tmp;
 	int		i;
 	t_rgb	final[2];
-	double	*intersects;
 	t_ray	ray;
 
 	if (index == -1 || depth == 3)
@@ -35,24 +29,18 @@ static t_rgb	color_at(t_ray *intersection, int index, t_rt *rt, int depth)
 	i = -1;
 	final[0] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
-		final[0] = coloradd(final[0], addlight(rt, intersection, tmp, rt->light[i]));
+		final[0] = coloradd(final[0],
+							addlight(rt, intersection, tmp, rt->light[i]));
 	if (!tmp->shine)
 		return (colorscalar(final[0], rt->bright));
 	final[1] = (t_rgb){0, 0, 0};
 	ray.origin = intersection->origin;
 	ray.dir = vadd(intersection->dir,
 	vmult(vmult(tmp->norm, 2), -vdot(tmp->norm, intersection->dir)));
-	intersects = findintersects(ray, rt);
-	if ((index = winningobject(intersects, rt->nodes)) != -1)
-	{
-		intersection->origin = vadd(ray.origin, vmult(ray.dir,
-			intersects[index]));
-		intersection->dir = ray.dir;
-		final[1] = color_at(intersection, index, rt, depth + 1);
-	}
-	ft_memdel((void**)&intersects);
+	index = findintersect(intersection, ray, rt);
+	final[1] = color_at(intersection, index, rt, depth + 1);
 	return (colorscalar(coloravg(final[0], final[1]), rt->bright));
-}// 6lines
+}
 
 int				winningobject(double *intersects, int nodes)
 {
@@ -68,10 +56,10 @@ int				winningobject(double *intersects, int nodes)
 	while (++i < nodes)
 		if (intersects[i] > max)
 			max = intersects[i];
-	if (max < 0.00000001)
+	if (max < EPS)
 		return (-1);
 	while (--i >= 0)
-		if (intersects[i] >= 0.00000001 && intersects[i] <= max)
+		if (intersects[i] >= EPS && intersects[i] <= max)
 		{
 			max = intersects[i];
 			index = i;
@@ -94,32 +82,25 @@ void			*scene(void *rt)
 {
 	t_xy		pixel;
 	t_ray		ray;
-	double		*intersects;
 	t_ray		intersection;
 	int			index;
 	t_rt		*p_rt;
 
 	p_rt = (t_rt*)rt;
 	pixel.y = p_rt->ystart - 1;
-	pthread_mutex_lock(&lock);
+	pthread_mutex_lock(&g_lock);
 	while (++pixel.y < p_rt->ymax)
 	{
 		pixel.x = -1;
 		while (++pixel.x < p_rt->w.width)
 		{
 			set_ray_xy(p_rt, &ray, &pixel);
-			intersects = findintersects(ray, p_rt);
-			if ((index = winningobject(intersects, p_rt->nodes)) != -1)
-			{
-				intersection.origin = vadd(ray.origin, vmult(ray.dir,
-							intersects[index]));
-				intersection.dir = ray.dir;
-			}
-			putpixel(p_rt, pixel.x, pixel.y, color_at(&intersection, index, p_rt, 0));
-			ft_memdel((void**)&intersects);
+			index = findintersect(&intersection, ray, p_rt);
+			putpixel(p_rt, pixel.x, pixel.y,
+									color_at(&intersection, index, p_rt, 0));
 		}
 	}
-	pthread_mutex_unlock(&lock);
+	pthread_mutex_unlock(&g_lock);
 	pthread_exit(0);
 	return (rt);
-}// 5lines
+}

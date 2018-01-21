@@ -6,11 +6,12 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/19 14:22:59 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 21:20:41 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define LEN u.cube.len
 
 static int g_flag = 0;
 
@@ -67,7 +68,7 @@ t_union	getcube(t_rt *rt)
 		ft_strdel(&line);
 	}
 	(g_flag != 4) ? rt_error(2) : 0;
-	u.cube.min = vdiff(u.cube.pos, (t_vect){u.cube.len, u.cube.len, u.cube.len});
-	u.cube.max = vadd(u.cube.pos, (t_vect){u.cube.len, u.cube.len, u.cube.len});
+	u.cube.min = vdiff(u.cube.pos, (t_vect){LEN, LEN, LEN});
+	u.cube.max = vadd(u.cube.pos, (t_vect){LEN, LEN, LEN});
 	return (u);
 }

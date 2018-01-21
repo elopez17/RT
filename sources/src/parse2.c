@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/19 14:12:56 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/20 21:20:03 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,7 @@ t_union	getcylinder(t_rt *rt)
 			rt_error(2);
 		ft_strdel(&line);
 	}
-	if (g_flag != 5)
-		rt_error(2);
+	(g_flag != 5) ? rt_error(2) : 0;
 	return (u);
 }
 
@@ -142,7 +141,6 @@ t_union	getcone(t_rt *rt)
 			rt_error(2);
 		ft_strdel(&line);
 	}
-	if (g_flag != 5)
-		rt_error(2);
+	(g_flag != 5) ? rt_error(2) : 0;
 	return (u);
 }

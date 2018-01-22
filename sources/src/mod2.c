@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 22:11:02 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/21 18:05:28 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	mod_cone(int key, t_obj **obj, int toggle)
 	(key == KEY6 && !toggle) ? (*obj)->u.cone.pos.y -= 2 : 0;
 	(key == KEY1 && !toggle) ? (*obj)->u.cone.pos.z -= 2 : 0;
 	(key == KEY3 && !toggle) ? (*obj)->u.cone.pos.z += 2 : 0;
-	(key == KEYR) ? (*obj)->u.cone.clr.red += 20 : 0;
-	(key == KEYE) ? (*obj)->u.cone.clr.red -= 20 : 0;
-	(key == KEYG) ? (*obj)->u.cone.clr.green += 20 : 0;
-	(key == KEYF) ? (*obj)->u.cone.clr.green -= 20 : 0;
-	(key == KEYB) ? (*obj)->u.cone.clr.blue += 20 : 0;
-	(key == KEYV) ? (*obj)->u.cone.clr.blue -= 20 : 0;
+	(key == KEYR) ? (*obj)->clr.red += 20 : 0;
+	(key == KEYE) ? (*obj)->clr.red -= 20 : 0;
+	(key == KEYG) ? (*obj)->clr.green += 20 : 0;
+	(key == KEYF) ? (*obj)->clr.green -= 20 : 0;
+	(key == KEYB) ? (*obj)->clr.blue += 20 : 0;
+	(key == KEYV) ? (*obj)->clr.blue -= 20 : 0;
 	(*obj)->u.cone.dir = normalize((*obj)->u.cone.dir);
 }
 
@@ -58,17 +58,17 @@ void	mod_cube(int key, t_obj **obj, int toggle)
 	else if (key == KEY3)
 		(*obj)->u.cube.pos.z += 2;
 	else if (key == KEYR)
-		(*obj)->u.cube.clr.red += 20;
+		(*obj)->clr.red += 20;
 	else if (key == KEYE)
-		(*obj)->u.cube.clr.red -= 20;
+		(*obj)->clr.red -= 20;
 	else if (key == KEYG)
-		(*obj)->u.cube.clr.green += 20;
+		(*obj)->clr.green += 20;
 	else if (key == KEYF)
-		(*obj)->u.cube.clr.green -= 20;
+		(*obj)->clr.green -= 20;
 	else if (key == KEYB)
-		(*obj)->u.cube.clr.blue += 20;
+		(*obj)->clr.blue += 20;
 	else if (key == KEYV)
-		(*obj)->u.cube.clr.blue -= 20;
+		(*obj)->clr.blue -= 20;
 	(*obj)->u.cube.min = vdiff((*obj)->u.cube.pos, LEN);
 	(*obj)->u.cube.max = vadd((*obj)->u.cube.pos, LEN);
 }
@@ -93,11 +93,11 @@ void	mod_cylind(int key, t_obj **obj, int toggle)
 	(key == KEY6 && !toggle) ? (*obj)->u.cylinder.pos.y -= 2 : 0;
 	(key == KEY1 && !toggle) ? (*obj)->u.cylinder.pos.z -= 2 : 0;
 	(key == KEY3 && !toggle) ? (*obj)->u.cylinder.pos.z += 2 : 0;
-	(key == KEYR) ? (*obj)->u.cylinder.clr.red += 20 : 0;
-	(key == KEYE) ? (*obj)->u.cylinder.clr.red -= 20 : 0;
-	(key == KEYG) ? (*obj)->u.cylinder.clr.green += 20 : 0;
-	(key == KEYF) ? (*obj)->u.cylinder.clr.green -= 20 : 0;
-	(key == KEYB) ? (*obj)->u.cylinder.clr.blue += 20 : 0;
-	(key == KEYV) ? (*obj)->u.cylinder.clr.blue -= 20 : 0;
+	(key == KEYR) ? (*obj)->clr.red += 20 : 0;
+	(key == KEYE) ? (*obj)->clr.red -= 20 : 0;
+	(key == KEYG) ? (*obj)->clr.green += 20 : 0;
+	(key == KEYF) ? (*obj)->clr.green -= 20 : 0;
+	(key == KEYB) ? (*obj)->clr.blue += 20 : 0;
+	(key == KEYV) ? (*obj)->clr.blue -= 20 : 0;
 	(*obj)->u.cylinder.dir = normalize((*obj)->u.cylinder.dir);
 }

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 21:46:50 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/21 18:04:06 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ static void	mod_sphere(int key, t_obj **obj)
 	else if (key == KEY3)
 		(*obj)->u.sphere.pos.z += 2;
 	else if (key == KEYR)
-		(*obj)->u.sphere.clr.red += 20;
+		(*obj)->clr.red += 20;
 	else if (key == KEYE)
-		(*obj)->u.sphere.clr.red -= 20;
+		(*obj)->clr.red -= 20;
 	else if (key == KEYG)
-		(*obj)->u.sphere.clr.green += 20;
+		(*obj)->clr.green += 20;
 	else if (key == KEYF)
-		(*obj)->u.sphere.clr.green -= 20;
+		(*obj)->clr.green -= 20;
 	else if (key == KEYB)
-		(*obj)->u.sphere.clr.blue += 20;
+		(*obj)->clr.blue += 20;
 	else if (key == KEYV)
-		(*obj)->u.sphere.clr.blue -= 20;
+		(*obj)->clr.blue -= 20;
 }
 
 static void	mod_plane(int key, t_obj **obj)
@@ -48,17 +48,17 @@ static void	mod_plane(int key, t_obj **obj)
 	else if (key == KEY2)
 		--(*obj)->u.plane.dist;
 	else if (key == KEYR)
-		(*obj)->u.plane.clr.red += 20;
+		(*obj)->clr.red += 20;
 	else if (key == KEYE)
-		(*obj)->u.plane.clr.red -= 20;
+		(*obj)->clr.red -= 20;
 	else if (key == KEYG)
-		(*obj)->u.plane.clr.green += 20;
+		(*obj)->clr.green += 20;
 	else if (key == KEYF)
-		(*obj)->u.plane.clr.green -= 20;
+		(*obj)->clr.green -= 20;
 	else if (key == KEYB)
-		(*obj)->u.plane.clr.blue += 20;
+		(*obj)->clr.blue += 20;
 	else if (key == KEYV)
-		(*obj)->u.plane.clr.blue -= 20;
+		(*obj)->clr.blue -= 20;
 }
 
 void		move_obj(int key, t_obj **object, int toggle)

@@ -1,0 +1,50 @@
+scene {
+	camera {
+		origin(0, 0, -10);
+		direction(0, 0, 0);
+	}
+	light {
+		lights(1);
+		origin(0, -2, 0);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(180, 50, 50);
+		distance(2);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(50, 50, 180);
+		distance(-5);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(180, 180, 50);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(50, 180, 180);
+		distance(9);
+	}
+	plane {
+		origin(0, 0, 1);
+		color(80, 80, 50);
+		distance(10);
+	}
+	sphere {
+		origin(0, 1, 0);
+		color(72, 209, 204);
+		radius(1);
+	}
+	sphere {
+		origin(-2, 0, 2);
+		color(204, 209, 70);
+		radius(1);
+	}
+	cube {
+		origin(3, 0, 2);
+		color(30, 30, 190);
+		length(1);
+	}
+}

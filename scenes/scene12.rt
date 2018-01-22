@@ -1,0 +1,356 @@
+scene {
+	camera {
+		origin(-3, -5, -40);
+		direction(3, 0, -22);
+	}
+	light {
+		lights(2);
+		origin(-3, -3, -50);
+		origin(0, -3, 0);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(180, 50, 50);
+		distance(2);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(50, 50, 180);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(180, 180, 50);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(50, 180, 180);
+		distance(9);
+	}
+	plane {
+		origin(0, 0, 1);
+		color(50, 50, 50);
+		distance(10);
+	}
+	sphere {
+		origin(1, 1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	} this is the end of the level
+	sphere {
+		origin(1, 0, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 0, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 0, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 0, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 0, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 0, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 0, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 0, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 0, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 0, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 0, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 0, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, 0, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, 0, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, 0, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, 0, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	} this is the end of the level
+	sphere {
+		origin(1, -1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -1, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -1, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -1, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -1, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	} this is the end of the level
+	sphere {
+		origin(1, -2, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -2, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -2, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -2, -20);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -2, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -2, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -2, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -2, -21);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -2, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -2, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -2, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -2, -22);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(1, -2, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(2, -2, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(3, -2, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	}
+	sphere {
+		origin(4, -2, -23);
+		color(72, 209, 204);
+		radius(0.5);
+	} this is the end of the level
+}

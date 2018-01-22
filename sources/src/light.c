@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 22:53:55 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/21 20:20:00 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	h = vdiv(vdiff(light_dir, intersect->dir),
 			vlen(vdiff(light_dir, intersect->dir)));
 	cos_a = fabs(vdot(light_dir, obj->norm));
-	if (!shadow && cos_a >= 0.0f && cos_a <= 1.0f)
+	if (!shadow && cos_a <= 1.0)
 		return (coloradd(colorscalar(obj->clr, 0.2 + obj->diff * cos_a), color\
 scalar((t_rgb){255,255,255}, obj->spec * pow(vdot(obj->norm, h), obj->m))));
 	return (colorscalar(obj->clr, 0.2));

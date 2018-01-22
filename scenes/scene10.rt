@@ -1,0 +1,76 @@
+scene {
+	camera {
+		origin(0, -4, -40);
+		direction(0, 0, 0);
+	}
+	light {
+		lights(2);
+		origin(-3, -3, -50);
+		origin(3, -3, -50);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(180, 50, 50);
+		distance(2);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(50, 50, 180);
+		distance(-5);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(180, 180, 50);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(50, 180, 180);
+		distance(9);
+	}
+	plane {
+		origin(0, 0, 1);
+		color(50, 50, 50);
+		distance(10);
+	}
+	sphere {
+		origin(0, 1, -30);
+		color(72, 209, 204);
+		radius(1);
+	}
+	sphere {
+		origin(0, 1, -25);
+		color(72, 209, 204);
+		radius(1);
+	}
+	sphere {
+		origin(0, 1, -20);
+		color(72, 209, 204);
+		radius(1);
+	}
+	sphere {
+		origin(0, 1, -15);
+		color(72, 209, 204);
+		radius(1);
+	}
+	cube {
+		origin(3, 1, -27);
+		color(230, 50, 230);
+		length(0.75);
+	}
+	cube {
+		origin(3, 1, -22);
+		color(230, 50, 230);
+		length(0.75);
+	}
+	cube {
+		origin(3, 1, -17);
+		color(230, 50, 230);
+		length(0.75);
+	}
+	cube {
+		origin(3, 1, -12);
+		color(230, 50, 230);
+		length(0.75);
+	}
+}

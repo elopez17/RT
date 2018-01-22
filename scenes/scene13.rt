@@ -1,0 +1,311 @@
+scene {
+	camera {
+		origin(-3, -5, -40);
+		direction(3, 0, -22);
+	}
+	light {
+		lights(2);
+		origin(-3, -3, -50);
+		origin(0, -3, 0);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(180, 50, 50);
+		distance(3);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(50, 50, 180);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(180, 180, 50);
+		distance(-6);
+	}
+	plane {
+		origin(1, 0, 0);
+		color(50, 180, 180);
+		distance(9);
+	}
+	plane {
+		origin(0, 0, 1);
+		color(50, 50, 50);
+		distance(10);
+	}
+	cube {
+		origin(1, 2, -19);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 2, -19);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 2, -19);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 2, -19);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(5, 2, -19);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1, 2, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 2, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 2, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 2, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(5, 2, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1, 2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(5, 2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1, 2, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 2, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 2, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 2, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(5, 2, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1, 2, -23);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 2, -23);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 2, -23);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 2, -23);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(5, 2, -23);
+		color(30, 50, 230);
+		length(0.51);
+	} End of 5x5 level
+	cube {
+		origin(1.5, 1, -19.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2.5, 1, -19.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, 1, -19.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4.5, 1, -19.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1.5, 1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2.5, 1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, 1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4.5, 1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1.5, 1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2.5, 1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, 1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4.5, 1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(1.5, 1, -22.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2.5, 1, -22.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, 1, -22.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4.5, 1, -22.5);
+		color(30, 50, 230);
+		length(0.51);
+	} End of 4x4 level
+	cube {
+		origin(2, 0, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 0, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 0, -20);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 0, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 0, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 0, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2, 0, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3, 0, -22);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(4, 0, -22);
+		color(30, 50, 230);
+		length(0.51);
+	} End of 3x3 level
+	cube {
+		origin(2.5, -1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, -1, -20.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(2.5, -1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	}
+	cube {
+		origin(3.5, -1, -21.5);
+		color(30, 50, 230);
+		length(0.51);
+	} End of 2x2 level
+	cube {
+		origin(3, -2, -21);
+		color(30, 50, 230);
+		length(0.51);
+	}
+}

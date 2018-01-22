@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/20 21:20:03 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/22 00:03:49 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_union	getplane(t_rt *rt)
 	while (get_next_line(rt->fd, &line) > 0)
 	{
 		if (ft_strstr(line, "origin") && ++g_flag)
-			u.plane.norm = getxyz(line);
+			u.plane.norm = normalize(getxyz(line));
 		else if (ft_strstr(line, "color") && ++g_flag)
 			u.plane.clr = getcolor(line);
 		else if (ft_strstr(line, "distance") && ++g_flag)
@@ -98,7 +98,7 @@ t_union	getcylinder(t_rt *rt)
 		if (ft_strstr(line, "origin") && ++g_flag)
 			u.cylinder.pos = getxyz(line);
 		else if (ft_strstr(line, "direction") && ++g_flag)
-			u.cylinder.dir = getxyz(line);
+			u.cylinder.dir = normalize(getxyz(line));
 		else if (ft_strstr(line, "color") && ++g_flag)
 			u.cylinder.clr = getcolor(line);
 		else if (ft_strstr(line, "radius") && ++g_flag)

@@ -85,10 +85,10 @@ RT/[GIT REPO]
 
 
 #### Features Outlined
-Feautres are outlined in the first window upon execution of the any of the valid scenes. These features let you control the following:
-* Translation/Rotation (Moving objects on the x, y, z plane)
+Feautres are outlined in the first window upon execution of the any of the valid scenes. These features let you control the following (to modify object first click on it):
+* Translation/Rotation (Moving sphere, cone, cylinder on the x, y, z plane)
 	* (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
-* Zooming to Center [8 (INCREASE) || 2 (DECREASE)]
+* Moving plane to center [8 (INCREASE) || 2 (DECREASE)]
 * Reflective Property of each object [Left (OFF) || Right (ON)]
 * Size of Objects [Up Key (INCREASE) || Down Key (DECREASE)]
 * Brightness [+ (INCREASE) || - (DECREASE)]
@@ -97,15 +97,14 @@ Feautres are outlined in the first window upon execution of the any of the valid
 * Specular Intensity [ <a href="https://en.wikipedia.org/wiki/Specular_reflection" target="">Link</a> ]
 * Diffuse Intensity [<a href="https://en.wikipedia.org/wiki/Diffuse_reflection" target="">Link</a>]
 * Gloss Intensity [<a href="http://www.raytracegroundup.com/downloads/Chapter25.pdf" target="">Link</a>]
-* Object Present : Cone, Cylinder, Sphere [Required] || Cube [Bonus]
-* Multithreading (pthread library) with mutexes to handle recursive calls on every pixel for reflection.
+* Object Present : Cone, Cylinder, Sphere, Plane [Required] || Cube [Bonus]
+* Multithreading (pthread library) for parallel programming.
 
 
 ## Algorithms and Resources
-| Equation                | About Algorithm  | Functions Functions | In-files Location |
+| Equation / Resource     | About | Functions Functions | In-files Location |
 | :---                    |     :---:        |     :---:           |            ---:   |
 | Ld = kd I max(0, n · l) | <a href="http://www.cs.cornell.edu/courses/cs4620/2010fa/lectures/09shadingBasics.pdf" target="blank">Lambertian Shading</a> | Diffuse Reflected = (Diffuse Coefficient) * (Illumination Source) * ((light vector) * (per unit area = cos0) :: (normal vector <-> light vector = cos0)) |  light.c |
-|                         | About Algorithm  | Functions Functions            |   In-files Location      |
-| r = v + 2((n · v)n − v) | About Algorithm  | Functions Functions |   In-files Location      |
-| = 2(n · v)n − v         | About Algorithm  | Functions Functions |   In-files Location      |
-| git diff                | About Algorithm  | Functions Functions |   In-files Location      |
+| Recursive Call | About Algorithm  |     <a href="http://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/reflection_refraction.pdf" target="">Reflective Algorithm Pseudo Code</a>        |   scene.c   |
+| Reference for Geometric Math | Khan Academy  | Good place to learn vector math and the algorithms related to progducing this product |   ---     |
+| Scratch Pixel | [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing" target="">Link</a>]  | Easy to understand walk through on how raytracing works. Very good resource to reference. |   ---     |

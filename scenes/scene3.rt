@@ -5,7 +5,7 @@ scene {
 	}
 	light {
 		lights(1);
-		origin(6, -5, 6);
+		origin(5, -2, 4);
 	}
 	plane {
 		origin(0, 1, 0);

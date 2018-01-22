@@ -5,7 +5,7 @@ scene {
 	}
 	light {
 		lights(1);
-		origin(60, -30, 60);
+		origin(20, -6, 8);
 	}
 	plane {
 		origin(0, 1, 0);
@@ -14,7 +14,7 @@ scene {
 	}
 	cylinder {
 		origin(0, 0, 0);
-		direction(0, 1, 0);
+		direction(1, 1, 0);
 		color(230, 200, 50);
 		radius(1);
 	}

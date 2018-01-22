@@ -8,6 +8,7 @@
   <img src="info/6.png" width="200"/>
   <img src="info/7.png" width="200"/>
   <img src="info/8.png" width="200"/>
+  <img src="info/9.png" width="200"/>
   <img src="info/5.png" width="200"/>
 </p>
 

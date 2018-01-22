@@ -5,7 +5,12 @@ scene {
 	}
 	light {
 		lights(1);
-		origin(60, -30, 60);
+		origin(5, -2, 4);
+	}
+	plane {
+		origin(0, 1, 0);
+		color(0, 180, 190);
+		distance(1);
 	}
 	cone {
 		origin(0, 0, 0);

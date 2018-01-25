@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/20 21:13:52 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 00:00:18 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ void		getcam(t_rt *rt)
 			rt_error(2);
 		ft_strdel(&line);
 	}
-	if (g_flag != 3)
-		rt_error(2);
+	(g_flag != 3) ? rt_error(2) : 0;
 	rt->cam.dir = vdiff(rt->cam.pos, rt->cam.look_at);
 	rt->cam.dir = normalize(invert(rt->cam.dir));
-	rt->cam.right = vcross((t_vect){0, 1, 0}, rt->cam.dir);
+	rt->cam.right = vcross(rt->cam.dir.x == 0.0 && rt->cam.dir.z == 0.0 ?
+			(t_vect){1, 0, 0} : (t_vect){0, 1, 0}, rt->cam.dir);
 	rt->cam.right = normalize(rt->cam.right);
 	rt->cam.down = vcross(rt->cam.right, rt->cam.dir);
 }

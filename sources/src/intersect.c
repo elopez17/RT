@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:30:17 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 21:28:16 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/24 23:53:11 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,15 @@ double			findintersphere(t_ray ray, t_union u)
 
 double			findintercube(t_ray ray, t_union u)
 {
-	double	tmp;
 	t_vect	min;
 	t_vect	max;
 
-	min.x = (u.cube.min.x - ray.origin.x) / ray.dir.x;
-	max.x = (u.cube.max.x - ray.origin.x) / ray.dir.x;
-	min.y = (u.cube.min.y - ray.origin.y) / ray.dir.y;
-	max.y = (u.cube.max.y - ray.origin.y) / ray.dir.y;
-	min.z = (u.cube.min.z - ray.origin.z) / ray.dir.z;
-	max.z = (u.cube.max.z - ray.origin.z) / ray.dir.z;
+	min.x = (u.cube.min.x - ray.origin.x) / (ray.dir.x == 0 ? EPS : ray.dir.x);
+	max.x = (u.cube.max.x - ray.origin.x) / (ray.dir.x == 0 ? EPS : ray.dir.x);
+	min.y = (u.cube.min.y - ray.origin.y) / (ray.dir.y == 0 ? EPS : ray.dir.y);
+	max.y = (u.cube.max.y - ray.origin.y) / (ray.dir.y == 0 ? EPS : ray.dir.y);
+	min.z = (u.cube.min.z - ray.origin.z) / (ray.dir.z == 0 ? EPS : ray.dir.z);
+	max.z = (u.cube.max.z - ray.origin.z) / (ray.dir.z == 0 ? EPS : ray.dir.z);
 	if (min.x > max.x)
 		SWAPD(min.x, max.x);
 	if (min.y > max.y)

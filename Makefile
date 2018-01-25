@@ -16,7 +16,7 @@ PURP	= \x1b[35m
 TURQ	= \x1b[36m
 WHT		= \x1b[37m
 CC		= gcc
-CFLAGS	= -Wall -Wextra -g -w -lpthread -std=c99
+CFLAGS	= -Wall -Wextra -g -w -lpthread -std=c99 -O3
 SRC		= $(shell ls sources/src | grep -E ".+\.c")
 ODIR	:= sources/obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 22:20:39 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 01:39:31 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ typedef struct			s_objects
 	t_vect				norm;
 	t_rgb				clr;
 	int					shine;
+	int					transp;
+	double				ior;
 	double				spec;
 	double				diff;
 	double				m;

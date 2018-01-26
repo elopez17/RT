@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 06:01:53 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 20:21:04 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 									, intersect->dir}, index, rt, depth + 1);
 	}
 	if (!tmp->refract)
-		return (colorscalar(coloravg(final[0], final[1]), rt->bright));
+		return (colorscalar(coloravg(colorscalar(final[0], tmp->io_refl), final[1]), rt->bright));
 	if (vdot(tmp->norm, intersect->dir) > 0) tmp->norm = invert(tmp->norm), inside = 1;
 	eta = (inside) ? tmp->ior : (1 / tmp->ior);
 	cosi = -vdot(intersect->dir, tmp->norm);
@@ -121,6 +121,7 @@ void			*scene(void *rt)
 									color_at(&intersection, index, p_rt, 0));
 		}
 	}
+	ft_printf("%{GR}%s", "####################");
 	pthread_mutex_unlock(&g_lock);
 	pthread_exit(0);
 	return (rt);

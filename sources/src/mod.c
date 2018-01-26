@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/21 18:04:06 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 21:03:21 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,19 @@ static void	mod_plane(int key, t_obj **obj)
 
 void		move_obj(int key, t_obj **object, int toggle)
 {
+	(key == KEY0 && toggle && (*object)->io_refl > 0.0) ? (*object)->io_refl -= 0.1 : 0;
+	(key == KEYDOT && toggle && (*object)->io_refl < 1.0) ? (*object)->io_refl += 0.1 : 0;
+	(key == KEY0 && !toggle && (*object)->ior >= 1.1) ? (*object)->ior -= 0.1 : 0;
+	(key == KEYDOT && !toggle && (*object)->ior <= 1.9) ? (*object)->ior += 0.1 : 0;
+	(key == KEYRIGHT) ? (*object)->reflect ^= 1 : 0;
+	if (key == KEYRIGHT)
+		(*object)->refract = (!(*object)->reflect) ? 1 : 0;
 	if (key == KEYS && (*object)->spec < 1.0f)
 		(*object)->spec += 0.3;
 	else if (key == KEYX && (*object)->spec > 0.0f)
 		(*object)->spec -= 0.3;
-	else if (key == KEYLEFT && (*object)->reflect == 1)
-		--(*object)->reflect;
-	else if (key == KEYRIGHT && (*object)->reflect == 0)
-		++(*object)->reflect;
+	else if (key == KEYLEFT && ((*object)->reflect = 0) == 0)
+		(*object)->refract = 0;
 	else if (key == KEYD && (*object)->diff < 1.0f)
 		(*object)->diff += 0.3;
 	else if (key == KEYC && (*object)->diff > 0.0f)

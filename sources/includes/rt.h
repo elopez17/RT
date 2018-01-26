@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 01:39:31 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 21:09:03 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define MIN(a, b) (a < b ? a : b)
 # define PI 3.14159265
 # define EPS 0.00000001
+# define KEYDOT 65
+# define KEYENT 76
+# define KEY0 82
 # define KEY1 83
 # define KEY2 84
 # define KEY3 85
@@ -173,6 +176,7 @@ typedef struct			s_objects
 	int					reflect;
 	int					refract;
 	double				ior;
+	double				io_refl;
 	double				spec;
 	double				diff;
 	double				m;
@@ -261,5 +265,6 @@ int						findintersect(t_ray *intersect, t_ray ray, t_rt *rt);
 void					mod_cylind(int key, t_obj **obj, int toggle);
 void					mod_cube(int key, t_obj **obj, int toggle);
 void					mod_cone(int key, t_obj **obj, int toggle);
+void					inv_filt(char **image);
 
 #endif

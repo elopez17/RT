@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/19 15:51:53 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 19:30:46 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	multithread(t_rt *rt)
 	while (++t < THREADS)
 		if ((rc = pthread_join(thread[t], NULL)))
 			exit(-1);
+	ft_printf("\n");
 	pthread_mutex_destroy(&g_lock);
 }

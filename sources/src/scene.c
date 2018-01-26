@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 23:03:48 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 00:40:41 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 	double	cosi;
 	int		inside = 0;
 
-	if (index == -1 || depth == 5)
+	if (index == -1 || depth == 3)
 		return ((t_rgb){0, 0, 0});
 	tmp = rt->obj;
 	while (--index >= 0)

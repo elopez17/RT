@@ -67,10 +67,10 @@ void		move_obj(int key, t_obj **object, int toggle)
 		(*object)->spec += 0.3;
 	else if (key == KEYX && (*object)->spec > 0.0f)
 		(*object)->spec -= 0.3;
-	else if (key == KEYLEFT && (*object)->shine == 1)
-		--(*object)->shine;
-	else if (key == KEYRIGHT && (*object)->shine == 0)
-		++(*object)->shine;
+	else if (key == KEYLEFT && (*object)->reflect == 1)
+		--(*object)->reflect;
+	else if (key == KEYRIGHT && (*object)->reflect == 0)
+		++(*object)->reflect;
 	else if (key == KEYD && (*object)->diff < 1.0f)
 		(*object)->diff += 0.3;
 	else if (key == KEYC && (*object)->diff > 0.0f)

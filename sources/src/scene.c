@@ -34,9 +34,9 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 	while (++i < rt->nlights)
 		final[0] = coloradd(final[0],
 							addlight(rt, intersect, tmp, rt->light[i]));
-	if (!tmp->shine && !tmp->transp)
+	if (!tmp->reflect && !tmp->refract)
 		return (colorscalar(final[0], rt->bright));
-	if (tmp->shine)
+	if (tmp->reflect)
 	{
 	final[1] = (t_rgb){0, 0, 0};
 	ray[0].origin = intersect->origin;
@@ -46,7 +46,7 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 	final[1] = color_at(&(t_ray){vadd(intersect->origin, vmult(tmp->norm, 1e-4))
 									, intersect->dir}, index, rt, depth + 1);
 	}
-	if (!tmp->transp)
+	if (!tmp->refract)
 		return (colorscalar(coloravg(final[0], final[1]), rt->bright));
 	if (vdot(tmp->norm, intersect->dir) > 0) tmp->norm = invert(tmp->norm), inside = 1;
 	eta = (inside) ? tmp->ior : (1 / tmp->ior);
@@ -57,7 +57,7 @@ vmult(tmp->norm, (eta * cosi - sqrt(1.0 - eta * eta * (1.0 - cosi * cosi))))));
 	index = findintersect(intersect, ray[1], rt);
 	final[2] = color_at(&(t_ray){vdiff(intersect->origin, vmult(tmp->norm, 1e-4))
 									, intersect->dir}, index, rt, depth + 1);
-	if (!tmp->shine)
+	if (!tmp->reflect)
 		return (colorscalar(final[2], rt->bright));
 	return (colorscalar(colorscalar(coloradd(coloradd(final[0], final[1]),
 						final[2]), 0.3333), rt->bright));

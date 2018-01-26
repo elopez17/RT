@@ -170,8 +170,8 @@ typedef struct			s_objects
 	double				(*inter)();
 	t_vect				norm;
 	t_rgb				clr;
-	int					shine;
-	int					transp;
+	int					reflect;
+	int					refract;
 	double				ior;
 	double				spec;
 	double				diff;

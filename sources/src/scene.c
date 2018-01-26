@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 20:21:04 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/25 23:03:48 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void			*scene(void *rt)
 									color_at(&intersection, index, p_rt, 0));
 		}
 	}
-	ft_printf("%{GR}%s", "####################");
+	ft_printf("%{gr}%s", "####################");
 	pthread_mutex_unlock(&g_lock);
 	pthread_exit(0);
 	return (rt);

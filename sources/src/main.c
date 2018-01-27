@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/19 15:51:53 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 18:02:05 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->current = (*rt)->obj;
 	(*rt)->nodes = 0;
 	(*rt)->nlights = 0;
-	(*rt)->bright = 1.0f;
 	(*rt)->toggle = 0;
 	(*rt)->cam.pos = (t_vect){0, -3, 5};
 	(*rt)->cam.look_at = (t_vect){0, 0, 0};

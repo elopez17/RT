@@ -6,13 +6,14 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/25 19:30:46 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 19:25:36 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
 pthread_mutex_t	g_lock;
+static int		g_count = 0;
 
 void	multithread(t_rt *rt)
 {
@@ -36,6 +37,6 @@ void	multithread(t_rt *rt)
 	while (++t < THREADS)
 		if ((rc = pthread_join(thread[t], NULL)))
 			exit(-1);
-	ft_printf("\n");
+	(++g_count == 1) ? ft_printf("\n") : 0;
 	pthread_mutex_destroy(&g_lock);
 }

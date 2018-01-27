@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 21:03:21 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 18:08:47 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,36 +61,39 @@ static void	mod_plane(int key, t_obj **obj)
 		(*obj)->clr.blue -= 20;
 }
 
-void		move_obj(int key, t_obj **object, int toggle)
+void		move_obj(int key, t_obj **obj, int toggle)
 {
-	(key == KEY0 && toggle && (*object)->io_refl > 0.0) ? (*object)->io_refl -= 0.1 : 0;
-	(key == KEYDOT && toggle && (*object)->io_refl < 1.0) ? (*object)->io_refl += 0.1 : 0;
-	(key == KEY0 && !toggle && (*object)->ior >= 1.1) ? (*object)->ior -= 0.1 : 0;
-	(key == KEYDOT && !toggle && (*object)->ior <= 1.9) ? (*object)->ior += 0.1 : 0;
-	(key == KEYRIGHT) ? (*object)->reflect ^= 1 : 0;
+	(key == KEY0 && (*obj)->reflect && (*obj)->io_refl < 1.0) ?
+		(*obj)->io_refl += 0.1 : 0;
+	(key == KEYDOT && (*obj)->reflect && (*obj)->io_refl > 0.0) ? (*obj)->io_refl -= 0.1 : 0;
+	(key == KEY0 && (*obj)->refract && (*obj)->ior >= 1.1) ? (*obj)->ior -= 0.1 : 0;
+	(key == KEYDOT && (*obj)->refract && (*obj)->ior <= 1.9) ? (*obj)->ior += 0.1 : 0;
+	(key == KEYRIGHT) ? (*obj)->reflect ^= 1 : 0;
+	if (key == KEYPLUS || key == KEYMIN)
+		(*obj)->amb += (key == KEYPLUS) ? 0.03 : -0.03;
 	if (key == KEYRIGHT)
-		(*object)->refract = (!(*object)->reflect) ? 1 : 0;
-	if (key == KEYS && (*object)->spec < 1.0f)
-		(*object)->spec += 0.3;
-	else if (key == KEYX && (*object)->spec > 0.0f)
-		(*object)->spec -= 0.3;
-	else if (key == KEYLEFT && ((*object)->reflect = 0) == 0)
-		(*object)->refract = 0;
-	else if (key == KEYD && (*object)->diff < 1.0f)
-		(*object)->diff += 0.3;
-	else if (key == KEYC && (*object)->diff > 0.0f)
-		(*object)->diff -= 0.3;
-	else if (key == KEYN && (*object)->m > 2)
-		(*object)->m -= 3;
-	else if (key == KEYM && ((*object)->m < 20))
-		(*object)->m += 3;
-	else if ((*object)->type == 1)
-		mod_sphere(key, object);
-	else if ((*object)->type == 2)
-		mod_plane(key, object);
-	else if ((*object)->type == 3)
-		mod_cone(key, object, toggle);
-	else if ((*object)->type == 4)
-		mod_cylind(key, object, toggle);
-	((*object)->type == 5) ? mod_cube(key, object, toggle) : 0;
+		(*obj)->refract = (!(*obj)->reflect) ? 1 : 0;
+	if (key == KEYS && (*obj)->spec < 1.0f)
+		(*obj)->spec += 0.3;
+	else if (key == KEYX && (*obj)->spec > 0.0f)
+		(*obj)->spec -= 0.3;
+	else if (key == KEYLEFT && ((*obj)->reflect = 0) == 0)
+		(*obj)->refract = 0;
+	else if (key == KEYD && (*obj)->diff < 1.0f)
+		(*obj)->diff += 0.3;
+	else if (key == KEYC && (*obj)->diff > 0.0f)
+		(*obj)->diff -= 0.3;
+	else if (key == KEYN && (*obj)->m > 2)
+		(*obj)->m -= 3;
+	else if (key == KEYM && ((*obj)->m < 20))
+		(*obj)->m += 3;
+	else if ((*obj)->type == 1)
+		mod_sphere(key, obj);
+	else if ((*obj)->type == 2)
+		mod_plane(key, obj);
+	else if ((*obj)->type == 3)
+		mod_cone(key, obj, toggle);
+	else if ((*obj)->type == 4)
+		mod_cylind(key, obj, toggle);
+	((*obj)->type == 5) ? mod_cube(key, obj, toggle) : 0;
 }

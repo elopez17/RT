@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/25 20:20:38 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:29:48 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void		getobject(int type, t_union u, t_rt *rt)
 	else if (type == 5)
 		OBJINFO(obj, &cube_norm, &findintercube, u.cube.clr);
 	obj->reflect = (type == 2) ? 0 : 1;
-	obj->ior = 1.3;
-	obj->io_refl = 0.3;
 	obj->refract = 0;
+	obj->ior = 1.3;
+	obj->io_refl = 1.0;
 	obj->spec = 0.3;
 	obj->diff = 0.6;
+	obj->amb = 0.2;
 	obj->m = 4;
 	obj->next = rt->obj;
 	rt->obj = obj;

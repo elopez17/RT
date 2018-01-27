@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/25 21:09:03 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:35:33 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 # define EPS 0.00000001
 # define KEYDOT 65
 # define KEYENT 76
+# define KTOP1 18
+# define KTOP2 19
+# define KTOP3 20
+# define KTOP4 21
+# define KTOP5 23
 # define KEY0 82
 # define KEY1 83
 # define KEY2 84
@@ -179,6 +184,7 @@ typedef struct			s_objects
 	double				io_refl;
 	double				spec;
 	double				diff;
+	double				amb;
 	double				m;
 	struct s_objects	*next;
 }						t_obj;
@@ -200,7 +206,6 @@ typedef struct			s_rt
 	t_vect	*light;
 	int		nlights;
 	int		nodes;
-	double	bright;
 	t_obj	*current;
 	int		toggle;
 	int		ystart;
@@ -213,7 +218,7 @@ void					draw(t_rt *rt);
 void					putpixel(t_rt *rt, int x, int y, t_rgb color);
 int						key_hook(int key, t_rt **rt);
 int						mousepress(int key, int x, int y, t_rt **rt);
-void					move_obj(int key, t_obj **object, int toggle);
+void					move_obj(int key, t_obj **obj, int toggle);
 int						close_hook(t_rt **rt);
 int						expose_hook(t_rt **rt);
 extern inline t_vect	normalize(t_vect v);
@@ -266,5 +271,10 @@ void					mod_cylind(int key, t_obj **obj, int toggle);
 void					mod_cube(int key, t_obj **obj, int toggle);
 void					mod_cone(int key, t_obj **obj, int toggle);
 void					inv_filt(char **image);
+void					addsphere(t_rt **rt);
+void					addplane(t_rt **rt);
+void					addcone(t_rt **rt);
+void					addcylin(t_rt **rt);
+void					addcube(t_rt **rt);
 
 #endif

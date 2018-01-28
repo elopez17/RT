@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/26 21:35:33 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/27 20:12:09 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ typedef struct			s_rt
 void					multithread(t_rt *rt);
 void					controls(t_rt *rt);
 void					draw(t_rt *rt);
-void					putpixel(t_rt *rt, int x, int y, t_rgb color);
+extern inline void		putpixel(t_rt *rt, int x, int y, t_rgb color);
 int						key_hook(int key, t_rt **rt);
 int						mousepress(int key, int x, int y, t_rt **rt);
 void					move_obj(int key, t_obj **obj, int toggle);
@@ -232,8 +232,10 @@ extern inline t_vect	vadd(t_vect v1, t_vect v2);
 extern inline t_vect	vmult(t_vect v, double scalar);
 extern inline t_vect	vdiv(t_vect v, double denominator);
 extern inline t_vect	vdiff(t_vect v1, t_vect v2);
-void					set_ray_xy(t_rt *rt, t_ray *ray, t_xy *pixel);
+extern inline void		set_ray_xy(t_rt *rt, t_ray *ray, t_xy *pixel);
 int						winningobject(double *intersects, int nodes);
+t_rgb					refl_refr(t_obj *tmp, t_ray *intersect, t_rt *rt,
+		int depth);
 double					findinterplane(t_ray ray, t_union u);
 double					findintersphere(t_ray ray, t_union u);
 double					findintercone(t_ray ray, t_union u);

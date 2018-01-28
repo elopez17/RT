@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/26 18:01:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/27 17:55:12 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 		intersects[d.i] = tmp->inter(shadow, tmp->u);
 	}
 	while (--d.i >= 0)
-		if (intersects[d.i] >= EPS && intersects[d.i] < d.dist_mag - 0.005)
+		if (intersects[d.i] >= EPS && intersects[d.i] < d.dist_mag)
 		{
 			ft_memdel((void**)&intersects);
 			return (lighting(obj, intersect, light, 1));

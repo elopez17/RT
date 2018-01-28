@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/26 19:25:36 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/27 20:37:06 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	multithread(t_rt *rt)
 
 	t = -1;
 	pthread_mutex_init(&g_lock, NULL);
+	(++g_count == 1) ? ft_printf("%{BU}[") : 0;
 	while (++t < THREADS)
 	{
 		ft_memcpy((void*)&(rts[t]), (void*)rt, sizeof(t_rt));
@@ -37,6 +38,6 @@ void	multithread(t_rt *rt)
 	while (++t < THREADS)
 		if ((rc = pthread_join(thread[t], NULL)))
 			exit(-1);
-	(++g_count == 1) ? ft_printf("\n") : 0;
+	(g_count == 1) ? ft_printf("%{BU}]\n") : 0;
 	pthread_mutex_destroy(&g_lock);
 }

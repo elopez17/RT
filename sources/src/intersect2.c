@@ -6,11 +6,40 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:06:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/20 19:51:52 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/27 19:56:10 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define SWAPD(a, b)({double tmp = a; a = b; b = tmp;})
+
+double			findintercube(t_ray ray, t_union u)
+{
+	t_vect	min;
+	t_vect	max;
+
+	min.x = (u.cube.min.x - ray.origin.x) / (ray.dir.x == 0 ? EPS : ray.dir.x);
+	max.x = (u.cube.max.x - ray.origin.x) / (ray.dir.x == 0 ? EPS : ray.dir.x);
+	min.y = (u.cube.min.y - ray.origin.y) / (ray.dir.y == 0 ? EPS : ray.dir.y);
+	max.y = (u.cube.max.y - ray.origin.y) / (ray.dir.y == 0 ? EPS : ray.dir.y);
+	min.z = (u.cube.min.z - ray.origin.z) / (ray.dir.z == 0 ? EPS : ray.dir.z);
+	max.z = (u.cube.max.z - ray.origin.z) / (ray.dir.z == 0 ? EPS : ray.dir.z);
+	if (min.x > max.x)
+		SWAPD(min.x, max.x);
+	if (min.y > max.y)
+		SWAPD(min.y, max.y);
+	if ((min.x > max.y) || (min.y > max.x))
+		return (-1);
+	(min.y > min.x) ? min.x = min.y : 0;
+	(max.y < max.x) ? max.x = max.y : 0;
+	if (min.z > max.z)
+		SWAPD(min.z, max.z);
+	if ((min.x > max.z) || (min.z > max.x))
+		return (-1);
+	(min.z > min.x) ? min.x = min.z : 0;
+	(max.z < max.x) ? max.x = max.z : 0;
+	return (pickinter(min.x, max.x));
+}
 
 double		findintercone(t_ray ray, t_union u)
 {

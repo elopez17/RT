@@ -1,5 +1,5 @@
 <h1 align="center">Raytracer Project for RT @42</h1>
-<h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a></h4>
+<h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a> & <a href="https://github.com/giacomoguiulfo" target="blank">Giacomo Guiulfo</a></h4>
 
 <p align="center">
   <img src="info/1.png" width="200"/>

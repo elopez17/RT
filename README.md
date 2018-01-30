@@ -99,6 +99,7 @@ Feautres are outlined in the first window upon execution of the any of the valid
 	* (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
 * Moving plane to center [8 (INCREASE) || 2 (DECREASE)]
 * NonReflection / Reflective / Refraction Property of each object [Left (OFF) || Right (ON)]
+  * 0 / . :: to change Reflective index or Refraction depending on state.
 * Size of Objects [Up Key (INCREASE) || Down Key (DECREASE)]
 * Changing ambient coefficient (brightness) [+ (INCREASE) || - (DECREASE)]
 * Number of Light Sources and Location(Access through the [.eg]  `vim scenes/scene8.rt`)
@@ -118,3 +119,5 @@ Feautres are outlined in the first window upon execution of the any of the valid
 | Reference for Geometric Math | <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces">Khan Academy</a>  | Good place to learn vector math and the algorithms related to progducing this product |   ---     |
 | Scratch Pixel | [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing" target="">Link</a>]  | Easy to understand walk through on how raytracing works. Very good resource to reference. |   ---     |
 | Refraction | [<a href="https://www.youtube.com/watch?v=yfawFJCRDSE" target="">Snell's Law</a>]  | Refraction Video |   ---     |
+| Shadow Acne and Bias | [<a href="https://www.youtube.com/watch?v=yfawFJCRDSE" target="">LINK</a>]  | Helps avoid bad shadowing by using bias (ours .005) |   ---     |
+| Multithreading us pThread library | [<a href="https://www.youtube.com/watch?v=yfawFJCRDSE" target="">LINK</a>]  | Helps avoid bad shadowing by using bias (ours .005) |   ---     |

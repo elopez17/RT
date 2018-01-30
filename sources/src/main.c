@@ -20,7 +20,7 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->w.height = 800;
 	(*rt)->win = mlx_new_window((*rt)->mlx, (*rt)->w.width, (*rt)->w.height,
 										"elopez & oabdalha @ 42");
-	(*rt)->win2 = mlx_new_window((*rt)->mlx, (*rt)->w.width, 575,
+	(*rt)->win2 = mlx_new_window((*rt)->mlx, (*rt)->w.width, 800,
 										"Controls");
 	(*rt)->img = mlx_new_image((*rt)->mlx, (*rt)->w.width, (*rt)->w.height);
 	(*rt)->addr = mlx_get_data_addr((*rt)->img, &((*rt)->bpp), &((*rt)->len),

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: elopez <elopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/29 21:09:00 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 11:08:14 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,28 @@ int		mousepress(int key, int x, int y, t_rt **rt)
 	return (0);
 }
 
+int (*filter_ptr[]) (char *iimage) =
+{
+	&inv_filt,
+	&filter_two,
+	&filter_three,
+	&filter_four,
+	&filter_five,
+	&filter_six,
+	&filter_seven,
+	NULL,
+};
+
+void		swap_filter(char *image)
+{
+	static int i = 0;
+
+	if (filter_ptr[i])
+		(*filter_ptr[i++])(image);
+	else
+		i = 0;
+}
+
 int		key_hook(int key, t_rt **rt)
 {
 	t_obj *tmp;
@@ -66,7 +88,7 @@ int		key_hook(int key, t_rt **rt)
 	else if ((*rt)->current != NULL)
 		move_obj(key, &(*rt)->current, (*rt)->toggle);
 	multithread(*rt);
-	(key == KEYENT) ? inv_filt((*rt)->addr) : 0;
+	(key == KEYENT) ? swap_filter((*rt)->addr) : 0;
 	draw(*rt);
 	return (0);
 }

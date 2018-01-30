@@ -50,13 +50,13 @@ static void	putbutton_w(t_rt *rt, int x, int y)
 	i = -1;
 	while (++i < 110)
 	{
-		if (i < 110)
+		if (i < 50)
 		{
-			mlx_pixel_put(rt->mlx, rt->win2, x + i, y, 0xf0f0f0);
-			mlx_pixel_put(rt->mlx, rt->win2, x + i, y + 50, 0xf0f0f0);
+			mlx_pixel_put(rt->mlx, rt->win2, x + 110, y + i, 0xf0f0f0);
+			mlx_pixel_put(rt->mlx, rt->win2, x, y + i, 0xf0f0f0);
 		}
-		mlx_pixel_put(rt->mlx, rt->win2, x, y + i, 0xf0f0f0);
-		mlx_pixel_put(rt->mlx, rt->win2, x + 110, y + i, 0xf0f0f0);
+		mlx_pixel_put(rt->mlx, rt->win2, x + i, y, 0xf0f0f0);
+		mlx_pixel_put(rt->mlx, rt->win2, x + i, y + 50, 0xf0f0f0);
 	}
 }
 
@@ -76,6 +76,8 @@ static void	putnumpad(t_rt *rt)
 	putbutton(rt, 610, 170);
 	putbutton(rt, 670, 170);
 	putbutton_l(rt, 730, 170);
+	putbutton_w(rt, 550, 230);
+	putbutton(rt, 670, 230);
 	mlx_string_put(rt->mlx, rt->win2, 563, 63, 0x00ff0000, "-7");
 	mlx_string_put(rt->mlx, rt->win2, 623, 63, 0x0000ff00, "+8");
 	mlx_string_put(rt->mlx, rt->win2, 683, 63, 0x0000ff00, "+9");
@@ -85,6 +87,8 @@ static void	putnumpad(t_rt *rt)
 	mlx_string_put(rt->mlx, rt->win2, 683, 123, 0x0000ff00, "+6");
 	mlx_string_put(rt->mlx, rt->win2, 743, 123, 0x0000ff00, "+");
 	mlx_string_put(rt->mlx, rt->win2, 743, 183, 0x0000ff00, "ENT");
+	mlx_string_put(rt->mlx, rt->win2, 623, 243, 0x00ff0000, "-0");
+	mlx_string_put(rt->mlx, rt->win2, 683, 243, 0x0000ff00, "+.");
 	mlx_string_put(rt->mlx, rt->win2, 563, 183, 0x00ff0000, "-1");
 	mlx_string_put(rt->mlx, rt->win2, 623, 183, 0x00ff0000, "-2");
 	mlx_string_put(rt->mlx, rt->win2, 683, 183, 0x0000ff00, "+3");
@@ -104,6 +108,16 @@ static void	putkeybrd(t_rt *rt)
 	putbutton(rt, 620, 570);
 	putbutton(rt, 680, 570);
 	putbutton(rt, 740, 570);
+	putbutton(rt, 480, 390);
+	putbutton(rt, 420, 390);
+	putbutton(rt, 360, 390);
+	putbutton(rt, 300, 390);
+	putbutton(rt, 240, 390);
+	mlx_string_put(rt->mlx, rt->win2, 258, 403, 0x00ff0000, "1");
+	mlx_string_put(rt->mlx, rt->win2, 318, 403, 0x00ff0000, "2");
+	mlx_string_put(rt->mlx, rt->win2, 378, 403, 0x00ff0000, "3");
+	mlx_string_put(rt->mlx, rt->win2, 438, 403, 0x00ff0000, "4");
+	mlx_string_put(rt->mlx, rt->win2, 498, 403, 0x00ff0000, "5");
 	mlx_string_put(rt->mlx, rt->win2, 473, 463, 0x00ff0000, "-E");
 	mlx_string_put(rt->mlx, rt->win2, 533, 463, 0x0000ff00, "+R");
 	mlx_string_put(rt->mlx, rt->win2, 533, 523, 0x00ff0000, "-F");
@@ -132,10 +146,14 @@ static void	putinfo(t_rt *rt)
 "Use '2' / '8' to move plane nearer/further from center");
 	mlx_string_put(rt->mlx, rt->win2, 10, 195, 0x00f0f0f0,
 "Use '5' to toggle between rotation/translation");
-mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
+	mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
 "Using X,Y,Z-axis buttons. Applicable to cone/cylinder");
-mlx_string_put(rt->mlx, rt->win2, 10, 235, 0x00f0f0f0,
+	mlx_string_put(rt->mlx, rt->win2, 10, 235, 0x00f0f0f0,
 "Using ENT / any key - Invert Color");
+	mlx_string_put(rt->mlx, rt->win2, 10, 295, 0x00f0f0f0,
+"Using 1-5 on the keys on top QWERTY /");
+	mlx_string_put(rt->mlx, rt->win2, 10, 315, 0x00f0f0f0,
+"insert sphere, plane, cone, cylinder, cube respectively.");
 	mlx_string_put(rt->mlx, rt->win2, 10, 570, 0x00ff0000,
 "Use 'E' / 'R' to modify intensity of Red");
 	mlx_string_put(rt->mlx, rt->win2, 10, 595, 0x0000ff00,

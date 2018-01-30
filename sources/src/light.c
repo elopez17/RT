@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 12:36:00 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 12:47:42 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, double shadow)
 			transp = 1;
 	if (shadow == 0)
 	{
-		return (coloradd(colorscalar(obj->clr, (obj->amb * transp) + obj->diff
-	* cos_a), colorscalar((t_rgb){100, 100, 100}, obj->spec * pow(vdot(obj->norm
+		return (cadd(cscalar(obj->clr, (obj->amb * transp) + obj->diff
+	* cos_a), cscalar((t_rgb){100, 100, 100}, obj->spec * pow(vdot(obj->norm
 	, h), obj->m))));
 	}
 	if (shadow <= 0.9)
 	{
-		return (colorscalar(obj->clr, (obj->amb * transp) > 1 ? 1 :
+		return (cscalar(obj->clr, (obj->amb * transp) > 1 ? 1 :
 												(obj->amb * transp)));
 	}
-	return (colorscalar(obj->clr, obj->amb));
+	return (cscalar(obj->clr, obj->amb));
 }
 
 t_rgb	addlight(t_rt *rt, t_ray *inter, t_obj *obj, t_vect light)

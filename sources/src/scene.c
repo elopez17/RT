@@ -6,11 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 11:52:31 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:02:31 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define IRFL tmp->io_refl
+#define ITRN tmp->io_trans
 
 pthread_mutex_t g_lock;
 static int		g_count = -1;
@@ -29,17 +31,14 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 	i = -1;
 	final[0] = (t_rgb){0, 0, 0};
 	while (++i < rt->nlights)
-		final[0] = coloradd(final[0],
-								addlight(rt, intersect, tmp, rt->light[i]));
+		final[0] = cadd(final[0], addlight(rt, intersect, tmp, rt->light[i]));
 	if (!tmp->reflect && !tmp->refract && !tmp->transparent)
 		return (final[0]);
 	final[1] = refl_refr(tmp, intersect, rt, depth);
 	if (tmp->reflect)
-		return (coloravg(colorscalar(final[0], tmp->io_refl),
-							colorscalar(final[1], 2 - tmp->io_refl)));
+		return (cavg(cscalar(final[0], IRFL), cscalar(final[1], 2 - IRFL)));
 	if (tmp->transparent)
-		return (coloravg(colorscalar(final[0], tmp->io_trans),
-							colorscalar(final[1], 2 - tmp->io_trans)));
+		return (cavg(cscalar(final[0], ITRN), cscalar(final[1], 2 - ITRN)));
 	return (final[1]);
 }
 
@@ -51,28 +50,22 @@ t_rgb			refl_refr(t_obj *tmp, t_ray *intersect, t_rt *rt, int depth)
 	double	inside;
 	int		index;
 
+	ray.origin = intersect->origin;
 	if (tmp->transparent)
-	{
-		ray.origin = intersect->origin;
 		ray.dir = intersect->dir;
-		index = findintersect(intersect, ray, rt);
-		return (color_at(intersect, index, rt, depth + 1));
-	}
-	if (tmp->reflect)
-	{
-		ray.origin = intersect->origin;
+	else if (tmp->reflect)
 		ray.dir = vadd(intersect->dir,
 				vmult(vmult(tmp->norm, 2), -vdot(tmp->norm, intersect->dir)));
-		index = findintersect(intersect, ray, rt);
-		return (color_at(intersect, index, rt, depth + 1));
+	else if (tmp->refract)
+	{
+		if ((inside = vdot(tmp->norm, intersect->dir)) > 0)
+			tmp->norm = invert(tmp->norm);
+		eta = (inside > 0) ? tmp->ior : (1 / tmp->ior);
+		cosi = -vdot(intersect->dir, tmp->norm);
+		ray.origin = vdiff(intersect->origin, vmult(tmp->norm, 1e-4));
+		ray.dir = normalize(vadd(vmult(intersect->dir, eta), vmult(tmp->norm,
+				(eta * cosi - sqrt(1.0 - eta * eta * (1.0 - cosi * cosi))))));
 	}
-	if ((inside = vdot(tmp->norm, intersect->dir)) > 0)
-		tmp->norm = invert(tmp->norm);
-	eta = (inside > 0) ? tmp->ior : (1 / tmp->ior);
-	cosi = -vdot(intersect->dir, tmp->norm);
-	ray.origin = vdiff(intersect->origin, vmult(tmp->norm, 1e-4));
-	ray.dir = normalize(vadd(vmult(intersect->dir, eta),
-vmult(tmp->norm, (eta * cosi - sqrt(1.0 - eta * eta * (1.0 - cosi * cosi))))));
 	index = findintersect(intersect, ray, rt);
 	return (color_at(intersect, index, rt, depth + 1));
 }

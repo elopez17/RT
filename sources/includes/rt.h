@@ -6,7 +6,7 @@
 /*   By: eLopez <eLopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 12:32:25 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 12:46:53 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,10 +250,10 @@ extern inline t_vect	plane_norm(t_union u, t_vect point);
 extern inline t_vect	cone_norm(t_union u, t_vect point);
 extern inline t_vect	cylinder_norm(t_union u, t_vect point);
 void					*scene(void *rt);
-extern inline t_rgb		colorscalar(t_rgb color, double scalar);
-extern inline t_rgb		coloradd(t_rgb clr1, t_rgb clr2);
-extern inline t_rgb		colormult(t_rgb clr1, t_rgb clr2);
-extern inline t_rgb		coloravg(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb		cscalar(t_rgb color, double scalar);
+extern inline t_rgb		cadd(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb		cmult(t_rgb clr1, t_rgb clr2);
+extern inline t_rgb		cavg(t_rgb clr1, t_rgb clr2);
 void					rt_error(int code);
 void					parsefile(t_rt *rt);
 t_vect					getxyz(const char *line);

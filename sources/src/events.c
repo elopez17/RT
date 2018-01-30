@@ -6,7 +6,7 @@
 /*   By: elopez <elopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/30 11:41:11 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:09:29 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		mousepress(int key, int x, int y, t_rt **rt)
 	return (0);
 }
 
-int		(*filter_ptr[]) (char *iimage) =
+int		(*g_filter_ptr[]) (char *iimage) =
 {
 	&inv_filt,
 	&filter_two,
@@ -54,8 +54,8 @@ void	swap_filter(char *image)
 {
 	static int i = 0;
 
-	if (filter_ptr[i])
-		(*filter_ptr[i++])(image);
+	if (g_filter_ptr[i])
+		(*g_filter_ptr[i++])(image);
 	else
 		i = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 18:47:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/29 14:31:42 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/29 23:09:28 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ static t_rgb	color_at(t_ray *intersect, int index, t_rt *rt, int depth)
 	while (++i < rt->nlights)
 		final[0] = coloradd(final[0],
 								addlight(rt, intersect, tmp, rt->light[i]));
-	if (!tmp->reflect && !tmp->refract)
+	if (!tmp->reflect && !tmp->refract && !tmp->transparent)
 		return (final[0]);
 	final[1] = refl_refr(tmp, intersect, rt, depth);
 	if (tmp->reflect)
 		return (coloravg(colorscalar(final[0], tmp->io_refl),
 							colorscalar(final[1], 2 - tmp->io_refl)));
+	if (tmp->transparent)
+		return (coloravg(colorscalar(final[0], tmp->io_trans),
+							colorscalar(final[1], 2 - tmp->io_trans)));
 	return (final[1]);
 }
 
@@ -48,6 +51,13 @@ t_rgb			refl_refr(t_obj *tmp, t_ray *intersect, t_rt *rt, int depth)
 	double	inside;
 	int		index;
 
+	if (tmp->transparent)
+	{
+		ray.origin = intersect->origin;
+		ray.dir = intersect->dir;
+		index = findintersect(intersect, ray, rt);
+		return (color_at(intersect, index, rt, depth + 1));
+	}
 	if (tmp->reflect)
 	{
 		ray.origin = intersect->origin;

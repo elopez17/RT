@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/27 17:55:12 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/29 18:58:59 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, int shadow)
 	t_vect	h;
 	double	cos_a;
 
-	obj->norm = obj->normal(obj->u, intersect->origin);
 	light_dir = normalize(vdiff(light, intersect->origin));
 	h = vdiv(vdiff(light_dir, intersect->dir),
 			vlen(vdiff(light_dir, intersect->dir)));
@@ -36,9 +35,11 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 	t_dist	d;
 	double	*intersects;
 
-	shadow.origin = intersect->origin;
-	shadow.dir = normalize(vdiff(light, intersect->origin));
-	d.dist = vdiff(light, intersect->origin);
+	obj->norm = obj->normal(obj->u, intersect->origin);
+	shadow.origin = vadd(intersect->origin, vmult(obj->norm, obj->type == 2 ? 0
+				: 1e-4));
+	d.dist = vdiff(light, shadow.origin);
+	shadow.dir = normalize(d.dist);
 	d.dist_mag = sqrt(pow(d.dist.x, 2) + pow(d.dist.y, 2) + pow(d.dist.z, 2));
 	intersects = (double*)malloc(sizeof(double) * rt->nodes);
 	d.i = -1;
@@ -49,7 +50,7 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 		intersects[d.i] = tmp->inter(shadow, tmp->u);
 	}
 	while (--d.i >= 0)
-		if (intersects[d.i] >= EPS && intersects[d.i] < d.dist_mag)
+		if (intersects[d.i] >= EPS && intersects[d.i] <= d.dist_mag - 1e-4)
 		{
 			ft_memdel((void**)&intersects);
 			return (lighting(obj, intersect, light, 1));

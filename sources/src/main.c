@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/26 18:02:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 14:23:19 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_rt(t_rt **rt, char *file)
 	(*rt)->w.height = 800;
 	(*rt)->win = mlx_new_window((*rt)->mlx, (*rt)->w.width, (*rt)->w.height,
 										"elopez & oabdalha @ 42");
-	(*rt)->win2 = mlx_new_window((*rt)->mlx, (*rt)->w.width, 800,
+	(*rt)->win2 = mlx_new_window((*rt)->mlx, (*rt)->w.width, 730,
 										"Controls");
 	(*rt)->img = mlx_new_image((*rt)->mlx, (*rt)->w.width, (*rt)->w.height);
 	(*rt)->addr = mlx_get_data_addr((*rt)->img, &((*rt)->bpp), &((*rt)->len),

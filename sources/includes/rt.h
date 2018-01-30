@@ -6,7 +6,7 @@
 /*   By: eLopez <eLopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 13:17:16 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 14:34:53 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,6 @@ typedef struct			s_rt
 }						t_rt;
 
 void					multithread(t_rt *rt);
-void					controls(t_rt *rt);
 void					draw(t_rt *rt);
 extern inline void		putpixel(t_rt *rt, int x, int y, t_rgb color);
 int						key_hook(int key, t_rt **rt);
@@ -286,6 +285,11 @@ void					filter_four(char *image);
 void					filter_five(char *image);
 void					filter_six(char *image);
 void					filter_seven(char *image);
+void					controls(t_rt *rt);
+void					putbutton(t_rt *rt, int x, int y);
+void					putbutton_l(t_rt *rt, int x, int y);
+void					putbutton_w(t_rt *rt, int x, int y);
+void					putnumpad(t_rt *rt);
 void					rt_memdel(t_rt **rt);
 
 #endif

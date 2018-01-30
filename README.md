@@ -1,4 +1,4 @@
-<h1 align="center">Raytracer Project for RT @42</h1> 
+<h1 align="center">Raytracer Project for RT @42</h1>
 <h4 align="center">Authors <a href="https://github.com/elopez17" target="blank">Eric Lopez</a> & <a href="https://github.com/obsaa" target="blank">Obsaa Abdalhalim</a></h4>
 
 <p align="center">
@@ -24,7 +24,7 @@ There definitely languages better than C to run a raytracer algorithm eficiently
 #### Program Requirements && Running Executable
 To be able to build and run this program you'll need a macbook, because we didn't make it portable for other systems. As for software Requirements, you'll need in order to compile:
 
-* No specific versions. [Unless you are using a version llvm that shows error using -Werror at compile time, take off or add those flags out of the makefile as needed.] 
+* No specific versions. [Unless you are using a version llvm that shows error using -Werror at compile time, take off or add those flags out of the makefile as needed.]
 * GNU make
 * GCC / CLANG
 * Built using the minilibx library instead of OpenGL graphics library.
@@ -94,9 +94,9 @@ Feautres are outlined in the first window upon execution of the any of the valid
 * Translation/Rotation (Moving sphere, cone, cylinder on the x, y, z plane)
 	* (7/9[X-Axis] || 4/6[Y-Axis] || 1/3[Z-Axis] || 5[Toggle Trans/Rot])
 * Moving plane to center [8 (INCREASE) || 2 (DECREASE)]
-* Reflective Property of each object [Left (OFF) || Right (ON)]
+* NonReflection / Reflective / Refraction Property of each object [Left (OFF) || Right (ON)]
 * Size of Objects [Up Key (INCREASE) || Down Key (DECREASE)]
-* Brightness [+ (INCREASE) || - (DECREASE)]
+* Changing ambient coefficient (brightness) [+ (INCREASE) || - (DECREASE)]
 * Number of Light Sources and Location(Access through the [.eg]  `vim scenes/scene8.rt`)
 * RGB values (Red [-E / R+], Green[-F / G+], Blue[-V / B+]) seperately.
 * Specular Intensity [ <a href="https://en.wikipedia.org/wiki/Specular_reflection" target="">Link</a> ]
@@ -113,3 +113,4 @@ Feautres are outlined in the first window upon execution of the any of the valid
 | Recursive Call | About Algorithm  |     <a href="http://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/reflection_refraction.pdf" target="">Reflective Algorithm Pseudo Code</a>        |   scene.c   |
 | Reference for Geometric Math | Khan Academy  | Good place to learn vector math and the algorithms related to progducing this product |   ---     |
 | Scratch Pixel | [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing" target="">Link</a>]  | Easy to understand walk through on how raytracing works. Very good resource to reference. |   ---     |
+| Refraction | [<a href="https://www.youtube.com/watch?v=yfawFJCRDSE" target="">Snell's Law</a>]  | Refraction Video |   ---     |

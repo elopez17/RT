@@ -6,7 +6,7 @@
 /*   By: eLopez <eLopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 11:01:22 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2018/01/30 12:32:25 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ void					rt_error(int code);
 void					parsefile(t_rt *rt);
 t_vect					getxyz(const char *line);
 t_rgb					getcolor(const char *line);
-t_rgb					addlight(t_rt *rt, t_ray *intersect, t_obj *obj,
+t_rgb					addlight(t_rt *rt, t_ray *inter, t_obj *obj,
 		t_vect light);
 t_rgb					lighting(t_obj *obj, t_ray *intersect, t_vect light,
 		double shadow);

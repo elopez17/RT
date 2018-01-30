@@ -6,11 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 12:18:35 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 12:36:00 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define TRANS tmp->transparent
+#define TYPE obj->type
 
 t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, double shadow)
 {
@@ -41,16 +43,15 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, double shadow)
 	return (colorscalar(obj->clr, obj->amb));
 }
 
-t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
+t_rgb	addlight(t_rt *rt, t_ray *inter, t_obj *obj, t_vect light)
 {
 	t_obj	*tmp;
 	t_ray	shadow;
 	t_dist	d;
 	double	*intersects;
 
-	obj->norm = obj->normal(obj->u, intersect->origin);
-	shadow.origin = vadd(intersect->origin, vmult(obj->norm, obj->type == 2 ? 0
-				: 1e-4));
+	obj->norm = obj->normal(obj->u, inter->origin);
+	shadow.origin = vadd(inter->origin, vmult(obj->norm, TYPE == 2 ? 0 : 1e-4));
 	d.dist = vdiff(light, shadow.origin);
 	shadow.dir = normalize(d.dist);
 	d.dist_mag = sqrt(pow(d.dist.x, 2) + pow(d.dist.y, 2) + pow(d.dist.z, 2));
@@ -64,10 +65,9 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 		if (intersects[d.i] >= EPS && intersects[d.i] <= d.dist_mag - 1e-4)
 		{
 			ft_memdel((void**)&intersects);
-			return (lighting(obj, intersect, light, tmp->transparent ?
-						tmp->io_trans : 1));
+			return (lighting(obj, inter, light, TRANS ? tmp->io_trans : 1));
 		}
 	}
 	ft_memdel((void**)&intersects);
-	return (lighting(obj, intersect, light, 0));
+	return (lighting(obj, inter, light, 0));
 }

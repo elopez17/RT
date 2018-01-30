@@ -113,7 +113,7 @@ void	addcube(t_rt **rt)
 	obj = (t_obj*)malloc(sizeof(t_obj));
 	obj->type = 5;
 	obj->u.cube.pos = (t_vect){0, 0, 0};
-	obj->u.cube.min = vdiff(obj->u.cube.pos, (t_vect){1, 1, 1}); 
+	obj->u.cube.min = vdiff(obj->u.cube.pos, (t_vect){1, 1, 1});
 	obj->u.cube.max = vadd(obj->u.cube.pos, (t_vect){1, 1, 1});
 	obj->u.cube.len = 1;
 	obj->u.cube.clr = (t_rgb){150, 100, 190};

@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/20 21:24:49 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 11:48:52 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,9 +177,9 @@ void		controls(t_rt *rt)
 "Use UP/DOWN arrows to modify");
 	mlx_string_put(rt->mlx, rt->win2, 10, 475, 0x00f0f0f0,
 "radius/angle of sphere/cone/cylinder");
-mlx_string_put(rt->mlx, rt->win2, 10, 500, 0x00ff00ff,
+	mlx_string_put(rt->mlx, rt->win2, 10, 500, 0x00ff00ff,
 "Use LEFT/RIGHT arrows to make");
-mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
+	mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
 "object nonreflect/reflect/refract");
 	mlx_string_put(rt->mlx, rt->win2, 10, 20, 0x00ff00ff,
 "Change ambient coefficient of each obj '-' / '+'");

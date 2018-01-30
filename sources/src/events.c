@@ -6,7 +6,7 @@
 /*   By: elopez <elopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/30 13:09:29 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:16:42 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,7 @@ int		key_hook(int key, t_rt **rt)
 			ft_memdel((void**)&(*rt)->obj);
 			(*rt)->obj = tmp;
 		}
-		mlx_destroy_image((*rt)->mlx, (*rt)->img);
-		mlx_destroy_window((*rt)->mlx, (*rt)->win);
-		mlx_destroy_window((*rt)->mlx, (*rt)->win2);
-		ft_memdel((void**)&(*rt)->light);
-		ft_memdel((void**)rt);
+		rt_memdel(rt);
 		exit(0);
 	}
 	else if ((*rt)->current != NULL)

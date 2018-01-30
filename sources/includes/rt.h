@@ -6,7 +6,7 @@
 /*   By: eLopez <eLopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 12:46:53 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:17:16 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,5 +286,6 @@ void					filter_four(char *image);
 void					filter_five(char *image);
 void					filter_six(char *image);
 void					filter_seven(char *image);
+void					rt_memdel(t_rt **rt);
 
 #endif

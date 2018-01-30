@@ -41,6 +41,7 @@ static void	putnumpad(t_rt *rt)
 	putbutton(rt, 550, 170);
 	putbutton(rt, 610, 170);
 	putbutton(rt, 670, 170);
+	putbutton(rt, 730, 170);
 	mlx_string_put(rt->mlx, rt->win2, 563, 63, 0x00ff0000, "-7");
 	mlx_string_put(rt->mlx, rt->win2, 623, 63, 0x0000ff00, "+8");
 	mlx_string_put(rt->mlx, rt->win2, 683, 63, 0x0000ff00, "+9");
@@ -49,6 +50,7 @@ static void	putnumpad(t_rt *rt)
 	mlx_string_put(rt->mlx, rt->win2, 623, 123, 0x00f0f0f0, " 5");
 	mlx_string_put(rt->mlx, rt->win2, 683, 123, 0x0000ff00, "+6");
 	mlx_string_put(rt->mlx, rt->win2, 743, 123, 0x0000ff00, "+");
+	mlx_string_put(rt->mlx, rt->win2, 743, 183, 0x0000ff00, "ENT");
 	mlx_string_put(rt->mlx, rt->win2, 563, 183, 0x00ff0000, "-1");
 	mlx_string_put(rt->mlx, rt->win2, 623, 183, 0x00ff0000, "-2");
 	mlx_string_put(rt->mlx, rt->win2, 683, 183, 0x0000ff00, "+3");
@@ -120,9 +122,9 @@ void		controls(t_rt *rt)
 	mlx_string_put(rt->mlx, rt->win2, 10, 525, 0x00ff00ff,
 "Use UP/DOWN arrows to modify radius/angle of sphere/cone/cylinder");
 	mlx_string_put(rt->mlx, rt->win2, 10, 550, 0x00ff00ff,
-"Use LEFT/RIGHT arrows to make object nonreflect/reflect");
+"Use LEFT/RIGHT arrows to make object nonreflect/reflect/refract");
 	mlx_string_put(rt->mlx, rt->win2, 10, 20, 0x0000ff00,
-"Change Brightness of Light with '-' / '+' signs");
+"Change ambient coefficient of Light with '-' / '+' signs");
 	mlx_string_put(rt->mlx, rt->win2, 10, 65, 0x00f0f0f0,
 "Click on an Object to Modify, then");
 }

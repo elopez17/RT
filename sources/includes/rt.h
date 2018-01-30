@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/29 21:08:38 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/29 23:50:29 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,8 +180,10 @@ typedef struct			s_objects
 	t_rgb				clr;
 	int					reflect;
 	int					refract;
+	int					transparent;
 	double				ior;
 	double				io_refl;
+	double				io_trans;
 	double				spec;
 	double				diff;
 	double				amb;
@@ -259,7 +261,7 @@ t_rgb					getcolor(const char *line);
 t_rgb					addlight(t_rt *rt, t_ray *intersect, t_obj *obj,
 		t_vect light);
 t_rgb					lighting(t_obj *obj, t_ray *intersect, t_vect light,
-		int shadow);
+		double shadow);
 void					getcam(t_rt *rt);
 void					getlight(t_rt *rt);
 t_union					getcube(t_rt *rt);

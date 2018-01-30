@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/26 18:08:47 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 01:05:31 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,45 @@ static void	mod_plane(int key, t_obj **obj)
 		(*obj)->clr.blue -= 20;
 }
 
+static void	changestate(t_obj **obj, int key)
+{
+	if (key == KEYLEFT && ((*obj)->reflect = 0) == 0)
+	{
+		(*obj)->refract = 0;
+		(*obj)->transparent = 0;
+		return ;
+	}
+	if (!(*obj)->reflect && !(*obj)->refract && !(*obj)->transparent)
+		(*obj)->reflect = 1;
+	else if ((*obj)->reflect && ((*obj)->reflect = 0) == 0)
+		(*obj)->transparent = 1;
+	else if ((*obj)->transparent && ((*obj)->transparent = 0) == 0)
+		(*obj)->refract = 1;
+	else if ((*obj)->refract && ((*obj)->refract = 0) == 0)
+		(*obj)->reflect = 1;
+}
+
 void		move_obj(int key, t_obj **obj, int toggle)
 {
+	(key == KEY0 && (*obj)->transparent && (*obj)->io_trans < 0.9) ?
+		(*obj)->io_trans += 0.1 : 0;
+	(key == KEYDOT && (*obj)->transparent && (*obj)->io_trans > 0.1) ?
+		(*obj)->io_trans -= 0.1 : 0;
 	(key == KEY0 && (*obj)->reflect && (*obj)->io_refl < 1.0) ?
 		(*obj)->io_refl += 0.1 : 0;
-	(key == KEYDOT && (*obj)->reflect && (*obj)->io_refl > 0.0) ? (*obj)->io_refl -= 0.1 : 0;
-	(key == KEY0 && (*obj)->refract && (*obj)->ior >= 1.1) ? (*obj)->ior -= 0.1 : 0;
-	(key == KEYDOT && (*obj)->refract && (*obj)->ior <= 1.9) ? (*obj)->ior += 0.1 : 0;
-	(key == KEYRIGHT) ? (*obj)->reflect ^= 1 : 0;
+	(key == KEYDOT && (*obj)->reflect && (*obj)->io_refl > 0.0) ?
+		(*obj)->io_refl -= 0.1 : 0;
+	(key == KEY0 && (*obj)->refract && (*obj)->ior >= 1.1) ?
+		(*obj)->ior -= 0.1 : 0;
+	(key == KEYDOT && (*obj)->refract && (*obj)->ior <= 1.9) ?
+		(*obj)->ior += 0.1 : 0;
+	(key == KEYRIGHT || key == KEYLEFT) ? changestate(obj, key) : 0;
 	if (key == KEYPLUS || key == KEYMIN)
 		(*obj)->amb += (key == KEYPLUS) ? 0.03 : -0.03;
-	if (key == KEYRIGHT)
-		(*obj)->refract = (!(*obj)->reflect) ? 1 : 0;
 	if (key == KEYS && (*obj)->spec < 1.0f)
 		(*obj)->spec += 0.3;
 	else if (key == KEYX && (*obj)->spec > 0.0f)
 		(*obj)->spec -= 0.3;
-	else if (key == KEYLEFT && ((*obj)->reflect = 0) == 0)
-		(*obj)->refract = 0;
 	else if (key == KEYD && (*obj)->diff < 1.0f)
 		(*obj)->diff += 0.3;
 	else if (key == KEYC && (*obj)->diff > 0.0f)

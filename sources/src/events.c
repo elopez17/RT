@@ -6,7 +6,7 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/26 21:34:58 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/29 21:09:00 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		key_hook(int key, t_rt **rt)
 	else if ((*rt)->current != NULL)
 		move_obj(key, &(*rt)->current, (*rt)->toggle);
 	multithread(*rt);
-	(key == KEYENT) ? inv_filt(&(*rt)->addr) : 0;
+	(key == KEYENT) ? inv_filt((*rt)->addr) : 0;
 	draw(*rt);
 	return (0);
 }

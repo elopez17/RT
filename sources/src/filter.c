@@ -1,6 +1,6 @@
 #include <rt.h>
 
-void	inv_filt(char **image)
+void	inv_filt(char *image)
 {
 	int i;
 
@@ -9,6 +9,6 @@ void	inv_filt(char **image)
 	{
 		if (((i + 1) % 4) == 0)
 			continue ;
-		image[0][i] = 255 - image[0][i];
+		image[i] = 255 - image[i];
 	}
 }

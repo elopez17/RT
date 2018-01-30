@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/27 20:12:09 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/29 21:08:38 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ int						findintersect(t_ray *intersect, t_ray ray, t_rt *rt);
 void					mod_cylind(int key, t_obj **obj, int toggle);
 void					mod_cube(int key, t_obj **obj, int toggle);
 void					mod_cone(int key, t_obj **obj, int toggle);
-void					inv_filt(char **image);
+void					inv_filt(char *image);
 void					addsphere(t_rt **rt);
 void					addplane(t_rt **rt);
 void					addcone(t_rt **rt);

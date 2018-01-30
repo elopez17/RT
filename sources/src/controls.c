@@ -94,8 +94,10 @@ static void	putinfo(t_rt *rt)
 "Use '2' / '8' to move plane nearer/further from center");
 	mlx_string_put(rt->mlx, rt->win2, 10, 195, 0x00f0f0f0,
 "Use '5' to toggle between rotation/translation");
-	mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
+mlx_string_put(rt->mlx, rt->win2, 10, 215, 0x00f0f0f0,
 "using X,Y,Z-axis buttons. Applicable to cone/cylinder");
+mlx_string_put(rt->mlx, rt->win2, 10, 235, 0x00f0f0f0,
+"Using ENT / any key - Invert Color");
 	mlx_string_put(rt->mlx, rt->win2, 10, 370, 0x00ff0000,
 "Use 'E' / 'R' to modify intensity of Red");
 	mlx_string_put(rt->mlx, rt->win2, 10, 395, 0x0000ff00,

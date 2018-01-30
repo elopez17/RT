@@ -47,20 +47,24 @@ RT/[GIT REPO]
 │   ├── minilibx/
 │   ├── libft/
 │   └── src/
+│       ├── add_obj.c
 │       ├── colors.c
 │       ├── controls.c
 │       ├── draw.c
 │       ├─- error.c
 │       ├── events.c
+│       ├── filters.c
 │       ├── intersect.c
 │       ├── intersect2.c
 │       ├── light.c
 │       ├── main.c
-│       ├─- mod.c
+│       ├── mod.c
+│       ├── mod2.c
+│       ├── normals.c
 │       ├── parse.c
 │       ├── parse2.c
 │       ├── parse3.c
-│       ├─- putpixel.c
+│       ├── putpixel.c
 │       ├── scene.c
 │       ├── threads.c
 │       ├── vect.c
@@ -111,6 +115,6 @@ Feautres are outlined in the first window upon execution of the any of the valid
 | :---                    |     :---:        |     :---:           |            ---:   |
 | Ld = kd I max(0, n · l) | <a href="http://www.cs.cornell.edu/courses/cs4620/2010fa/lectures/09shadingBasics.pdf" target="blank">Lambertian Shading</a> | Diffuse Reflected = (Diffuse Coefficient) * (Illumination Source) * ((light vector) * (per unit area = cos0) :: (normal vector <-> light vector = cos0)) |  light.c |
 | Recursive Call | About Algorithm  |     <a href="http://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/reflection_refraction.pdf" target="">Reflective Algorithm Pseudo Code</a>        |   scene.c   |
-| Reference for Geometric Math | Khan Academy  | Good place to learn vector math and the algorithms related to progducing this product |   ---     |
+| Reference for Geometric Math | <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces">Khan Academy</a>  | Good place to learn vector math and the algorithms related to progducing this product |   ---     |
 | Scratch Pixel | [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing" target="">Link</a>]  | Easy to understand walk through on how raytracing works. Very good resource to reference. |   ---     |
 | Refraction | [<a href="https://www.youtube.com/watch?v=yfawFJCRDSE" target="">Snell's Law</a>]  | Refraction Video |   ---     |

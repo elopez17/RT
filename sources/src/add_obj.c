@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_obj.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/25 11:02:14 by evanheum          #+#    #+#             */
+/*   Updated: 2018/01/30 14:22:47 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <rt.h>
 
 void	addsphere(t_rt **rt)
@@ -113,7 +125,7 @@ void	addcube(t_rt **rt)
 	obj = (t_obj*)malloc(sizeof(t_obj));
 	obj->type = 5;
 	obj->u.cube.pos = (t_vect){0, 0, 0};
-	obj->u.cube.min = vdiff(obj->u.cube.pos, (t_vect){1, 1, 1}); 
+	obj->u.cube.min = vdiff(obj->u.cube.pos, (t_vect){1, 1, 1});
 	obj->u.cube.max = vadd(obj->u.cube.pos, (t_vect){1, 1, 1});
 	obj->u.cube.len = 1;
 	obj->u.cube.clr = (t_rgb){150, 100, 190};

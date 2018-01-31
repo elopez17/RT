@@ -6,14 +6,14 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:06:13 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/27 19:56:10 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 12:38:51 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 #define SWAPD(a, b)({double tmp = a; a = b; b = tmp;})
 
-double			findintercube(t_ray ray, t_union u)
+double		findintercube(t_ray ray, t_union u)
 {
 	t_vect	min;
 	t_vect	max;

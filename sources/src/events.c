@@ -6,7 +6,7 @@
 /*   By: elopez <elopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/30 16:55:16 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:58:18 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		mousepress(int key, int x, int y, t_rt **rt)
 	return (0);
 }
 
-int (*filter_ptr[]) (char *iimage) =
+int		(*g_filter_ptr[]) (char *iimage) =
 {
 	&greyscale_filter,
 	&natural_greyscale_filter,
@@ -52,12 +52,12 @@ int (*filter_ptr[]) (char *iimage) =
 	NULL,
 };
 
-void		swap_filter(char *image)
+void	swap_filter(char *image)
 {
 	static int i = 0;
 
-	if (filter_ptr[i])
-		(*filter_ptr[i++])(image);
+	if (g_filter_ptr[i])
+		(*g_filter_ptr[i++])(image);
 	else
 		i = 0;
 }
@@ -80,11 +80,7 @@ int		key_hook(int key, t_rt **rt)
 			ft_memdel((void**)&(*rt)->obj);
 			(*rt)->obj = tmp;
 		}
-		mlx_destroy_image((*rt)->mlx, (*rt)->img);
-		mlx_destroy_window((*rt)->mlx, (*rt)->win);
-		mlx_destroy_window((*rt)->mlx, (*rt)->win2);
-		ft_memdel((void**)&(*rt)->light);
-		ft_memdel((void**)rt);
+		rt_memdel(rt);
 		exit(0);
 	}
 	else if ((*rt)->current != NULL)

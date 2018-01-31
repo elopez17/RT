@@ -6,11 +6,13 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:36:04 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 01:49:50 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 12:47:42 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define TRANS tmp->transparent
+#define TYPE obj->type
 
 t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, double shadow)
 {
@@ -23,29 +25,33 @@ t_rgb	lighting(t_obj *obj, t_ray *intersect, t_vect light, double shadow)
 	h = vdiv(vdiff(light_dir, intersect->dir),
 			vlen(vdiff(light_dir, intersect->dir)));
 	cos_a = fabs(vdot(light_dir, obj->norm));
-	transp = 0;
+	transp = 1;
 	if (shadow < 1.0 && shadow > 0.0)
 		if ((transp = (1.0 - shadow)) > 1.0)
 			transp = 1;
 	if (shadow == 0)
-		return (coloradd(colorscalar(obj->clr, obj->amb + transp + obj->diff * cos_a),
-colorscalar((t_rgb){100,100,100}, obj->spec * pow(vdot(obj->norm, h), obj->m))));
+	{
+		return (cadd(cscalar(obj->clr, (obj->amb * transp) + obj->diff
+	* cos_a), cscalar((t_rgb){100, 100, 100}, obj->spec * pow(vdot(obj->norm
+	, h), obj->m))));
+	}
 	if (shadow <= 0.9)
-		return (colorscalar(obj->clr, (obj->amb + transp) > 1 ? 1 :
-												(obj->amb + transp)));
-	return (colorscalar(obj->clr, obj->amb));
+	{
+		return (cscalar(obj->clr, (obj->amb * transp) > 1 ? 1 :
+												(obj->amb * transp)));
+	}
+	return (cscalar(obj->clr, obj->amb));
 }
 
-t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
+t_rgb	addlight(t_rt *rt, t_ray *inter, t_obj *obj, t_vect light)
 {
 	t_obj	*tmp;
 	t_ray	shadow;
 	t_dist	d;
 	double	*intersects;
 
-	obj->norm = obj->normal(obj->u, intersect->origin);
-	shadow.origin = vadd(intersect->origin, vmult(obj->norm, obj->type == 2 ? 0
-				: 1e-4));
+	obj->norm = obj->normal(obj->u, inter->origin);
+	shadow.origin = vadd(inter->origin, vmult(obj->norm, TYPE == 2 ? 0 : 1e-4));
 	d.dist = vdiff(light, shadow.origin);
 	shadow.dir = normalize(d.dist);
 	d.dist_mag = sqrt(pow(d.dist.x, 2) + pow(d.dist.y, 2) + pow(d.dist.z, 2));
@@ -59,10 +65,9 @@ t_rgb	addlight(t_rt *rt, t_ray *intersect, t_obj *obj, t_vect light)
 		if (intersects[d.i] >= EPS && intersects[d.i] <= d.dist_mag - 1e-4)
 		{
 			ft_memdel((void**)&intersects);
-			return (lighting(obj, intersect, light, tmp->transparent ?
-						tmp->io_trans : 1));
+			return (lighting(obj, inter, light, TRANS ? tmp->io_trans : 1));
 		}
 	}
 	ft_memdel((void**)&intersects);
-	return (lighting(obj, intersect, light, 0));
+	return (lighting(obj, inter, light, 0));
 }

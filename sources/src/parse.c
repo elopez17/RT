@@ -6,12 +6,13 @@
 /*   By: oabdalha <oabdalha@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by oabdalha          #+#    #+#             */
-/*   Updated: 2018/01/30 01:06:39 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:24:00 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 #define OBJINFO(obj,f1,f2,rgb)({obj->normal=f1;obj->clr=rgb;obj->inter=f2;})
+#define INIT(obj)({obj->refract = 0;obj->transparent = 0;})
 
 static int g_flag = 0;
 
@@ -20,9 +21,8 @@ void		getobject(int type, t_union u, t_rt *rt)
 	t_obj	*obj;
 
 	obj = (t_obj*)malloc(sizeof(t_obj));
-	obj->type = type;
 	obj->u = u;
-	if (type == 1)
+	if ((obj->type = type) == 1)
 		OBJINFO(obj, &sphere_norm, &findintersphere, u.sphere.clr);
 	else if (type == 2)
 		OBJINFO(obj, &plane_norm, &findinterplane, u.plane.clr);
@@ -33,8 +33,7 @@ void		getobject(int type, t_union u, t_rt *rt)
 	else if (type == 5)
 		OBJINFO(obj, &cube_norm, &findintercube, u.cube.clr);
 	obj->reflect = (type == 2) ? 0 : 1;
-	obj->refract = 0;
-	obj->transparent = 0;
+	INIT(obj);
 	obj->ior = 1.3;
 	obj->io_refl = 1.0;
 	obj->io_trans = 0.9;

@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:37:58 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 01:05:31 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/01/30 13:31:38 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	changestate(t_obj **obj, int key)
 		(*obj)->reflect = 1;
 }
 
-void		move_obj(int key, t_obj **obj, int toggle)
+static void	changeindex(int key, t_obj **obj)
 {
 	(key == KEY0 && (*obj)->transparent && (*obj)->io_trans < 0.9) ?
 		(*obj)->io_trans += 0.1 : 0;
@@ -93,6 +93,11 @@ void		move_obj(int key, t_obj **obj, int toggle)
 		(*obj)->ior -= 0.1 : 0;
 	(key == KEYDOT && (*obj)->refract && (*obj)->ior <= 1.9) ?
 		(*obj)->ior += 0.1 : 0;
+}
+
+void		move_obj(int key, t_obj **obj, int toggle)
+{
+	(key == KEY0 || key == KEYDOT) ? changeindex(key, obj) : 0;
 	(key == KEYRIGHT || key == KEYLEFT) ? changestate(obj, key) : 0;
 	if (key == KEYPLUS || key == KEYMIN)
 		(*obj)->amb += (key == KEYPLUS) ? 0.03 : -0.03;

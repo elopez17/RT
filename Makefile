@@ -17,14 +17,41 @@ TURQ	= \x1b[36m
 WHT		= \x1b[37m
 CC		= gcc
 CFLAGS	= -Wall -Wextra -g -w -lpthread -std=c99 -O3
-SRC		= $(shell ls sources/src | grep -E ".+\.c")
+SRC		= add_obj.c\
+color.c\
+controls.c\
+controls2.c\
+draw.c\
+error.c\
+events.c\
+filter.c\
+filter2.c\
+intersect.c\
+intersect2.c\
+light.c\
+main.c\
+memdel.c\
+mod.c\
+mod2.c\
+normals.c\
+parse.c\
+parse2.c\
+parse3.c\
+putpixel.c\
+scene.c\
+threads.c\
+vect.c\
+vect2.c\
+
 ODIR	:= sources/obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
 INC		= sources/includes
 LIB		= sources/libft.a
 EX		= RT
 
-all: $(LIB) $(EX)
+all:
+	@$(MAKE) -j $(LIB)
+	@$(MAKE) -j $(EX)
 
 $(EX): $(OBJ)
 	@make -C sources/minilibx/

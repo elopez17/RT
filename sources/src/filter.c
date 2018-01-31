@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filter.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gguiulfo <gguiulfo@42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/06 17:35:44 by gguiulfo          #+#    #+#             */
+/*   Updated: 2018/01/30 17:30:12 by elopez           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <rt.h>
 
 void	inv_filt(char *image)
@@ -49,75 +61,5 @@ void	filter_seven(char *image)
 		if (((i + 1) % 2) == 0)
 			continue ;
 		image[i] = image[i] / 128 + 50;
-	}
-}
-
-void	greyscale_filter(char *image)
-{
-	unsigned char *filter;
-
-	filter = (unsigned char *)image;
-	for (int i = 0; i < 2560000; i += 4)
-	{
-		int sum = (filter[i] + filter[i + 1] + filter[i + 2]) / 3;
-		filter[i] = sum;
-		filter[i + 1] = sum;
-		filter[i + 2] = sum;
-	}
-}
-
-void	natural_greyscale_filter(char *image)
-{
-	unsigned char *filter;
-
-	filter = (unsigned char *)image;
-	for (int i = 0; i < 2560000; i += 4)
-	{
-		int sum = (0.21 * filter[i]) + (0.72 * filter[i + 1]) + (0.07 * filter[i + 2]);
-		filter[i] = sum;
-		filter[i + 1] = sum;
-		filter[i + 2] = sum;
-	}
-}
-
-void	whitegreyscale_filter(char *image)
-{
-	unsigned char *filter;
-
-	filter = (unsigned char *)image;
-	for (int i = 0; i < 2560000; i += 4)
-	{
-		int sum = 128 - (filter[i] + filter[i + 1] + filter[i + 2]) / 3;
-		filter[i] = sum;
-		filter[i + 1] = sum;
-		filter[i + 2] = sum;
-	}
-}
-
-void	whitescale_filter(char *image)
-{
-	unsigned char *filter;
-
-	filter = (unsigned char *)image;
-	for (int i = 0; i < 2560000; i += 4)
-	{
-		int sum = 255 - (filter[i] + filter[i + 1] + filter[i + 2]) / 3;
-		filter[i] = sum;
-		filter[i + 1] = sum;
-		filter[i + 2] = sum;
-	}
-}
-
-void	natural_whitegreyscale_filter(char *image)
-{
-	unsigned char *filter;
-
-	filter = (unsigned char *)image;
-	for (int i = 0; i < 2560000; i += 4)
-	{
-		int sum = 128 - (0.21 * filter[i]) + (0.72 * filter[i + 1]) + (0.07 * filter[i + 2]);
-		filter[i] = sum;
-		filter[i + 1] = sum;
-		filter[i + 2] = sum;
 	}
 }

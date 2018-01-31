@@ -6,7 +6,7 @@
 /*   By: elopez <elopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:32:37 by elopez            #+#    #+#             */
-/*   Updated: 2018/01/30 11:08:14 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:55:16 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int		mousepress(int key, int x, int y, t_rt **rt)
 
 int (*filter_ptr[]) (char *iimage) =
 {
+	&greyscale_filter,
+	&natural_greyscale_filter,
+	&whitescale_filter,
+	&whitegreyscale_filter,
+	&natural_whitegreyscale_filter,
 	&inv_filt,
 	&filter_two,
-	&filter_three,
-	&filter_four,
-	&filter_five,
 	&filter_six,
 	&filter_seven,
 	NULL,

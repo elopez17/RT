@@ -6,7 +6,7 @@
 /*   By: eLopez <eLopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/01/30 11:01:22 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:53:53 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,10 +281,14 @@ void					addcylin(t_rt **rt);
 void					addcube(t_rt **rt);
 void					inv_filt(char *image);
 void					filter_two(char *image);
-void					filter_three(char *image);
-void					filter_four(char *image);
-void					filter_five(char *image);
 void					filter_six(char *image);
 void					filter_seven(char *image);
+void					good_filter_one(char *image);
+void					greyscale_filter(char *image);
+void					natural_greyscale_filter(char *image);
+void					whitescale_filter(char *image);
+void					whitegreyscale_filter(char *image);
+void					natural_whitegreyscale_filter(char *image);
+
 
 #endif

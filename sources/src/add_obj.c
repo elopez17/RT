@@ -6,11 +6,12 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:02:14 by evanheum          #+#    #+#             */
-/*   Updated: 2018/01/30 17:51:02 by elopez           ###   ########.fr       */
+/*   Updated: 2018/01/31 17:48:42 by oabdalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define INIT(obj)({obj->refract = 0;obj->reflect = 0;})
 
 void	addsphere(t_rt **rt)
 {
@@ -140,8 +141,7 @@ void	addcube(t_rt **rt)
 	obj->normal = &cube_norm;
 	obj->inter = &findintercube;
 	obj->clr = obj->u.cube.clr;
-	obj->reflect = 0;
-	obj->refract = 0;
+	INIT(obj);
 	obj->transparent = 0;
 	obj->ior = 1.3;
 	obj->io_refl = 1.0;
